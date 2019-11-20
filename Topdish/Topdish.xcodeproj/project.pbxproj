@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BCFEA6ED670C80367565DF7 /* Pods_TopdishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */; };
+		C0A03D2D181AB62A2C21C9BE /* Pods_Topdish_TopdishUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8BB1CF4899076A907612B40 /* Pods_Topdish_TopdishUITests.framework */; };
+		CA7211454AA2A2BE7A5C8161 /* Pods_Topdish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A777B66AC55225E1D61EAC0E /* Pods_Topdish.framework */; };
 		D30BEDFB23849CA100B5FEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEDFA23849CA100B5FEE2 /* AppDelegate.swift */; };
 		D30BEDFD23849CA100B5FEE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEDFC23849CA100B5FEE2 /* SceneDelegate.swift */; };
 		D30BEDFF23849CA100B5FEE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEDFE23849CA100B5FEE2 /* ViewController.swift */; };
@@ -15,6 +18,7 @@
 		D30BEE0723849CA600B5FEE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30BEE0523849CA600B5FEE2 /* LaunchScreen.storyboard */; };
 		D30BEE1223849CA600B5FEE2 /* TopdishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEE1123849CA600B5FEE2 /* TopdishTests.swift */; };
 		D30BEE1D23849CA600B5FEE2 /* TopdishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEE1C23849CA600B5FEE2 /* TopdishUITests.swift */; };
+		D3B6C02D2385D32900FFED65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3B6C02C2385D32900FFED65 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +39,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11900758A271267757D042A3 /* Pods-Topdish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topdish.debug.xcconfig"; path = "Target Support Files/Pods-Topdish/Pods-Topdish.debug.xcconfig"; sourceTree = "<group>"; };
+		13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopdishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AD348DEA25E98EB00D89ADD /* Pods-TopdishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopdishTests.release.xcconfig"; path = "Target Support Files/Pods-TopdishTests/Pods-TopdishTests.release.xcconfig"; sourceTree = "<group>"; };
+		8E8145D1052B2BC1AF748608 /* Pods-TopdishTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopdishTests.debug.xcconfig"; path = "Target Support Files/Pods-TopdishTests/Pods-TopdishTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A777B66AC55225E1D61EAC0E /* Pods_Topdish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Topdish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B49425C997E671A360665F74 /* Pods-Topdish-TopdishUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topdish-TopdishUITests.debug.xcconfig"; path = "Target Support Files/Pods-Topdish-TopdishUITests/Pods-Topdish-TopdishUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BCE5B95DFCE3FFA5E06550C8 /* Pods-Topdish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topdish.release.xcconfig"; path = "Target Support Files/Pods-Topdish/Pods-Topdish.release.xcconfig"; sourceTree = "<group>"; };
+		C8BB1CF4899076A907612B40 /* Pods_Topdish_TopdishUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Topdish_TopdishUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1BA69EA3B69EED28BCCA44B /* Pods-Topdish-TopdishUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topdish-TopdishUITests.release.xcconfig"; path = "Target Support Files/Pods-Topdish-TopdishUITests/Pods-Topdish-TopdishUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D30BEDF723849CA100B5FEE2 /* Topdish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Topdish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30BEDFA23849CA100B5FEE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D30BEDFC23849CA100B5FEE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +62,7 @@
 		D30BEE1823849CA600B5FEE2 /* TopdishUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TopdishUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30BEE1C23849CA600B5FEE2 /* TopdishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopdishUITests.swift; sourceTree = "<group>"; };
 		D30BEE1E23849CA600B5FEE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3B6C02C2385D32900FFED65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7211454AA2A2BE7A5C8161 /* Pods_Topdish.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BCFEA6ED670C80367565DF7 /* Pods_TopdishTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +86,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0A03D2D181AB62A2C21C9BE /* Pods_Topdish_TopdishUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55B4308789B77E689E4A2E3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A777B66AC55225E1D61EAC0E /* Pods_Topdish.framework */,
+				C8BB1CF4899076A907612B40 /* Pods_Topdish_TopdishUITests.framework */,
+				13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D1A7C12163929DF86C06E60 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				11900758A271267757D042A3 /* Pods-Topdish.debug.xcconfig */,
+				BCE5B95DFCE3FFA5E06550C8 /* Pods-Topdish.release.xcconfig */,
+				B49425C997E671A360665F74 /* Pods-Topdish-TopdishUITests.debug.xcconfig */,
+				D1BA69EA3B69EED28BCCA44B /* Pods-Topdish-TopdishUITests.release.xcconfig */,
+				8E8145D1052B2BC1AF748608 /* Pods-TopdishTests.debug.xcconfig */,
+				6AD348DEA25E98EB00D89ADD /* Pods-TopdishTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D30BEDEE23849CA000B5FEE2 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +123,8 @@
 				D30BEE1023849CA600B5FEE2 /* TopdishTests */,
 				D30BEE1B23849CA600B5FEE2 /* TopdishUITests */,
 				D30BEDF823849CA100B5FEE2 /* Products */,
+				9D1A7C12163929DF86C06E60 /* Pods */,
+				55B4308789B77E689E4A2E3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +147,7 @@
 				D30BEE0023849CA100B5FEE2 /* Main.storyboard */,
 				D30BEE0323849CA600B5FEE2 /* Assets.xcassets */,
 				D30BEE0523849CA600B5FEE2 /* LaunchScreen.storyboard */,
+				D3B6C02C2385D32900FFED65 /* GoogleService-Info.plist */,
 				D30BEE0823849CA600B5FEE2 /* Info.plist */,
 			);
 			path = Topdish;
@@ -135,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D30BEE2123849CA600B5FEE2 /* Build configuration list for PBXNativeTarget "Topdish" */;
 			buildPhases = (
+				849CBE7AED1B0F6DD62CB1DB /* [CP] Check Pods Manifest.lock */,
 				D30BEDF323849CA100B5FEE2 /* Sources */,
 				D30BEDF423849CA100B5FEE2 /* Frameworks */,
 				D30BEDF523849CA100B5FEE2 /* Resources */,
+				D9AE409D114638DF6548FB3E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +197,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D30BEE2423849CA600B5FEE2 /* Build configuration list for PBXNativeTarget "TopdishTests" */;
 			buildPhases = (
+				C3965DEA4F5E441A0F1C343A /* [CP] Check Pods Manifest.lock */,
 				D30BEE0923849CA600B5FEE2 /* Sources */,
 				D30BEE0A23849CA600B5FEE2 /* Frameworks */,
 				D30BEE0B23849CA600B5FEE2 /* Resources */,
@@ -170,9 +216,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D30BEE2723849CA600B5FEE2 /* Build configuration list for PBXNativeTarget "TopdishUITests" */;
 			buildPhases = (
+				EC0AE68150F11EE67CEEC2CB /* [CP] Check Pods Manifest.lock */,
 				D30BEE1423849CA600B5FEE2 /* Sources */,
 				D30BEE1523849CA600B5FEE2 /* Frameworks */,
 				D30BEE1623849CA600B5FEE2 /* Resources */,
+				F48744B6BD6BF019CBEC8C22 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -233,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D30BEE0723849CA600B5FEE2 /* LaunchScreen.storyboard in Resources */,
+				D3B6C02D2385D32900FFED65 /* GoogleService-Info.plist in Resources */,
 				D30BEE0423849CA600B5FEE2 /* Assets.xcassets in Resources */,
 				D30BEE0223849CA100B5FEE2 /* Main.storyboard in Resources */,
 			);
@@ -253,6 +302,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		849CBE7AED1B0F6DD62CB1DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Topdish-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3965DEA4F5E441A0F1C343A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TopdishTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9AE409D114638DF6548FB3E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Topdish/Pods-Topdish-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Topdish/Pods-Topdish-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Topdish/Pods-Topdish-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC0AE68150F11EE67CEEC2CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Topdish-TopdishUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F48744B6BD6BF019CBEC8C22 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Topdish-TopdishUITests/Pods-Topdish-TopdishUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Topdish-TopdishUITests/Pods-Topdish-TopdishUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Topdish-TopdishUITests/Pods-Topdish-TopdishUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D30BEDF323849CA100B5FEE2 /* Sources */ = {
@@ -432,6 +584,7 @@
 		};
 		D30BEE2223849CA600B5FEE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11900758A271267757D042A3 /* Pods-Topdish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -449,6 +602,7 @@
 		};
 		D30BEE2323849CA600B5FEE2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCE5B95DFCE3FFA5E06550C8 /* Pods-Topdish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -466,6 +620,7 @@
 		};
 		D30BEE2523849CA600B5FEE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E8145D1052B2BC1AF748608 /* Pods-TopdishTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -487,6 +642,7 @@
 		};
 		D30BEE2623849CA600B5FEE2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AD348DEA25E98EB00D89ADD /* Pods-TopdishTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +664,7 @@
 		};
 		D30BEE2823849CA600B5FEE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B49425C997E671A360665F74 /* Pods-Topdish-TopdishUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -527,6 +684,7 @@
 		};
 		D30BEE2923849CA600B5FEE2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1BA69EA3B69EED28BCCA44B /* Pods-Topdish-TopdishUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
