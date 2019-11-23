@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1BCFEA6ED670C80367565DF7 /* Pods_TopdishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */; };
+		52E825382388964100F5FEA6 /* ThemedTextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E825372388964100F5FEA6 /* ThemedTextBox.swift */; };
+		52E8253A2388AA5E00F5FEA6 /* RestaurantHorizontalScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E825392388AA5E00F5FEA6 /* RestaurantHorizontalScroll.swift */; };
+		52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E8253D2388AB0800F5FEA6 /* HomePageController.swift */; };
+		52E825402388BC8400F5FEA6 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 52E8253F2388BC8400F5FEA6 /* Images */; };
+		52E825422388C0C100F5FEA6 /* HomePageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E825412388C0C100F5FEA6 /* HomePageCollectionCell.swift */; };
+		52FDA3692388E13900D9E1F2 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FDA3682388E13900D9E1F2 /* Restaurant.swift */; };
 		C0A03D2D181AB62A2C21C9BE /* Pods_Topdish_TopdishUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8BB1CF4899076A907612B40 /* Pods_Topdish_TopdishUITests.framework */; };
 		CA7211454AA2A2BE7A5C8161 /* Pods_Topdish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A777B66AC55225E1D61EAC0E /* Pods_Topdish.framework */; };
 		D30BEDFB23849CA100B5FEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEDFA23849CA100B5FEE2 /* AppDelegate.swift */; };
@@ -41,6 +47,12 @@
 /* Begin PBXFileReference section */
 		11900758A271267757D042A3 /* Pods-Topdish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topdish.debug.xcconfig"; path = "Target Support Files/Pods-Topdish/Pods-Topdish.debug.xcconfig"; sourceTree = "<group>"; };
 		13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopdishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52E825372388964100F5FEA6 /* ThemedTextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedTextBox.swift; sourceTree = "<group>"; };
+		52E825392388AA5E00F5FEA6 /* RestaurantHorizontalScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantHorizontalScroll.swift; sourceTree = "<group>"; };
+		52E8253D2388AB0800F5FEA6 /* HomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
+		52E8253F2388BC8400F5FEA6 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		52E825412388C0C100F5FEA6 /* HomePageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCollectionCell.swift; sourceTree = "<group>"; };
+		52FDA3682388E13900D9E1F2 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		6AD348DEA25E98EB00D89ADD /* Pods-TopdishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopdishTests.release.xcconfig"; path = "Target Support Files/Pods-TopdishTests/Pods-TopdishTests.release.xcconfig"; sourceTree = "<group>"; };
 		8E8145D1052B2BC1AF748608 /* Pods-TopdishTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopdishTests.debug.xcconfig"; path = "Target Support Files/Pods-TopdishTests/Pods-TopdishTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A777B66AC55225E1D61EAC0E /* Pods_Topdish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Topdish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +105,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52E82536238895BB00F5FEA6 /* UIProperties */ = {
+			isa = PBXGroup;
+			children = (
+				52E825372388964100F5FEA6 /* ThemedTextBox.swift */,
+				52E825392388AA5E00F5FEA6 /* RestaurantHorizontalScroll.swift */,
+			);
+			path = UIProperties;
+			sourceTree = "<group>";
+		};
+		52E8253C2388AAED00F5FEA6 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				52E8253D2388AB0800F5FEA6 /* HomePageController.swift */,
+				52E825412388C0C100F5FEA6 /* HomePageCollectionCell.swift */,
+				52FDA3682388E13900D9E1F2 /* Restaurant.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		55B4308789B77E689E4A2E3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +172,9 @@
 		D30BEDF923849CA100B5FEE2 /* Topdish */ = {
 			isa = PBXGroup;
 			children = (
+				52E8253F2388BC8400F5FEA6 /* Images */,
+				52E8253C2388AAED00F5FEA6 /* Screens */,
+				52E82536238895BB00F5FEA6 /* UIProperties */,
 				D30BEDFA23849CA100B5FEE2 /* AppDelegate.swift */,
 				D30BEDFC23849CA100B5FEE2 /* SceneDelegate.swift */,
 				D30BEDFE23849CA100B5FEE2 /* ViewController.swift */,
@@ -280,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52E825402388BC8400F5FEA6 /* Images in Resources */,
 				D30BEE0723849CA600B5FEE2 /* LaunchScreen.storyboard in Resources */,
 				D3B6C02D2385D32900FFED65 /* GoogleService-Info.plist in Resources */,
 				D30BEE0423849CA600B5FEE2 /* Assets.xcassets in Resources */,
@@ -411,9 +446,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52E8253A2388AA5E00F5FEA6 /* RestaurantHorizontalScroll.swift in Sources */,
 				D30BEDFF23849CA100B5FEE2 /* ViewController.swift in Sources */,
+				52E825422388C0C100F5FEA6 /* HomePageCollectionCell.swift in Sources */,
 				D30BEDFB23849CA100B5FEE2 /* AppDelegate.swift in Sources */,
+				52FDA3692388E13900D9E1F2 /* Restaurant.swift in Sources */,
 				D30BEDFD23849CA100B5FEE2 /* SceneDelegate.swift in Sources */,
+				52E825382388964100F5FEA6 /* ThemedTextBox.swift in Sources */,
+				52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
