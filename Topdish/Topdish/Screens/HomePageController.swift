@@ -4,6 +4,7 @@
 //
 //  Created by Chris Chau on 2019-11-22.
 //  Copyright © 2019 Topdish Inc. All rights reserved.
+// Icons made by https://www.flaticon.com/authors/freepik from https://www.flaticon.com
 //
 
 import UIKit
