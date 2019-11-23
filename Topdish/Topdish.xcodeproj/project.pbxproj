@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1BCFEA6ED670C80367565DF7 /* Pods_TopdishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */; };
 		52E825382388964100F5FEA6 /* ThemedTextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E825372388964100F5FEA6 /* ThemedTextBox.swift */; };
-		52E8253A2388AA5E00F5FEA6 /* RestaurantHorizontalScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E825392388AA5E00F5FEA6 /* RestaurantHorizontalScroll.swift */; };
 		52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E8253D2388AB0800F5FEA6 /* HomePageController.swift */; };
 		52E825402388BC8400F5FEA6 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 52E8253F2388BC8400F5FEA6 /* Images */; };
 		52E825422388C0C100F5FEA6 /* HomePageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E825412388C0C100F5FEA6 /* HomePageCollectionCell.swift */; };
@@ -48,7 +47,6 @@
 		11900758A271267757D042A3 /* Pods-Topdish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topdish.debug.xcconfig"; path = "Target Support Files/Pods-Topdish/Pods-Topdish.debug.xcconfig"; sourceTree = "<group>"; };
 		13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopdishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52E825372388964100F5FEA6 /* ThemedTextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedTextBox.swift; sourceTree = "<group>"; };
-		52E825392388AA5E00F5FEA6 /* RestaurantHorizontalScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantHorizontalScroll.swift; sourceTree = "<group>"; };
 		52E8253D2388AB0800F5FEA6 /* HomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		52E8253F2388BC8400F5FEA6 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		52E825412388C0C100F5FEA6 /* HomePageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCollectionCell.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				52E825372388964100F5FEA6 /* ThemedTextBox.swift */,
-				52E825392388AA5E00F5FEA6 /* RestaurantHorizontalScroll.swift */,
 			);
 			path = UIProperties;
 			sourceTree = "<group>";
@@ -446,7 +443,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52E8253A2388AA5E00F5FEA6 /* RestaurantHorizontalScroll.swift in Sources */,
 				D30BEDFF23849CA100B5FEE2 /* ViewController.swift in Sources */,
 				52E825422388C0C100F5FEA6 /* HomePageCollectionCell.swift in Sources */,
 				D30BEDFB23849CA100B5FEE2 /* AppDelegate.swift in Sources */,

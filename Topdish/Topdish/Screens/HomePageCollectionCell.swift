@@ -10,6 +10,7 @@ import UIKit
 class HomePageCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var featuredImageView: UIImageView!
+    @IBOutlet weak var restaurantNameLabel: UILabel?
     
     var restaurant: Restaurant! {
         didSet {
@@ -18,16 +19,16 @@ class HomePageCollectionCell: UICollectionViewCell {
     }
     
     func updateUI() {
-        
         if let restaurant = restaurant {
             featuredImageView.image = restaurant.featuredImage
-            //restaurantImageView.text = restaurant.title
-            //restaurantImageRating. ?? = ??
+            restaurantNameLabel?.text = restaurant.title
              
         } else {
             featuredImageView.image = nil
+           // restaurantNameLabel = nil
         }
         
+        /* Image display settings for collection cells */
         featuredImageView.layer.cornerRadius = 5.0;
         featuredImageView.layer.masksToBounds = true;
         
