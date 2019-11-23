@@ -26,6 +26,8 @@ class HomePageController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(Restaurant.getRating(resturant: "Jaskaran's Kitchen"))
+        
         // Do any additional setup after loading the view.
         TopPlacesCollectionView.dataSource = self
         TopPlacesCollectionView.showsHorizontalScrollIndicator = false

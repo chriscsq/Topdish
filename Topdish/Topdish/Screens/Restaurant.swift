@@ -7,14 +7,38 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class Restaurant {
     var title = ""
     var featuredImage: UIImage
+    
+    //var ref: DatabaseReference!
+
  
     init(title: String, featuredImage: UIImage) {
         self.title = title
         self.featuredImage = featuredImage
+    }
+    /* Queries the database and returns the rating of a resturant */
+    static func getRating(resturant: String) -> Double {
+        let childString : String = "menu/" + resturant
+        var counter: Double = 0
+        var totalRating: Double = 0
+        
+        Database.database().reference().child(childString).observe(.childAdded) { (snapshot) in
+
+            if let dictinoary = snapshot.value as? [String: Any] {
+                if let userReviewDictionary = dictinoary["user reviews"] as? [String: Any] {
+                    counter += 1
+                    totalRating += (userReviewDictionary["rating"] as AnyObject).doubleValue
+                    print("counter and totalRating in the if block: ", counter, " ", totalRating)
+                }
+            }
+        }
+        print ("counter before return: ", counter)
+        print ("totalrating before return: ", totalRating)
+        return (totalRating / counter)
     }
 
     /* Queries the database and returns the top highest rated restaurants */
