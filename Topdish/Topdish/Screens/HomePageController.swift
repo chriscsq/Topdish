@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomePageController: UIImagePickerController {
+class HomePageController: UIViewController {
 
     /* Labels */
     @IBOutlet weak var HomeLabel: UILabel!
@@ -20,6 +20,7 @@ class HomePageController: UIImagePickerController {
         
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
+        collectionView.showsHorizontalScrollIndicator = false
     }
 
 }

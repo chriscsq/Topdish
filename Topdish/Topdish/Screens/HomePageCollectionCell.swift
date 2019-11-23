@@ -9,7 +9,7 @@ import UIKit
 
 class HomePageCollectionCell: UICollectionViewCell {
     
-    @IBOutlet weak var restaurantImageView: UIImageView!
+    @IBOutlet weak var featuredImageView: UIImageView!
     
     var restaurant: Restaurant! {
         didSet {
@@ -20,16 +20,16 @@ class HomePageCollectionCell: UICollectionViewCell {
     func updateUI() {
         
         if let restaurant = restaurant {
-            restaurantImageView.image = restaurant.featuredImage
+            featuredImageView.image = restaurant.featuredImage
             //restaurantImageView.text = restaurant.title
             //restaurantImageRating. ?? = ??
              
         } else {
-            restaurantImageView.image = nil
+            featuredImageView.image = nil
         }
         
-        restaurantImageView.layer.cornerRadius = 5.0;
-        restaurantImageView.layer.masksToBounds = true;
+        featuredImageView.layer.cornerRadius = 5.0;
+        featuredImageView.layer.masksToBounds = true;
         
     }
     
