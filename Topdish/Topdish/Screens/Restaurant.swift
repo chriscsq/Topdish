@@ -10,14 +10,20 @@ import UIKit
 import FirebaseDatabase
 
 class Restaurant {
-    var title = ""
+    var title: String
     var featuredImage: UIImage
- 
-    init(title: String, featuredImage: UIImage) {
+    var typeOfCuisine: String
+    var rating: Double
+    
+    init(title: String, featuredImage: UIImage, typeOfCuisine: String, rating: Double ) {
         self.title = title
         self.featuredImage = featuredImage
+        self.typeOfCuisine = typeOfCuisine
+        self.rating = rating
     }
     
+    /* Queries the database to return the ratings for a single restaurant
+     * goes through all the dishes and returns a double which is the average user rating */
     static func getRating(restaurant: String, completion: @escaping (Double) -> Void) {
         let childString : String = "menu/" + restaurant
         var counter: Double = 0
@@ -40,9 +46,9 @@ class Restaurant {
     /* Queries the database and returns the top highest rated restaurants */
     static func getTopPlaces() -> [Restaurant] {
         return [
-            Restaurant(title: "Momofuku", featuredImage: UIImage(named: "Burger")!),
-            Restaurant(title: "Vintage", featuredImage: UIImage(named: "steak")!),
-            Restaurant(title: "Roku", featuredImage:UIImage(named: "Uni-Omakase")!),
+            Restaurant(title: "Momofuku", featuredImage: UIImage(named: "Burger")!, typeOfCuisine: "placeholder", rating: 5.0),
+            Restaurant(title: "Vintage", featuredImage: UIImage(named: "steak")!, typeOfCuisine: "placeholder", rating: 5.0),
+            Restaurant(title: "Roku", featuredImage:UIImage(named: "Uni-Omakase")!, typeOfCuisine: "placeholder", rating: 5.0),
                                   
         ]
     }
@@ -50,9 +56,9 @@ class Restaurant {
     /* Queries the database and returns a list of restaurants within a certain km, sorted by nearest */
     static func getNearby() -> [Restaurant] {
         return [
-            Restaurant(title: "Vintage", featuredImage: UIImage(named: "steak")!),
-            Restaurant(title: "Momofuku", featuredImage: UIImage(named: "Burger")!),
-            Restaurant(title: "Roku", featuredImage:UIImage(named: "Uni-Omakase")!),
+            Restaurant(title: "Vintage", featuredImage: UIImage(named: "steak")!, typeOfCuisine: "placeholder", rating: 5.0),
+            Restaurant(title: "Momofuku", featuredImage: UIImage(named: "Burger")!, typeOfCuisine: "placeholder", rating: 5.0),
+            Restaurant(title: "Roku", featuredImage:UIImage(named: "Uni-Omakase")!, typeOfCuisine: "placeholder", rating: 5.0),
                                   
         ]
     }
@@ -61,9 +67,9 @@ class Restaurant {
      * Based on offer start and end date */
     static func getExclusiveOffers() -> [Restaurant] {
         return [
-            Restaurant(title: "Roku", featuredImage:UIImage(named: "Uni-Omakase")!),
-            Restaurant(title: "Momofuku", featuredImage: UIImage(named: "Burger")!),
-            Restaurant(title: "Vintage", featuredImage: UIImage(named: "steak")!),
+            Restaurant(title: "Roku", featuredImage:UIImage(named: "Uni-Omakase")!, typeOfCuisine: "placeholder", rating: 5.0),
+            Restaurant(title: "Momofuku", featuredImage: UIImage(named: "Burger")!, typeOfCuisine: "placeholder", rating: 5.0),
+            Restaurant(title: "Vintage", featuredImage: UIImage(named: "steak")!, typeOfCuisine: "placeholder", rating: 5.0),
                                   
         ]
     }
