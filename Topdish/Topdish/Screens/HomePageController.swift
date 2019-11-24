@@ -26,7 +26,12 @@ class HomePageController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(Restaurant.getRating(resturant: "Jaskaran's Kitchen"))
+        //print(Restaurant.getRating(restaurant: "Jaskaran's Kitchen"))
+        Restaurant.getRating(restaurant: "Jaskaran's Kitchen", completion: { myVal in
+            DispatchQueue.main.async {
+                print(myVal)
+            }
+        })
         
         // Do any additional setup after loading the view.
         TopPlacesCollectionView.dataSource = self
@@ -45,6 +50,10 @@ extension HomePageController: UICollectionViewDataSource {
 
     func numberOfSections(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
+    }
+    
+    func comp(number: Double) -> Void {
+        print(number)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
