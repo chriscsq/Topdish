@@ -43,14 +43,49 @@ class Restaurant {
         }
     }
 
+    
+    
+    
+    static func completionRating(name: String, complete: @escaping (Double) -> Void) {
+        getRating(restaurant: name, completion: { myVal in
+            DispatchQueue.main.async {}
+            complete(myVal)
+        })
+    }
     /* Queries the database and returns the top highest rated restaurants */
-    static func getTopPlaces() -> [Restaurant] {
-        return [
+    static func getTopPlaces(complete: @escaping (Double) -> Void) {
+        //var topPlaces: [Restaurant] = []
+        
+        Database.database().reference().child("restaurant").observeSingleEvent(of: .value) { snapshot in
+            let allRestaurants = snapshot.children
+            while let singleRestaurant = allRestaurants.nextObject() as? DataSnapshot {
+                let restName: String = singleRestaurant.key
+                //let featuredImage = singleRestaurant.childSnapshot(forPath: "image").value
+                let category = singleRestaurant.childSnapshot(forPath: "category").value
+                let restType = (category as! String)
+                completionRating(name: restName, complete: {myVal in
+                    print("Rest name: ", restName)
+                    print("Rest Type: ", restType)
+                    print("Rating: ", myVal)
+                    //print("Image: ", featuredImage)
+                    //topPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: featuredImage)!, typeOfCuisine: restType, rating: myVal))
+                    //complete(topPlaces)
+                    // If this doesn't work we can try appending where we are calling it and doing ...
+                    //complete([Restaurant(title: restName, featuredImage: UIImage(named: featuredImage)!, typeOfCuisine: restType, rating: myVal)])
+                    complete(myVal)
+                })
+            }
+            //complete(restRating)
+        }
+        
+        
+        
+        /*return [
             Restaurant(title: "Momofuku", featuredImage: UIImage(named: "Burger")!, typeOfCuisine: "placeholder", rating: 5.0),
             Restaurant(title: "Vintage", featuredImage: UIImage(named: "steak")!, typeOfCuisine: "placeholder", rating: 5.0),
             Restaurant(title: "Roku", featuredImage:UIImage(named: "Uni-Omakase")!, typeOfCuisine: "placeholder", rating: 5.0),
                                   
-        ]
+        ]*/
     }
     
     /* Queries the database and returns a list of restaurants within a certain km, sorted by nearest */

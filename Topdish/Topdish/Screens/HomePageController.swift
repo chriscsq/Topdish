@@ -19,7 +19,7 @@ class HomePageController: UIViewController {
     @IBOutlet weak var ExclusiveOffersCollectionView: UICollectionView!
     
     
-    var topRestaurants = Restaurant.getTopPlaces()
+    //var topRestaurants = Restaurant.getTopPlaces()
     var nearbyRestaurants = Restaurant.getNearby()
     var exclusiveOffersRestaurants = Restaurant.getExclusiveOffers()
     
@@ -32,6 +32,8 @@ class HomePageController: UIViewController {
                 print(myVal)
             }
         })
+        
+        topPlaces()
         
         // Do any additional setup after loading the view.
         TopPlacesCollectionView.dataSource = self
@@ -47,6 +49,15 @@ class HomePageController: UIViewController {
 }
 
 extension HomePageController: UICollectionViewDataSource {
+    
+    func topPlaces() -> [Restaurant] {
+        Restaurant.getTopPlaces(complete: { restaurantArray in
+            DispatchQueue.main.async {
+                print("come after: ", restaurantArray)
+            }
+        })
+        return []
+    }
 
     func numberOfSections(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
@@ -58,7 +69,7 @@ extension HomePageController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.TopPlacesCollectionView {
-            return topRestaurants.count
+            return nearbyRestaurants.count
         } else if collectionView == self.NearbyCollectionView {
             return nearbyRestaurants.count
         }
@@ -71,7 +82,7 @@ extension HomePageController: UICollectionViewDataSource {
         /* Sets up collection view for Top Places */
         if collectionView == self.TopPlacesCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomePageCollectionCell", for: indexPath) as! HomePageCollectionCell
-            let restaurant = topRestaurants[indexPath.item]
+            let restaurant = nearbyRestaurants[indexPath.item]
             cell.restaurant = restaurant
 
             return cell
