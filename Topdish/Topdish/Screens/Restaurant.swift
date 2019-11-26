@@ -9,12 +9,13 @@
 import UIKit
 import FirebaseDatabase
 
+
 class Restaurant {
     var title: String
     var featuredImage: UIImage
     var typeOfCuisine: String
     var rating: Double
-    
+
     init(title: String, featuredImage: UIImage, typeOfCuisine: String, rating: Double ) {
         self.title = title
         self.featuredImage = featuredImage
@@ -42,39 +43,34 @@ class Restaurant {
             completion(totalRating / counter)
         }
     }
+    
 
-    
-    
-    
-    static func completionRating(name: String, complete: @escaping (Double) -> Void) {
-        getRating(restaurant: name, completion: { myVal in
-            DispatchQueue.main.async {}
-            complete(myVal)
-        })
-    }
     /* Queries the database and returns the top highest rated restaurants */
-    static func getTopPlaces(complete: @escaping (Double) -> Void) {
+    static func getTopPlaces(complete: @escaping ([Restaurant]) -> Void) {
         //var topPlaces: [Restaurant] = []
         
         Database.database().reference().child("restaurant").observeSingleEvent(of: .value) { snapshot in
+            var topPlaces: [Restaurant] = []
+
             let allRestaurants = snapshot.children
             while let singleRestaurant = allRestaurants.nextObject() as? DataSnapshot {
                 let restName: String = singleRestaurant.key
                 //let featuredImage = singleRestaurant.childSnapshot(forPath: "image").value
                 let category = singleRestaurant.childSnapshot(forPath: "category").value
                 let restType = (category as! String)
-                completionRating(name: restName, complete: {myVal in
+                getRating(restaurant: restName, completion: {myVal in
                     print("Rest name: ", restName)
                     print("Rest Type: ", restType)
                     print("Rating: ", myVal)
                     //print("Image: ", featuredImage)
-                    //topPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: featuredImage)!, typeOfCuisine: restType, rating: myVal))
+                    topPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal))
                     //complete(topPlaces)
                     // If this doesn't work we can try appending where we are calling it and doing ...
                     //complete([Restaurant(title: restName, featuredImage: UIImage(named: featuredImage)!, typeOfCuisine: restType, rating: myVal)])
-                    complete(myVal)
+                    complete(topPlaces)
                 })
             }
+            self.testarray = topPlaces
             //complete(restRating)
         }
         

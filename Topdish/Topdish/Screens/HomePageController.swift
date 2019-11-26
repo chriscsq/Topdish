@@ -9,6 +9,7 @@
 
 import UIKit
 
+
 class HomePageController: UIViewController {
 
     /* Labels */
@@ -18,11 +19,11 @@ class HomePageController: UIViewController {
     @IBOutlet weak var NearbyCollectionView: UICollectionView!
     @IBOutlet weak var ExclusiveOffersCollectionView: UICollectionView!
     
-    
+    var topPlacesRestaurants: [Restaurant] = []
+
     //var topRestaurants = Restaurant.getTopPlaces()
     var nearbyRestaurants = Restaurant.getNearby()
     var exclusiveOffersRestaurants = Restaurant.getExclusiveOffers()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,8 +34,10 @@ class HomePageController: UIViewController {
             }
         })
         
-        topPlaces()
-        
+        topPlaces(complete: { arr in
+            DispatchQueue.main.async {}
+        })
+        print("THIS IS IT: ", topPlacesRestaurants)
         // Do any additional setup after loading the view.
         TopPlacesCollectionView.dataSource = self
         TopPlacesCollectionView.showsHorizontalScrollIndicator = false
@@ -50,13 +53,16 @@ class HomePageController: UIViewController {
 
 extension HomePageController: UICollectionViewDataSource {
     
-    func topPlaces() -> [Restaurant] {
+    func topPlaces(complete: @escaping ([Restaurant]) -> Void) {
+        var arr: [Restaurant] = []
         Restaurant.getTopPlaces(complete: { restaurantArray in
             DispatchQueue.main.async {
                 print("come after: ", restaurantArray)
+
             }
+           // self.topPlacesRestaurants = arr
+            complete(self.topPlacesRestaurants = arr)
         })
-        return []
     }
 
     func numberOfSections(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
