@@ -95,9 +95,6 @@ extension HomePageController: UICollectionViewDataSource {
             if (topRestaurants.count != 0) {
                 let restaurant = topRestaurants[indexPath.item]
                 cell.restaurant = restaurant
-                DispatchQueue.main.async {
-                    self.TopPlacesCollectionView.reloadData()           // I think this multiple reload is creating a delay (part of the issue not the entire issue tho).
-                }
                 return cell
                 
             } 
