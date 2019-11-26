@@ -42,29 +42,7 @@ class Restaurant {
             completion(totalRating / counter)
         }
     }
-
-    /*
-     // CatDownloader.swift
-     // Use instead of CatManager
-
-     func downloadCats(completion: @escaping ([Cat], Error) -> Void) {
-        var catArray = [Cat]()
-        let query = dbRef.order(by: "timestamp", descending: true).limit(to: 10)
-         query.getDocuments { snapshot, error in
-           if let error = error {
-             print(error)
-             completion(catArray, error)
-             return
-           }
-           for doc in snapshot!.documents {
-             let cat = Cat(snapshot: doc)
-             catArray.append(cat)
-           }
-           completion(catArray, nil)
-         }
-       }
-     }
-     */
+    
     /* Queries the database and returns the top highest rated restaurants */
     static func getTopPlaces(complete: @escaping ([Restaurant]) -> Void) {
         var topPlaces: [Restaurant] = []

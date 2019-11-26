@@ -53,12 +53,19 @@ extension HomePageController: UICollectionViewDataSource {
     
     func topPlaces() -> Void {
         Restaurant.getTopPlaces(complete: { restaurantArray in
-            DispatchQueue.main.async {
-                print("come after: ", restaurantArray)
-            }
             self.topRestaurants = restaurantArray
-            
+            self.sortByRating()
         })
+    }
+    
+    func sortByRating() -> Void {
+        topRestaurants = topRestaurants.sorted { $0.rating > $1.rating}
+        for restaurant in topRestaurants {
+            print("Rest order: ", restaurant.title, "rating: ", restaurant.rating)
+        }
+        DispatchQueue.main.async {
+            self.TopPlacesCollectionView.reloadData()
+        }
     }
 
     func numberOfSections(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -84,12 +91,12 @@ extension HomePageController: UICollectionViewDataSource {
         /* Sets up collection view for Top Places */
         if collectionView == self.TopPlacesCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomePageCollectionCell", for: indexPath) as! HomePageCollectionCell
-            print("length", topRestaurants.count)
+            //print("length", topRestaurants.count)
             if (topRestaurants.count != 0) {
                 let restaurant = topRestaurants[indexPath.item]
                 cell.restaurant = restaurant
                 DispatchQueue.main.async {
-                    self.TopPlacesCollectionView.reloadData()
+                    self.TopPlacesCollectionView.reloadData()           // I think this multiple reload is creating a delay (part of the issue not the entire issue tho).
                 }
                 return cell
                 
