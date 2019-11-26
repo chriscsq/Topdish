@@ -22,6 +22,7 @@ class HomePageController: UIViewController {
     //var topRestaurants = Restaurant.getTopPlaces()
     var nearbyRestaurants = Restaurant.getNearby()
     var exclusiveOffersRestaurants = Restaurant.getExclusiveOffers()
+    var topRestaurants: [Restaurant] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +51,14 @@ class HomePageController: UIViewController {
 
 extension HomePageController: UICollectionViewDataSource {
     
-    func topPlaces() -> [Restaurant] {
+    func topPlaces() -> Void {
         Restaurant.getTopPlaces(complete: { restaurantArray in
             DispatchQueue.main.async {
                 print("come after: ", restaurantArray)
             }
+            self.topRestaurants = restaurantArray
+            //UICollectionView.reloadData
         })
-        return []
     }
 
     func numberOfSections(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

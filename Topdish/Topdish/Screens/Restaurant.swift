@@ -43,18 +43,31 @@ class Restaurant {
         }
     }
 
-    
-    
-    
-    static func completionRating(name: String, complete: @escaping (Double) -> Void) {
-        getRating(restaurant: name, completion: { myVal in
-            DispatchQueue.main.async {}
-            complete(myVal)
-        })
-    }
+    /*
+     // CatDownloader.swift
+     // Use instead of CatManager
+
+     func downloadCats(completion: @escaping ([Cat], Error) -> Void) {
+        var catArray = [Cat]()
+        let query = dbRef.order(by: "timestamp", descending: true).limit(to: 10)
+         query.getDocuments { snapshot, error in
+           if let error = error {
+             print(error)
+             completion(catArray, error)
+             return
+           }
+           for doc in snapshot!.documents {
+             let cat = Cat(snapshot: doc)
+             catArray.append(cat)
+           }
+           completion(catArray, nil)
+         }
+       }
+     }
+     */
     /* Queries the database and returns the top highest rated restaurants */
-    static func getTopPlaces(complete: @escaping (Double) -> Void) {
-        //var topPlaces: [Restaurant] = []
+    static func getTopPlaces(complete: @escaping ([Restaurant]) -> Void) {
+        var topPlaces: [Restaurant] = []
         
         Database.database().reference().child("restaurant").observeSingleEvent(of: .value) { snapshot in
             let allRestaurants = snapshot.children
@@ -63,29 +76,14 @@ class Restaurant {
                 //let featuredImage = singleRestaurant.childSnapshot(forPath: "image").value
                 let category = singleRestaurant.childSnapshot(forPath: "category").value
                 let restType = (category as! String)
-                completionRating(name: restName, complete: {myVal in
-                    print("Rest name: ", restName)
-                    print("Rest Type: ", restType)
-                    print("Rating: ", myVal)
-                    //print("Image: ", featuredImage)
-                    //topPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: featuredImage)!, typeOfCuisine: restType, rating: myVal))
-                    //complete(topPlaces)
+                getRating(restaurant: restName, completion: { myVal in
+                    topPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal))
+                    complete(topPlaces)
                     // If this doesn't work we can try appending where we are calling it and doing ...
                     //complete([Restaurant(title: restName, featuredImage: UIImage(named: featuredImage)!, typeOfCuisine: restType, rating: myVal)])
-                    complete(myVal)
                 })
             }
-            //complete(restRating)
         }
-        
-        
-        
-        /*return [
-            Restaurant(title: "Momofuku", featuredImage: UIImage(named: "Burger")!, typeOfCuisine: "placeholder", rating: 5.0),
-            Restaurant(title: "Vintage", featuredImage: UIImage(named: "steak")!, typeOfCuisine: "placeholder", rating: 5.0),
-            Restaurant(title: "Roku", featuredImage:UIImage(named: "Uni-Omakase")!, typeOfCuisine: "placeholder", rating: 5.0),
-                                  
-        ]*/
     }
     
     /* Queries the database and returns a list of restaurants within a certain km, sorted by nearest */
