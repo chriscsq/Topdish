@@ -173,7 +173,7 @@ NS_ASSUME_NONNULL_END
 - (instancetype)init {
   GDTCORTransport *transport = [[GDTCORTransport alloc] initWithMappingID:@"137"
                                                              transformers:nil
-                                                                   target:kGDTCORTargetFLL];
+                                                                   target:kGDTCORTargetCCT];
 
   FIRCoreDiagnosticsDateFileStorage *dateStorage = [[FIRCoreDiagnosticsDateFileStorage alloc]
       initWithFileURL:[[self class] filePathURLWithName:kFIRCoreDiagnosticsHeartbeatDateFileName]];

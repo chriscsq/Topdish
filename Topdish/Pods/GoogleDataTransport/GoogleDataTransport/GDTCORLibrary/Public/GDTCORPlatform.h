@@ -25,9 +25,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/** The GoogleDataTransport library version. */
-FOUNDATION_EXPORT NSString *const kGDTCORVersion;
-
 /** A notification sent out if the app is backgrounding. */
 FOUNDATION_EXPORT NSString *const kGDTCORApplicationDidEnterBackgroundNotification;
 

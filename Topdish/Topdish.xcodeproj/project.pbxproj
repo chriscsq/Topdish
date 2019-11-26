@@ -24,6 +24,9 @@
 		D30BEE1223849CA600B5FEE2 /* TopdishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEE1123849CA600B5FEE2 /* TopdishTests.swift */; };
 		D30BEE1D23849CA600B5FEE2 /* TopdishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEE1C23849CA600B5FEE2 /* TopdishUITests.swift */; };
 		D3B6C02D2385D32900FFED65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3B6C02C2385D32900FFED65 /* GoogleService-Info.plist */; };
+		EC96F51D238CFF7D00A5C29C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96F51A238CFF7D00A5C29C /* Constants.swift */; };
+		EC96F51E238CFF7D00A5C29C /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96F51B238CFF7D00A5C29C /* KeyboardLayoutConstraint.swift */; };
+		EC96F51F238CFF7D00A5C29C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96F51C238CFF7D00A5C29C /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		D30BEE1C23849CA600B5FEE2 /* TopdishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopdishUITests.swift; sourceTree = "<group>"; };
 		D30BEE1E23849CA600B5FEE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3B6C02C2385D32900FFED65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EC96F51A238CFF7D00A5C29C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EC96F51B238CFF7D00A5C29C /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		EC96F51C238CFF7D00A5C29C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +175,7 @@
 		D30BEDF923849CA100B5FEE2 /* Topdish */ = {
 			isa = PBXGroup;
 			children = (
+				EC96F519238CFF7D00A5C29C /* Helpers */,
 				52E8253F2388BC8400F5FEA6 /* Images */,
 				52E8253C2388AAED00F5FEA6 /* Screens */,
 				52E82536238895BB00F5FEA6 /* UIProperties */,
@@ -202,6 +209,16 @@
 			path = TopdishUITests;
 			sourceTree = "<group>";
 		};
+		EC96F519238CFF7D00A5C29C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				EC96F51A238CFF7D00A5C29C /* Constants.swift */,
+				EC96F51B238CFF7D00A5C29C /* KeyboardLayoutConstraint.swift */,
+				EC96F51C238CFF7D00A5C29C /* Utilities.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,6 +231,7 @@
 				D30BEDF423849CA100B5FEE2 /* Frameworks */,
 				D30BEDF523849CA100B5FEE2 /* Resources */,
 				D9AE409D114638DF6548FB3E /* [CP] Embed Pods Frameworks */,
+				E4FB9470BA3DA35E792141B4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,6 +270,7 @@
 				D30BEE1523849CA600B5FEE2 /* Frameworks */,
 				D30BEE1623849CA600B5FEE2 /* Resources */,
 				F48744B6BD6BF019CBEC8C22 /* [CP] Embed Pods Frameworks */,
+				A74DF76FADDAF5B5791F4C53 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -358,6 +377,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A74DF76FADDAF5B5791F4C53 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Topdish-TopdishUITests/Pods-Topdish-TopdishUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Topdish-TopdishUITests/Pods-Topdish-TopdishUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Topdish-TopdishUITests/Pods-Topdish-TopdishUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C3965DEA4F5E441A0F1C343A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -395,6 +431,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Topdish/Pods-Topdish-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4FB9470BA3DA35E792141B4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Topdish/Pods-Topdish-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Topdish/Pods-Topdish-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Topdish/Pods-Topdish-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EC0AE68150F11EE67CEEC2CB /* [CP] Check Pods Manifest.lock */ = {
@@ -448,8 +501,11 @@
 				D30BEDFB23849CA100B5FEE2 /* AppDelegate.swift in Sources */,
 				52FDA3692388E13900D9E1F2 /* Restaurant.swift in Sources */,
 				D30BEDFD23849CA100B5FEE2 /* SceneDelegate.swift in Sources */,
+				EC96F51E238CFF7D00A5C29C /* KeyboardLayoutConstraint.swift in Sources */,
 				52E825382388964100F5FEA6 /* ThemedTextBox.swift in Sources */,
 				52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */,
+				EC96F51F238CFF7D00A5C29C /* Utilities.swift in Sources */,
+				EC96F51D238CFF7D00A5C29C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
