@@ -26,7 +26,7 @@ class HomePageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+ 
         //print(Restaurant.getRating(restaurant: "Jaskaran's Kitchen"))
         Restaurant.getRating(restaurant: "Jaskaran's Kitchen", completion: { myVal in
             DispatchQueue.main.async {
@@ -57,7 +57,7 @@ extension HomePageController: UICollectionViewDataSource {
                 print("come after: ", restaurantArray)
             }
             self.topRestaurants = restaurantArray
-            //UICollectionView.reloadData
+            
         })
     }
 
@@ -84,11 +84,16 @@ extension HomePageController: UICollectionViewDataSource {
         /* Sets up collection view for Top Places */
         if collectionView == self.TopPlacesCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomePageCollectionCell", for: indexPath) as! HomePageCollectionCell
-            let restaurant = nearbyRestaurants[indexPath.item]
-            cell.restaurant = restaurant
-
-            return cell
-            
+            print("length", topRestaurants.count)
+            if (topRestaurants.count != 0) {
+                let restaurant = topRestaurants[indexPath.item]
+                cell.restaurant = restaurant
+                DispatchQueue.main.async {
+                    self.TopPlacesCollectionView.reloadData()
+                }
+                return cell
+                
+            } 
         /* Sets up collection view for Nearby */
         } else if collectionView == self.NearbyCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomePageCollectionCell", for: indexPath) as! HomePageCollectionCell
