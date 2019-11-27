@@ -43,8 +43,29 @@ class Restaurant {
         }
     }
     
-    /* Queries the database and returns the top highest rated restaurants */
-    static func getTopPlaces(complete: @escaping ([Restaurant]) -> Void) {
+    /* Queries the database and returns a list of all restaurants */
+    static func getRestaurantList(complete: @escaping ([Restaurant]) -> Void) {
+        var restaurants: [Restaurant] = []
+        
+        Database.database().reference().child("restaurant").observeSingleEvent(of: .value) { snapshot in
+            let allRestaurants = snapshot.children
+            while let singleRestaurant = allRestaurants.nextObject() as? DataSnapshot {
+                let restName: String = singleRestaurant.key
+                //let featuredImage = singleRestaurant.childSnapshot(forPath: "image").value
+                let category = singleRestaurant.childSnapshot(forPath: "category").value
+                let restType = (category as! String)
+                getRating(restaurant: restName, completion: { myVal in
+                    restaurants.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal))
+                    complete(restaurants)
+                    // If this doesn't work we can try appending where we are calling it and doing ...
+                    //complete([Restaurant(title: restName, featuredImage: UIImage(named: featuredImage)!, typeOfCuisine: restType, rating: myVal)])
+                })
+            }
+        }
+    }
+    
+    /* Queries the database and returns a list of restaurants within a certain km, sorted by nearest */
+    static func getNearby(complete: @escaping ([Restaurant]) -> Void) {
         var topPlaces: [Restaurant] = []
         
         Database.database().reference().child("restaurant").observeSingleEvent(of: .value) { snapshot in
@@ -64,24 +85,27 @@ class Restaurant {
         }
     }
     
-    /* Queries the database and returns a list of restaurants within a certain km, sorted by nearest */
-    static func getNearby() -> [Restaurant] {
-        return [
-            Restaurant(title: "Vintage", featuredImage: UIImage(named: "steak")!, typeOfCuisine: "placeholder", rating: 5.0),
-            Restaurant(title: "Momofuku", featuredImage: UIImage(named: "Burger")!, typeOfCuisine: "placeholder", rating: 5.0),
-            Restaurant(title: "Roku", featuredImage:UIImage(named: "Uni-Omakase")!, typeOfCuisine: "placeholder", rating: 5.0),
-                                  
-        ]
-    }
     
     /* Queries the database and returns a list of restaurants with ongoing offers
      * Based on offer start and end date */
-    static func getExclusiveOffers() -> [Restaurant] {
-        return [
-            Restaurant(title: "Roku", featuredImage:UIImage(named: "Uni-Omakase")!, typeOfCuisine: "placeholder", rating: 5.0),
-            Restaurant(title: "Momofuku", featuredImage: UIImage(named: "Burger")!, typeOfCuisine: "placeholder", rating: 5.0),
-            Restaurant(title: "Vintage", featuredImage: UIImage(named: "steak")!, typeOfCuisine: "placeholder", rating: 5.0),
-                                  
-        ]
+    static func getExclusiveOffers(complete: @escaping ([Restaurant]) -> Void) {
+        var topPlaces: [Restaurant] = []
+        
+        Database.database().reference().child("restaurant").observeSingleEvent(of: .value) { snapshot in
+            let allRestaurants = snapshot.children
+            while let singleRestaurant = allRestaurants.nextObject() as? DataSnapshot {
+                let restName: String = singleRestaurant.key
+                //let featuredImage = singleRestaurant.childSnapshot(forPath: "image").value
+                let category = singleRestaurant.childSnapshot(forPath: "category").value
+                let restType = (category as! String)
+                getRating(restaurant: restName, completion: { myVal in
+                    topPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal))
+                    complete(topPlaces)
+                    // If this doesn't work we can try appending where we are calling it and doing ...
+                    //complete([Restaurant(title: restName, featuredImage: UIImage(named: featuredImage)!, typeOfCuisine: restType, rating: myVal)])
+                })
+            }
+        }
     }
+    
 }
