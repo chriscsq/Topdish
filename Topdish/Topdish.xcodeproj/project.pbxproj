@@ -23,7 +23,11 @@
 		D30BEE0723849CA600B5FEE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30BEE0523849CA600B5FEE2 /* LaunchScreen.storyboard */; };
 		D30BEE1223849CA600B5FEE2 /* TopdishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEE1123849CA600B5FEE2 /* TopdishTests.swift */; };
 		D30BEE1D23849CA600B5FEE2 /* TopdishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEE1C23849CA600B5FEE2 /* TopdishUITests.swift */; };
-		D3B6C02D2385D32900FFED65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3B6C02C2385D32900FFED65 /* GoogleService-Info.plist */; };
+		EC07280D238E2800000431B8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC07280C238E2800000431B8 /* SettingsViewController.swift */; };
+		EC072810238E31F4000431B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC07280E238E30EF000431B8 /* GoogleService-Info.plist */; };
+		EC072812238E343E000431B8 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC072811238E343E000431B8 /* StartViewController.swift */; };
+		EC1DE2ED238E04B200A1773A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1DE2EC238E04B200A1773A /* SignUpViewController.swift */; };
+		EC1DE2EF238E04C100A1773A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1DE2EE238E04C100A1773A /* SignInViewController.swift */; };
 		EC96F51D238CFF7D00A5C29C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96F51A238CFF7D00A5C29C /* Constants.swift */; };
 		EC96F51E238CFF7D00A5C29C /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96F51B238CFF7D00A5C29C /* KeyboardLayoutConstraint.swift */; };
 		EC96F51F238CFF7D00A5C29C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96F51C238CFF7D00A5C29C /* Utilities.swift */; };
@@ -75,7 +79,11 @@
 		D30BEE1823849CA600B5FEE2 /* TopdishUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TopdishUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30BEE1C23849CA600B5FEE2 /* TopdishUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopdishUITests.swift; sourceTree = "<group>"; };
 		D30BEE1E23849CA600B5FEE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3B6C02C2385D32900FFED65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EC07280C238E2800000431B8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EC07280E238E30EF000431B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EC072811238E343E000431B8 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		EC1DE2EC238E04B200A1773A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		EC1DE2EE238E04C100A1773A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		EC96F51A238CFF7D00A5C29C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EC96F51B238CFF7D00A5C29C /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		EC96F51C238CFF7D00A5C29C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -123,6 +131,10 @@
 				52E8253D2388AB0800F5FEA6 /* HomePageController.swift */,
 				52E825412388C0C100F5FEA6 /* HomePageCollectionCell.swift */,
 				52FDA3682388E13900D9E1F2 /* Restaurant.swift */,
+				EC1DE2EC238E04B200A1773A /* SignUpViewController.swift */,
+				EC1DE2EE238E04C100A1773A /* SignInViewController.swift */,
+				EC07280C238E2800000431B8 /* SettingsViewController.swift */,
+				EC072811238E343E000431B8 /* StartViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -185,7 +197,7 @@
 				D30BEE0023849CA100B5FEE2 /* Main.storyboard */,
 				D30BEE0323849CA600B5FEE2 /* Assets.xcassets */,
 				D30BEE0523849CA600B5FEE2 /* LaunchScreen.storyboard */,
-				D3B6C02C2385D32900FFED65 /* GoogleService-Info.plist */,
+				EC07280E238E30EF000431B8 /* GoogleService-Info.plist */,
 				D30BEE0823849CA600B5FEE2 /* Info.plist */,
 			);
 			path = Topdish;
@@ -332,7 +344,7 @@
 			files = (
 				52E825402388BC8400F5FEA6 /* Images in Resources */,
 				D30BEE0723849CA600B5FEE2 /* LaunchScreen.storyboard in Resources */,
-				D3B6C02D2385D32900FFED65 /* GoogleService-Info.plist in Resources */,
+				EC072810238E31F4000431B8 /* GoogleService-Info.plist in Resources */,
 				D30BEE0423849CA600B5FEE2 /* Assets.xcassets in Resources */,
 				D30BEE0223849CA100B5FEE2 /* Main.storyboard in Resources */,
 			);
@@ -497,11 +509,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D30BEDFF23849CA100B5FEE2 /* ViewController.swift in Sources */,
+				EC072812238E343E000431B8 /* StartViewController.swift in Sources */,
 				52E825422388C0C100F5FEA6 /* HomePageCollectionCell.swift in Sources */,
 				D30BEDFB23849CA100B5FEE2 /* AppDelegate.swift in Sources */,
 				52FDA3692388E13900D9E1F2 /* Restaurant.swift in Sources */,
 				D30BEDFD23849CA100B5FEE2 /* SceneDelegate.swift in Sources */,
+				EC1DE2EF238E04C100A1773A /* SignInViewController.swift in Sources */,
+				EC1DE2ED238E04B200A1773A /* SignUpViewController.swift in Sources */,
 				EC96F51E238CFF7D00A5C29C /* KeyboardLayoutConstraint.swift in Sources */,
+				EC07280D238E2800000431B8 /* SettingsViewController.swift in Sources */,
 				52E825382388964100F5FEA6 /* ThemedTextBox.swift in Sources */,
 				52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */,
 				EC96F51F238CFF7D00A5C29C /* Utilities.swift in Sources */,

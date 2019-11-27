@@ -14,11 +14,12 @@ struct Constants {
         
         static let startViewController = "StartVC"
         static let signUpViewController = "SignUpVC"
-        static let loginViewController = "LoginVC"
+        static let signInViewController = "SignInVC"
         static let exploreViewController = "ExploreVC"
         static let nearbyViewController = "NearbyVC"
         static let profileViewController = "ProfileVC"
         static let tabBarController = "MainTabBarVC"
+        static let settingsViewController = "SettingsVC"
         
     }
     
