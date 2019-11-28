@@ -122,7 +122,7 @@ extension HomePageController: UICollectionViewDataSource {
         /* Sets up collection view for Top Places */
         if (collectionView == self.TopPlacesCollectionView) {
             let cell = TopPlacesCollectionView.dequeueReusableCell(withReuseIdentifier: "HomePageCollectionCell", for: indexPath) as! HomePageCollectionCell
-            //print("length", topRestaurants.count)
+            print("length", topRestaurants.count)
             if (topRestaurants.count != 0) {
                 let restaurant = topRestaurants[indexPath.item]
                 cell.restaurant = restaurant
