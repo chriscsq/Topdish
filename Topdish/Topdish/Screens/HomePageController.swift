@@ -11,6 +11,8 @@ import UIKit
 
 class HomePageController: UIViewController {
 
+    var pageLabel = ""
+    var restaurantList: [Restaurant] = []
     /* Labels */
     @IBOutlet weak var HomeLabel: UILabel!
     
@@ -18,10 +20,32 @@ class HomePageController: UIViewController {
     @IBOutlet weak var NearbyCollectionView: UICollectionView!
     @IBOutlet weak var ExclusiveOffersCollectionView: UICollectionView!
     
+    @IBAction func TopPlacesViewAllButton(_ sender: Any) {
+        pageLabel = "Top Places"
+        restaurantList = topRestaurants
+        performSegue(withIdentifier: "ViewAll", sender:self)
+    }
+
+    @IBAction func NearMeViewAllButton(_ sender: Any) {
+        pageLabel = "Near Me"
+        restaurantList = nearbyRestaurants
+        performSegue(withIdentifier: "ViewAll", sender:self)
+    }
+    
+    @IBAction func ExclusiveOffersViewAllButton(_ sender: Any) {
+        pageLabel = "Exclusive Offers"
+        restaurantList = exclusiveOffersRestaurants
+        performSegue(withIdentifier: "ViewAll", sender:self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var dest = segue.destination as! ViewAllController
+        dest.nameFromHomePage = pageLabel
+        dest.givenRestaurants = restaurantList
+    }
     
     var nearbyRestaurants: [Restaurant] = [] {
         didSet{
-            TopPlacesCollectionView.reloadData()
+            NearbyCollectionView.reloadData()
         }
     }
     var exclusiveOffersRestaurants: [Restaurant] = [] {
@@ -31,7 +55,7 @@ class HomePageController: UIViewController {
     }
     var topRestaurants: [Restaurant] = []{
         didSet{
-            NearbyCollectionView.reloadData()
+            TopPlacesCollectionView.reloadData()
         }
     }
     

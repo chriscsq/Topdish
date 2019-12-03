@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1BCFEA6ED670C80367565DF7 /* Pods_TopdishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */; };
+		52CD78DC23960AB8004F97D7 /* ViewAllController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD78DB23960AB8004F97D7 /* ViewAllController.swift */; };
+		52CD78DE23961090004F97D7 /* RestaurantCardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD78DD23961090004F97D7 /* RestaurantCardCollectionCell.swift */; };
 		52E825382388964100F5FEA6 /* ThemedTextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E825372388964100F5FEA6 /* ThemedTextBox.swift */; };
 		52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E8253D2388AB0800F5FEA6 /* HomePageController.swift */; };
 		52E825402388BC8400F5FEA6 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 52E8253F2388BC8400F5FEA6 /* Images */; };
@@ -17,7 +19,6 @@
 		CA7211454AA2A2BE7A5C8161 /* Pods_Topdish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A777B66AC55225E1D61EAC0E /* Pods_Topdish.framework */; };
 		D30BEDFB23849CA100B5FEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEDFA23849CA100B5FEE2 /* AppDelegate.swift */; };
 		D30BEDFD23849CA100B5FEE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEDFC23849CA100B5FEE2 /* SceneDelegate.swift */; };
-		D30BEDFF23849CA100B5FEE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BEDFE23849CA100B5FEE2 /* ViewController.swift */; };
 		D30BEE0223849CA100B5FEE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30BEE0023849CA100B5FEE2 /* Main.storyboard */; };
 		D30BEE0423849CA600B5FEE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30BEE0323849CA600B5FEE2 /* Assets.xcassets */; };
 		D30BEE0723849CA600B5FEE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30BEE0523849CA600B5FEE2 /* LaunchScreen.storyboard */; };
@@ -46,6 +47,8 @@
 /* Begin PBXFileReference section */
 		11900758A271267757D042A3 /* Pods-Topdish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topdish.debug.xcconfig"; path = "Target Support Files/Pods-Topdish/Pods-Topdish.debug.xcconfig"; sourceTree = "<group>"; };
 		13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopdishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52CD78DB23960AB8004F97D7 /* ViewAllController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllController.swift; sourceTree = "<group>"; };
+		52CD78DD23961090004F97D7 /* RestaurantCardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardCollectionCell.swift; sourceTree = "<group>"; };
 		52E825372388964100F5FEA6 /* ThemedTextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedTextBox.swift; sourceTree = "<group>"; };
 		52E8253D2388AB0800F5FEA6 /* HomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		52E8253F2388BC8400F5FEA6 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
@@ -61,7 +64,6 @@
 		D30BEDF723849CA100B5FEE2 /* Topdish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Topdish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30BEDFA23849CA100B5FEE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D30BEDFC23849CA100B5FEE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D30BEDFE23849CA100B5FEE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D30BEE0123849CA100B5FEE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D30BEE0323849CA600B5FEE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D30BEE0623849CA600B5FEE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -117,6 +119,8 @@
 				52E8253D2388AB0800F5FEA6 /* HomePageController.swift */,
 				52E825412388C0C100F5FEA6 /* HomePageCollectionCell.swift */,
 				52FDA3682388E13900D9E1F2 /* Restaurant.swift */,
+				52CD78DB23960AB8004F97D7 /* ViewAllController.swift */,
+				52CD78DD23961090004F97D7 /* RestaurantCardCollectionCell.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -174,7 +178,6 @@
 				52E82536238895BB00F5FEA6 /* UIProperties */,
 				D30BEDFA23849CA100B5FEE2 /* AppDelegate.swift */,
 				D30BEDFC23849CA100B5FEE2 /* SceneDelegate.swift */,
-				D30BEDFE23849CA100B5FEE2 /* ViewController.swift */,
 				D30BEE0023849CA100B5FEE2 /* Main.storyboard */,
 				D30BEE0323849CA600B5FEE2 /* Assets.xcassets */,
 				D30BEE0523849CA600B5FEE2 /* LaunchScreen.storyboard */,
@@ -443,10 +446,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D30BEDFF23849CA100B5FEE2 /* ViewController.swift in Sources */,
 				52E825422388C0C100F5FEA6 /* HomePageCollectionCell.swift in Sources */,
+				52CD78DC23960AB8004F97D7 /* ViewAllController.swift in Sources */,
 				D30BEDFB23849CA100B5FEE2 /* AppDelegate.swift in Sources */,
 				52FDA3692388E13900D9E1F2 /* Restaurant.swift in Sources */,
+				52CD78DE23961090004F97D7 /* RestaurantCardCollectionCell.swift in Sources */,
 				D30BEDFD23849CA100B5FEE2 /* SceneDelegate.swift in Sources */,
 				52E825382388964100F5FEA6 /* ThemedTextBox.swift in Sources */,
 				52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */,
@@ -624,6 +628,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3GCZ49DF5A;
 				INFOPLIST_FILE = Topdish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -642,6 +647,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3GCZ49DF5A;
 				INFOPLIST_FILE = Topdish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
