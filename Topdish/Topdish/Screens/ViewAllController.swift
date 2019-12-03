@@ -22,11 +22,7 @@ class ViewAllController: UIViewController {
         PageLabel.text = nameFromHomePage
         CollectionView.dataSource = self
         CollectionView.showsHorizontalScrollIndicator = false
-
-
     }
-    
-
 }
 
 extension ViewAllController: UICollectionViewDataSource {

@@ -55,6 +55,7 @@ class Restaurant {
             return "Uni-Omakase"
         }
     }
+    
     /* Queries the database and returns a list of all restaurants */
     static func getRestaurantList(complete: @escaping ([Restaurant]) -> Void) {
         var restaurants: [Restaurant] = []

@@ -47,8 +47,9 @@ class HomePageController: UIViewController {
     }
     
     /* Restaurant lists */
-    var topRestaurants: [Restaurant] = []{
+    var topRestaurants: [Restaurant] = [] {
         didSet{
+           // self.sortByRating()
             TopPlacesCollectionView.reloadData()
         }
     }
@@ -110,7 +111,7 @@ extension HomePageController: UICollectionViewDataSource {
         for restaurant in topRestaurants {
             print("Rest order: ", restaurant.title, "rating: ", restaurant.rating)
         }
-        
+        print("////////")
         DispatchQueue.main.async {
             self.TopPlacesCollectionView.reloadData()
         }
