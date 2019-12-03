@@ -21,6 +21,7 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
 
         setUpElements()
+        assignbackground()
     }
         
     func setUpElements() {
@@ -34,16 +35,19 @@ class SignInViewController: UIViewController {
         Utilities.styleFilledButton(signInButton)
         
     }
+    
+    func assignbackground(){
+        let background = UIImage(named: "background")
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        var imageView : UIImageView!
+        imageView = UIImageView(frame: view.bounds)
+        imageView.contentMode =  UIView.ContentMode.scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = background
+        imageView.center = view.center
+        view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
     }
-    */
     
     // Check the fields and validate that the data is correct. If everything is correct, this method returns nil. Otherwise, it returns the error message
     func validateFields() -> String? {

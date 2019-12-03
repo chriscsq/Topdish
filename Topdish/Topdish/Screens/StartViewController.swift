@@ -15,6 +15,7 @@ class StartViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var googleButton: UIButton!
+    @IBOutlet weak var guestButton: UIButton!
     
     
 
@@ -22,6 +23,7 @@ class StartViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        assignbackground()
         setUpElements()
         authenticateUserAndConfigure()
     }
@@ -29,8 +31,27 @@ class StartViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // make nav bar translucent
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.delegate = self
+    }
+
+    
+    func assignbackground(){
+        let background = UIImage(named: "background")
+
+        var imageView : UIImageView!
+        imageView = UIImageView(frame: view.bounds)
+        imageView.contentMode =  UIView.ContentMode.scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = background
+        imageView.center = view.center
+        view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
     }
     
     func setUpElements() {
@@ -51,7 +72,10 @@ class StartViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         }
     }
 
-
+    @IBAction func guestButtonTapped(_ sender: Any) {
+        transitionToHome()
+    }
+    
     @IBAction func googleButtonTapped(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signIn()
     }

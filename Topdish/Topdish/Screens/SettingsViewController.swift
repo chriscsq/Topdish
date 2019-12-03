@@ -8,15 +8,43 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class SettingsViewController: UIViewController {
+    
+    var ref: DatabaseReference! = Database.database().reference()
+    var guest: Bool!
 
     @IBOutlet weak var signOutButton: UIButton!
+    @IBOutlet weak var testLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        checkIfUserLoggedIn()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func checkIfUserLoggedIn() {
+        if (Auth.auth().currentUser?.uid == nil) {
+            // disable logged in user features
+            guest = true
+            self.testLabel.text = "Welcome Guest \nCreate an Account"
+            self.signOutButton.setTitle("exit", for: .normal)
+        } else {
+            guest = false
+            // testing getting user name and displaying it
+            let uID = Auth.auth().currentUser?.uid
+            print(uID!)
+            ref.child("profile").child(uID!).observeSingleEvent(of: .value, with: {(snapshot) in
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    self.testLabel.text = dictionary["name"] as? String
+                }
+                
+            }, withCancel: nil)
+        }
     }
     
     @IBAction func signOutTapped(_ sender: Any) {
@@ -25,14 +53,20 @@ class SettingsViewController: UIViewController {
     
     @objc func handleSignOut() {
         let alertController = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { (_) in
-            self.signOut()
-        }))
+        if (!guest) {
+            alertController.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { (_) in
+                self.signOut()
+            }))
+        } else {
+            alertController.addAction(UIAlertAction(title: "Exit", style: .destructive, handler: { (_) in
+                self.signOut()
+            }))
+        }
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     
-    func signOut() {
+    @objc func signOut() {
         do {
             try Auth.auth().signOut()
             let viewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.startViewController) as? StartViewController
