@@ -16,10 +16,12 @@ class HomePageController: UIViewController {
     /* Labels */
     @IBOutlet weak var HomeLabel: UILabel!
     
+    /* CollectionViews */
     @IBOutlet weak var TopPlacesCollectionView: UICollectionView!
     @IBOutlet weak var NearbyCollectionView: UICollectionView!
     @IBOutlet weak var ExclusiveOffersCollectionView: UICollectionView!
     
+    /* View all buttons */
     @IBAction func TopPlacesViewAllButton(_ sender: Any) {
         pageLabel = "Top Places"
         restaurantList = topRestaurants
@@ -37,10 +39,18 @@ class HomePageController: UIViewController {
         restaurantList = exclusiveOffersRestaurants
         performSegue(withIdentifier: "ViewAll", sender:self)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var dest = segue.destination as! ViewAllController
+        let dest = segue.destination as! ViewAllController
         dest.nameFromHomePage = pageLabel
         dest.givenRestaurants = restaurantList
+    }
+    
+    /* Restaurant lists */
+    var topRestaurants: [Restaurant] = []{
+        didSet{
+            TopPlacesCollectionView.reloadData()
+        }
     }
     
     var nearbyRestaurants: [Restaurant] = [] {
@@ -53,21 +63,10 @@ class HomePageController: UIViewController {
             ExclusiveOffersCollectionView.reloadData()
         }
     }
-    var topRestaurants: [Restaurant] = []{
-        didSet{
-            TopPlacesCollectionView.reloadData()
-        }
-    }
-    
+
+    /* View did load */
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //print(Restaurant.getRating(restaurant: "Jaskaran's Kitchen"))
-        Restaurant.getRating(restaurant: "Jaskaran's Kitchen", completion: { myVal in
-            DispatchQueue.main.async {
-                print(myVal)
-            }
-        })
         
         getTopPlaces()
         getNearbyRestaurants()
@@ -82,10 +81,8 @@ class HomePageController: UIViewController {
         
         ExclusiveOffersCollectionView.dataSource = self
         ExclusiveOffersCollectionView.showsHorizontalScrollIndicator = false
-        
-
     }
-
+    
 }
 
 extension HomePageController: UICollectionViewDataSource {
@@ -113,28 +110,24 @@ extension HomePageController: UICollectionViewDataSource {
         for restaurant in topRestaurants {
             print("Rest order: ", restaurant.title, "rating: ", restaurant.rating)
         }
+        
         DispatchQueue.main.async {
             self.TopPlacesCollectionView.reloadData()
         }
+    
     }
 
     func numberOfSections(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
     
-    func comp(number: Double) -> Void {
-        print(number)
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.TopPlacesCollectionView) {
-            print("1")
             return nearbyRestaurants.count
         } else if (collectionView == self.NearbyCollectionView) {
-            print("2")
             return nearbyRestaurants.count
         } else if (collectionView == self.ExclusiveOffersCollectionView) {
-            print("3")
             return exclusiveOffersRestaurants.count
         }
         return 0
@@ -146,23 +139,23 @@ extension HomePageController: UICollectionViewDataSource {
         /* Sets up collection view for Top Places */
         if (collectionView == self.TopPlacesCollectionView) {
             let cell = TopPlacesCollectionView.dequeueReusableCell(withReuseIdentifier: "HomePageCollectionCell", for: indexPath) as! HomePageCollectionCell
-            print("length", topRestaurants.count)
             if (topRestaurants.count != 0) {
                 let restaurant = topRestaurants[indexPath.item]
                 cell.restaurant = restaurant
                 return cell
             }
+            
         /* Sets up collection view for Nearby */
         } else if (collectionView == self.NearbyCollectionView) {
-            print("nearby collection view")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomePageCollectionCell", for: indexPath) as! HomePageCollectionCell
             if (nearbyRestaurants.count != 0) {
                 let restaurant = nearbyRestaurants[indexPath.item]
                 cell.restaurant = restaurant
                 return cell
             }
+            
+        /* Sets up collectionview for Exclusive Offers */
         } else if (collectionView == self.ExclusiveOffersCollectionView) {
-            print("else collection view")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomePageCollectionCell", for: indexPath) as! HomePageCollectionCell
             let restaurant = exclusiveOffersRestaurants[indexPath.item]
             cell.restaurant = restaurant
