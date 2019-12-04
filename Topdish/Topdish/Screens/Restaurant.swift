@@ -18,14 +18,16 @@ class Restaurant {
     var rating: Double
     var distance: Double
     var address: String
+    var rank: Int
     
-    init(title: String, featuredImage: UIImage, typeOfCuisine: String, rating: Double, distance: Double, address: String ) {
+    init(title: String, featuredImage: UIImage, typeOfCuisine: String, rating: Double, distance: Double, address: String, rank: Int ) {
         self.title = title
         self.featuredImage = featuredImage
         self.typeOfCuisine = typeOfCuisine
         self.rating = rating
         self.distance = distance
         self.address = address
+        self.rank = rank
     }
     
     /* Queries the database to return the ratings for a single restaurant
@@ -76,7 +78,7 @@ class Restaurant {
                 let addressOfRest = singleRestaurant.childSnapshot(forPath: "address").value
                 let restAddress = (addressOfRest as! String)
                 getRating(restaurant: restName, completion: { myVal in
-                    restaurants.append(Restaurant(title: restName, featuredImage: UIImage(named: ignoreme())!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress))
+                    restaurants.append(Restaurant(title: restName, featuredImage: UIImage(named: ignoreme())!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: 0))
                     complete(restaurants)
                 })
             }
@@ -123,8 +125,7 @@ class Restaurant {
                 // Now we have the routes, we can calculate the distance using
                 directions.calculate { (response, error) in
                     if let response = response, let route = response.routes.first {
-                        //print(route.distance) // You could have this returned in an async approach
-                        restaurant.distance = route.distance
+                        restaurant.distance = route.distance                        // This is the distance between location and address
                     }
                     complete (restaurantArray.sorted { $0.distance > $1.distance })
                 }
@@ -145,8 +146,37 @@ class Restaurant {
     /* Queries the database and returns a list of restaurants with ongoing offers
      * Based on offer start and end date */
     static func getExclusiveOffers(complete: @escaping ([Restaurant]) -> Void) {
-        var topPlaces: [Restaurant] = []
+        var offeredPlaces: [Restaurant] = []
+        Database.database().reference().child("offers").observeSingleEvent(of: .value) { snapshot in
+            let allOffers = snapshot.children
+            while let singleOffer = allOffers.nextObject() as? DataSnapshot {
+                let restName: String = singleOffer.key
+                let rankShot = singleOffer.childSnapshot(forPath: "rank").value
+                let myRank = (rankShot as! Int)
+                Database.database().reference().child("restaurant").observeSingleEvent(of: .value) { restSnapshot in
+                    let allResaurants = restSnapshot.children
+                    while let singleRestaurant = allResaurants.nextObject() as? DataSnapshot {
+                        if singleRestaurant.key == restName {
+                            print("THE NAME IS: ", restName)
+                            //let featuredImage = singleRestaurant.childSnapshot(forPath: "image").value
+                            let category = singleRestaurant.childSnapshot(forPath: "category").value
+                            let restType = (category as! String)
+                            let addressOfRest = singleRestaurant.childSnapshot(forPath: "address").value
+                            let restAddress = (addressOfRest as! String)
+                            getRating(restaurant: restName, completion: { myVal in
+                                offeredPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: myRank))
+                                complete(offeredPlaces)
+                            })
+                        } else {
+                            continue
+                        }
+                    }
+                }
+            }
+        }
         
+        
+        /*
         Database.database().reference().child("restaurant").observeSingleEvent(of: .value) { snapshot in
             let allRestaurants = snapshot.children
             while let singleRestaurant = allRestaurants.nextObject() as? DataSnapshot {
@@ -159,11 +189,9 @@ class Restaurant {
                 getRating(restaurant: restName, completion: { myVal in
                     topPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress))
                     complete(topPlaces)
-                    // If this doesn't work we can try appending where we are calling it and doing ...
-                    //complete([Restaurant(title: restName, featuredImage: UIImage(named: featuredImage)!, typeOfCuisine: restType, rating: myVal)])
                 })
             }
-        }
+        } */
     }
     
 }

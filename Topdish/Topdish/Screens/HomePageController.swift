@@ -121,36 +121,18 @@ extension HomePageController: UICollectionViewDataSource {
     
     func topPlaces() -> Void {
         Restaurant.getRestaurantList(complete: { restaurantArray in
-            print("WE GET HERE")
-            self.topRestaurants = restaurantArray
-            self.sortByRating()
+            self.topRestaurants = restaurantArray.sorted { $0.rating > $1.rating }
         })
     }
     func nearbyPlaces(location: CLLocationCoordinate2D) -> Void {
         Restaurant.getNearby(location: location, complete: { restaurantArray in
             self.nearbyRestaurants = restaurantArray
-            DispatchQueue.main.async {
-                self.NearbyCollectionView.reloadData()
-            }
         })
     }
     func getExclusiveOffers() -> Void {
-        Restaurant.getRestaurantList(complete: { restaurantArray in
-            self.exclusiveOffersRestaurants = restaurantArray
+        Restaurant.getExclusiveOffers(complete: { restaurantArray in
+            self.exclusiveOffersRestaurants = restaurantArray.sorted { $0.rank < $1.rank }
         })
-    }
-    
-    /* Used by getTopPlaces, will sort topRestaurants by highest rating */
-    func sortByRating() -> Void {
-        topRestaurants = topRestaurants.sorted { $0.rating > $1.rating}
-        for restaurant in topRestaurants {
-            print("Rest order: ", restaurant.title, "rating: ", restaurant.rating)
-        }
-        print("////////")
-        DispatchQueue.main.async {
-            self.TopPlacesCollectionView.reloadData()
-        }
-    
     }
 
     func numberOfSections(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
