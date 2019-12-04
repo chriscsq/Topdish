@@ -11,7 +11,7 @@
 		52CD78DC23960AB8004F97D7 /* ViewAllController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD78DB23960AB8004F97D7 /* ViewAllController.swift */; };
 		52CD78DE23961090004F97D7 /* RestaurantCardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD78DD23961090004F97D7 /* RestaurantCardCollectionCell.swift */; };
 		52E7A9602397375C00F158F8 /* RestaurantScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7A95F2397375C00F158F8 /* RestaurantScreenController.swift */; };
-		52E825382388964100F5FEA6 /* ThemedTextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E825372388964100F5FEA6 /* ThemedTextBox.swift */; };
+		52E7A96223973E4C00F158F8 /* RestaurantImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7A96123973E4C00F158F8 /* RestaurantImageCollectionCell.swift */; };
 		52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E8253D2388AB0800F5FEA6 /* HomePageController.swift */; };
 		52E825402388BC8400F5FEA6 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 52E8253F2388BC8400F5FEA6 /* Images */; };
 		52E825422388C0C100F5FEA6 /* HomePageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E825412388C0C100F5FEA6 /* HomePageCollectionCell.swift */; };
@@ -51,7 +51,7 @@
 		52CD78DB23960AB8004F97D7 /* ViewAllController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllController.swift; sourceTree = "<group>"; };
 		52CD78DD23961090004F97D7 /* RestaurantCardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardCollectionCell.swift; sourceTree = "<group>"; };
 		52E7A95F2397375C00F158F8 /* RestaurantScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantScreenController.swift; sourceTree = "<group>"; };
-		52E825372388964100F5FEA6 /* ThemedTextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedTextBox.swift; sourceTree = "<group>"; };
+		52E7A96123973E4C00F158F8 /* RestaurantImageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantImageCollectionCell.swift; sourceTree = "<group>"; };
 		52E8253D2388AB0800F5FEA6 /* HomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		52E8253F2388BC8400F5FEA6 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		52E825412388C0C100F5FEA6 /* HomePageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCollectionCell.swift; sourceTree = "<group>"; };
@@ -110,7 +110,6 @@
 		52E82536238895BB00F5FEA6 /* UIProperties */ = {
 			isa = PBXGroup;
 			children = (
-				52E825372388964100F5FEA6 /* ThemedTextBox.swift */,
 			);
 			path = UIProperties;
 			sourceTree = "<group>";
@@ -124,6 +123,7 @@
 				52CD78DB23960AB8004F97D7 /* ViewAllController.swift */,
 				52CD78DD23961090004F97D7 /* RestaurantCardCollectionCell.swift */,
 				52E7A95F2397375C00F158F8 /* RestaurantScreenController.swift */,
+				52E7A96123973E4C00F158F8 /* RestaurantImageCollectionCell.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -453,9 +453,9 @@
 				52CD78DC23960AB8004F97D7 /* ViewAllController.swift in Sources */,
 				D30BEDFB23849CA100B5FEE2 /* AppDelegate.swift in Sources */,
 				52FDA3692388E13900D9E1F2 /* Restaurant.swift in Sources */,
+				52E7A96223973E4C00F158F8 /* RestaurantImageCollectionCell.swift in Sources */,
 				52CD78DE23961090004F97D7 /* RestaurantCardCollectionCell.swift in Sources */,
 				D30BEDFD23849CA100B5FEE2 /* SceneDelegate.swift in Sources */,
-				52E825382388964100F5FEA6 /* ThemedTextBox.swift in Sources */,
 				52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */,
 				52E7A9602397375C00F158F8 /* RestaurantScreenController.swift in Sources */,
 			);

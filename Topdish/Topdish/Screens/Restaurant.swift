@@ -11,7 +11,7 @@ import FirebaseDatabase
 
 class Restaurant {
     var title: String
-    var featuredImage: UIImage
+    var featuredImage: UIImage?
     var typeOfCuisine: String
     var rating: Double
     
@@ -22,6 +22,12 @@ class Restaurant {
         self.rating = rating
     }
     
+    init() {
+        self.title = ""
+        self.featuredImage = nil
+        self.typeOfCuisine = ""
+        self.rating = 0
+    }
     /* Queries the database to return the ratings for a single restaurant
      * goes through all the dishes and returns a double which is the average user rating */
     static func getRating(restaurant: String, completion: @escaping (Double) -> Void) {
