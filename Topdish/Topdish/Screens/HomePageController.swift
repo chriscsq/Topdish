@@ -13,6 +13,7 @@ class HomePageController: UIViewController, UICollectionViewDelegate {
 
     var pageLabel = ""
     var restaurantList: [Restaurant] = []
+    var clickedRestaurant: Restaurant = Restaurant()
     /* Labels */
     @IBOutlet weak var HomeLabel: UILabel!
     
@@ -41,9 +42,17 @@ class HomePageController: UIViewController, UICollectionViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dest = segue.destination as! ViewAllController
-        dest.nameFromHomePage = pageLabel
-        dest.givenRestaurants = restaurantList
+        
+        if segue.identifier == "contentVideoSegue" {
+
+            let dest = segue.destination as! ViewAllController
+            dest.nameFromHomePage = pageLabel
+            dest.givenRestaurants = restaurantList
+        } else if segue.identifier == "restaurantSegue" {
+            let dest = segue.destination as! RestaurantScreenController
+            dest.restaurantName = clickedRestaurant.title
+            //dest.RestaurantImages = clickedRestaurant.featuredImage!
+        }
     }
     
     /* Restaurant lists */
@@ -178,18 +187,26 @@ extension HomePageController: UICollectionViewDataSource {
 
             print(cell)
             print(topRestaurants[indexPath.row])
+            self.clickedRestaurant = topRestaurants[indexPath.row]
+            performSegue(withIdentifier: "restaurantSegue", sender:self)
+
         } else if (collectionView == self.NearbyCollectionView) {
             let cell = collectionView.cellForItem(at: indexPath)  as! HomePageCollectionCell
 
             print(cell)
 
             print(nearbyRestaurants[indexPath.row])
+            self.clickedRestaurant = nearbyRestaurants[indexPath.row]
+            performSegue(withIdentifier: "restaurantSegue", sender:self)
+
         } else if (collectionView == self.ExclusiveOffersCollectionView) {
             let cell = collectionView.cellForItem(at: indexPath)  as! HomePageCollectionCell
 
             print(cell)
 
             print(exclusiveOffersRestaurants[indexPath.row])
+            self.clickedRestaurant = exclusiveOffersRestaurants[indexPath.row]
+            performSegue(withIdentifier: "restaurantSegue", sender:self)
 
         }
     }
