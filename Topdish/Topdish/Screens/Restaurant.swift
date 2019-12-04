@@ -35,6 +35,9 @@ class Restaurant {
         self.featuredImage = nil
         self.typeOfCuisine = ""
         self.rating = 0
+        self.distance = 9999999
+        self.address = ""
+        self.rank = 99
     }
     /* Queries the database to return the ratings for a single restaurant
      * goes through all the dishes and returns a double which is the average user rating */
