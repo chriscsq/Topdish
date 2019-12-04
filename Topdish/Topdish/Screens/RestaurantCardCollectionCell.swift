@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RestaurantCardCollectionCell: UICollectionViewCell {
+class RestaurantCardCollectionCell: UICollectionViewCell, UICollectionViewDelegate {
     
     @IBOutlet var RestaurantImage: UIImageView!
     @IBOutlet var RestaurantLabel: UILabel!
