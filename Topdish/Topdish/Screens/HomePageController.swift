@@ -9,7 +9,7 @@
 
 import UIKit
 
-class HomePageController: UIViewController {
+class HomePageController: UIViewController, UICollectionViewDelegate {
 
     var pageLabel = ""
     var restaurantList: [Restaurant] = []
@@ -74,12 +74,15 @@ class HomePageController: UIViewController {
         getExclusiveOffers()
     
         // Do any additional setup after loading the view.
+        TopPlacesCollectionView.delegate = self
         TopPlacesCollectionView.dataSource = self
         TopPlacesCollectionView.showsHorizontalScrollIndicator = false
         
+        NearbyCollectionView.delegate = self
         NearbyCollectionView.dataSource = self
         NearbyCollectionView.showsHorizontalScrollIndicator = false
         
+        ExclusiveOffersCollectionView.delegate = self
         ExclusiveOffersCollectionView.dataSource = self
         ExclusiveOffersCollectionView.showsHorizontalScrollIndicator = false
     }
@@ -165,5 +168,31 @@ extension HomePageController: UICollectionViewDataSource {
  
         return UICollectionViewCell()
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+    didSelectItemAt indexPath: IndexPath) {
+        
+        print("hello")
+        if (collectionView == self.TopPlacesCollectionView) {
+            let cell = collectionView.cellForItem(at: indexPath)  as! HomePageCollectionCell
+
+            print(cell)
+            print(topRestaurants[indexPath.row])
+        } else if (collectionView == self.NearbyCollectionView) {
+            let cell = collectionView.cellForItem(at: indexPath)  as! HomePageCollectionCell
+
+            print(cell)
+
+            print(nearbyRestaurants[indexPath.row])
+        } else if (collectionView == self.ExclusiveOffersCollectionView) {
+            let cell = collectionView.cellForItem(at: indexPath)  as! HomePageCollectionCell
+
+            print(cell)
+
+            print(exclusiveOffersRestaurants[indexPath.row])
+
+        }
+    }
+
 }
 
