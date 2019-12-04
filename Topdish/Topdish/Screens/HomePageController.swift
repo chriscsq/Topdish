@@ -43,7 +43,7 @@ class HomePageController: UIViewController, UICollectionViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "contentVideoSegue" {
+        if segue.identifier == "ViewAll" {
 
             let dest = segue.destination as! ViewAllController
             dest.nameFromHomePage = pageLabel

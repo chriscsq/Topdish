@@ -485,6 +485,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="yWn-jc-9p3"/>
                     <connections>
+                        <outlet property="ImageCollectionView" destination="RcO-pI-Qe0" id="9WD-jf-mzc"/>
                         <outlet property="RestaurantNameLabel" destination="2QC-UR-djL" id="z0t-M7-odT"/>
                     </connections>
                 </viewController>
