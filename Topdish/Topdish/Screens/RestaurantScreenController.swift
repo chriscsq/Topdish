@@ -10,4 +10,12 @@ import UIKit
 
 class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
     
+    var restaurantName = ""
+        
+    @IBOutlet var RestaurantNameLabel: UILabel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        RestaurantNameLabel.text = restaurantName
+    }
 }
