@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import ResearchKit
 
 class HomePageController: UIViewController {
 
@@ -17,7 +18,7 @@ class HomePageController: UIViewController {
     @IBOutlet weak var TopPlacesCollectionView: UICollectionView!
     @IBOutlet weak var NearbyCollectionView: UICollectionView!
     @IBOutlet weak var ExclusiveOffersCollectionView: UICollectionView!
-    
+    @IBOutlet weak var Test: UIButton!
     
     //var topRestaurants = Restaurant.getTopPlaces()
     var nearbyRestaurants = Restaurant.getNearby()
@@ -93,6 +94,7 @@ extension HomePageController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomePageCollectionCell", for: indexPath) as! HomePageCollectionCell
             //print("length", topRestaurants.count)
             if (topRestaurants.count != 0) {
+                //print(indexPath.item)
                 let restaurant = topRestaurants[indexPath.item]
                 cell.restaurant = restaurant
                 return cell
