@@ -43,6 +43,19 @@ class Restaurant {
         }
     }
     
+    static func ignoreme() -> String {
+        let number = Int.random(in: 0 ..< 4)
+        if (number == 1) {
+            return "Burger"
+        } else if (number == 2) {
+            return "steak"
+        } else if (number == 3) {
+            return "flatbread"
+        } else {
+            return "Uni-Omakase"
+        }
+    }
+    
     /* Queries the database and returns a list of all restaurants */
     static func getRestaurantList(complete: @escaping ([Restaurant]) -> Void) {
         var restaurants: [Restaurant] = []
@@ -55,7 +68,7 @@ class Restaurant {
                 let category = singleRestaurant.childSnapshot(forPath: "category").value
                 let restType = (category as! String)
                 getRating(restaurant: restName, completion: { myVal in
-                    restaurants.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal))
+                    restaurants.append(Restaurant(title: restName, featuredImage: UIImage(named: ignoreme())!, typeOfCuisine: restType, rating: myVal))
                     complete(restaurants)
                     // If this doesn't work we can try appending where we are calling it and doing ...
                     //complete([Restaurant(title: restName, featuredImage: UIImage(named: featuredImage)!, typeOfCuisine: restType, rating: myVal)])
