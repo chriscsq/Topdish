@@ -8,10 +8,12 @@
 
 import UIKit
 
-class ViewAllController: UIViewController {
+class ViewAllController: UIViewController, UICollectionViewDelegate {
     
     var nameFromHomePage = ""
-    var givenRestaurants:[Restaurant] = []
+    var givenRestaurants: [Restaurant] = []
+    var clickedRestaurant: Restaurant = Restaurant()
+    
     
     @IBOutlet weak var CollectionView: UICollectionView!
     @IBOutlet weak var PageLabel: UILabel!
@@ -22,7 +24,18 @@ class ViewAllController: UIViewController {
         PageLabel.text = nameFromHomePage
         CollectionView.dataSource = self
         CollectionView.showsHorizontalScrollIndicator = false
+        CollectionView.delegate = self
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "restaurantSegue" {
+            let dest = segue.destination as! RestaurantScreenController
+            dest.restaurantName = clickedRestaurant.title
+            //dest.RestaurantImages = clickedRestaurant.featuredImage!
+        }
+    }
+    
 }
 
 extension ViewAllController: UICollectionViewDataSource {
@@ -39,5 +52,18 @@ extension ViewAllController: UICollectionViewDataSource {
         }
         return UICollectionViewCell()
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+    didSelectItemAt indexPath: IndexPath) {
+              
+        if (collectionView == self.CollectionView) {
+            let cell = collectionView.cellForItem(at: indexPath)  as! RestaurantCardCollectionCell
 
+            print(cell)
+            print(givenRestaurants[indexPath.row])
+            self.clickedRestaurant = givenRestaurants[indexPath.row]
+            performSegue(withIdentifier: "restaurantSegue", sender:self)
+
+            }
+    }
 }

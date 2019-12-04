@@ -35,3 +35,20 @@ class RestaurantCardCollectionCell: UICollectionViewCell, UICollectionViewDelega
         
     }
 }
+
+
+   /*
+      func collectionView(_ collectionView: UICollectionView,
+      didSelectItemAt indexPath: IndexPath) {
+          
+           if (collectionView == self.TopPlacesCollectionView) {
+               let cell = collectionView.cellForItem(at: indexPath)  as! HomePageCollectionCell
+
+               print(cell)
+               print(topRestaurants[indexPath.row])
+               self.clickedRestaurant = topRestaurants[indexPath.row]
+               performSegue(withIdentifier: "restaurantSegue", sender:self)
+
+          }
+      }
+*/

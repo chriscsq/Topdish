@@ -10,6 +10,8 @@ import UIKit
 
 class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
     
+    
+    var clickedRestaurant: Restaurant = Restaurant()
     @IBOutlet var ImageCollectionView: UICollectionView!
     var restaurantName = ""
         
@@ -19,6 +21,16 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         RestaurantNameLabel.text = restaurantName
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "restaurantSegue" {
+            let dest = segue.destination as! RestaurantScreenController
+            dest.restaurantName = clickedRestaurant.title
+            //dest.RestaurantImages = clickedRestaurant.featuredImage!
+        }
+    }
+
 }
 
 
@@ -36,42 +48,10 @@ extension RestaurantScreenController: UICollectionViewDataSource {
        /* Populating top restaurants to be used for horizontal collection view */
        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
            
+        
            return UICollectionViewCell()
        }
        
-    /*
-       func collectionView(_ collectionView: UICollectionView,
-       didSelectItemAt indexPath: IndexPath) {
-           
-           print("hello")
-           if (collectionView == self.TopPlacesCollectionView) {
-               let cell = collectionView.cellForItem(at: indexPath)  as! HomePageCollectionCell
 
-               print(cell)
-               print(topRestaurants[indexPath.row])
-               self.clickedRestaurant = topRestaurants[indexPath.row]
-               performSegue(withIdentifier: "restaurantSegue", sender:self)
-
-           } else if (collectionView == self.NearbyCollectionView) {
-               let cell = collectionView.cellForItem(at: indexPath)  as! HomePageCollectionCell
-
-               print(cell)
-
-               print(nearbyRestaurants[indexPath.row])
-               self.clickedRestaurant = nearbyRestaurants[indexPath.row]
-               performSegue(withIdentifier: "restaurantSegue", sender:self)
-
-           } else if (collectionView == self.ExclusiveOffersCollectionView) {
-               let cell = collectionView.cellForItem(at: indexPath)  as! HomePageCollectionCell
-
-               print(cell)
-
-               print(exclusiveOffersRestaurants[indexPath.row])
-               self.clickedRestaurant = exclusiveOffersRestaurants[indexPath.row]
-               performSegue(withIdentifier: "restaurantSegue", sender:self)
-
-           }
-       }
- */
 }
     
