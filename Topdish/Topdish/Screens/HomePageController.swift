@@ -8,11 +8,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 class HomePageController: UIViewController, UICollectionViewDelegate {
 
     var pageLabel = ""
     var restaurantList: [Restaurant] = []
+    var locationManager: CLLocationManager?
     var clickedRestaurant: Restaurant = Restaurant()
     /* Labels */
     @IBOutlet weak var HomeLabel: UILabel!
@@ -78,8 +80,14 @@ class HomePageController: UIViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getTopPlaces()
-        getNearbyRestaurants()
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager?.startUpdatingLocation()
+        
+        topPlaces()
+        nearby()
         getExclusiveOffers()
     
         // Do any additional setup after loading the view.
@@ -97,37 +105,43 @@ class HomePageController: UIViewController, UICollectionViewDelegate {
     }
     
 }
+extension HomePageController: CLLocationManagerDelegate {
+    func nearby() -> Void {
+        if( CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() ==  .authorizedAlways) {
+            
+            guard let locValue: CLLocationCoordinate2D = locationManager?.location?.coordinate else { return }
+            print("locations = \(locValue.latitude) \(locValue.longitude)")
+            nearbyPlaces(location: locValue)
+            
+        } else {
+            print("We have no access to the phones location.")
+            Restaurant.getRestaurantList(complete: { restaurantArray in
+                self.topRestaurants = restaurantArray
+                DispatchQueue.main.async {
+                    self.NearbyCollectionView.reloadData()
+                }
+            })
+        }
+    }
+}
+
 
 extension HomePageController: UICollectionViewDataSource {
     
-    func getTopPlaces() -> Void {
+    func topPlaces() -> Void {
         Restaurant.getRestaurantList(complete: { restaurantArray in
-            self.topRestaurants = restaurantArray
-            self.sortByRating()
+            self.topRestaurants = restaurantArray.sorted { $0.rating > $1.rating }
         })
     }
-    func getNearbyRestaurants() -> Void {
-        Restaurant.getRestaurantList(complete: { restaurantArray in
+    func nearbyPlaces(location: CLLocationCoordinate2D) -> Void {
+        Restaurant.getNearby(location: location, complete: { restaurantArray in
             self.nearbyRestaurants = restaurantArray
         })
     }
     func getExclusiveOffers() -> Void {
-        Restaurant.getRestaurantList(complete: { restaurantArray in
-            self.exclusiveOffersRestaurants = restaurantArray
+        Restaurant.getExclusiveOffers(complete: { restaurantArray in
+            self.exclusiveOffersRestaurants = restaurantArray.sorted { $0.rank < $1.rank }
         })
-    }
-    
-    /* Used by getTopPlaces, will sort topRestaurants by highest rating */
-    func sortByRating() -> Void {
-        topRestaurants = topRestaurants.sorted { $0.rating > $1.rating}
-        for restaurant in topRestaurants {
-            print("Rest order: ", restaurant.title, "rating: ", restaurant.rating)
-        }
-        print("////////")
-        DispatchQueue.main.async {
-            self.TopPlacesCollectionView.reloadData()
-        }
-    
     }
 
     func numberOfSections(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -137,7 +151,7 @@ extension HomePageController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.TopPlacesCollectionView) {
-            return nearbyRestaurants.count
+            return topRestaurants.count
         } else if (collectionView == self.NearbyCollectionView) {
             return nearbyRestaurants.count
         } else if (collectionView == self.ExclusiveOffersCollectionView) {
