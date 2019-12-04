@@ -121,6 +121,7 @@ extension HomePageController: UICollectionViewDataSource {
     
     func topPlaces() -> Void {
         Restaurant.getRestaurantList(complete: { restaurantArray in
+            print("WE GET HERE")
             self.topRestaurants = restaurantArray
             self.sortByRating()
         })
@@ -128,9 +129,6 @@ extension HomePageController: UICollectionViewDataSource {
     func nearbyPlaces(location: CLLocationCoordinate2D) -> Void {
         Restaurant.getNearby(location: location, complete: { restaurantArray in
             self.nearbyRestaurants = restaurantArray
-            for restaurant in self.nearbyRestaurants {
-                print(restaurant.title, "is ", restaurant.distance)
-            }
             DispatchQueue.main.async {
                 self.NearbyCollectionView.reloadData()
             }
@@ -162,7 +160,7 @@ extension HomePageController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == self.TopPlacesCollectionView) {
-            return nearbyRestaurants.count
+            return topRestaurants.count
         } else if (collectionView == self.NearbyCollectionView) {
             return nearbyRestaurants.count
         } else if (collectionView == self.ExclusiveOffersCollectionView) {

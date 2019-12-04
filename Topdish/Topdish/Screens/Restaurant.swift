@@ -123,7 +123,7 @@ class Restaurant {
                 // Now we have the routes, we can calculate the distance using
                 directions.calculate { (response, error) in
                     if let response = response, let route = response.routes.first {
-                        print(route.distance) // You could have this returned in an async approach
+                        //print(route.distance) // You could have this returned in an async approach
                         restaurant.distance = route.distance
                     }
                     complete (restaurantArray.sorted { $0.distance > $1.distance })
