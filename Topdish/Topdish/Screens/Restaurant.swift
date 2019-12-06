@@ -103,7 +103,6 @@ class Restaurant {
                 guard
                     let placemarks = placemarks,
                     let location = placemarks.first?.location
-                    
                 else {
                     // handle no location found -- Can set default ? Will try later.
                     print("Cannot find location based on address String.")
@@ -128,7 +127,6 @@ class Restaurant {
                 // If you're open to getting more than one route,
                 // requestsAlternateRoutes = true; else requestsAlternateRoutes = false;
                 request.requestsAlternateRoutes = true
-
                 let directions = MKDirections(request: request)
 
                 // Now we have the routes, we can calculate the distance using
@@ -166,7 +164,6 @@ class Restaurant {
                     let allResaurants = restSnapshot.children
                     while let singleRestaurant = allResaurants.nextObject() as? DataSnapshot {
                         if singleRestaurant.key == restName {
-                            print("THE NAME IS: ", restName)
                             //let featuredImage = singleRestaurant.childSnapshot(forPath: "image").value
                             let category = singleRestaurant.childSnapshot(forPath: "category").value
                             let restType = (category as! String)

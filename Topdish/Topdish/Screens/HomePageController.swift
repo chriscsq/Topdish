@@ -106,17 +106,33 @@ class HomePageController: UIViewController, UICollectionViewDelegate {
     
 }
 extension HomePageController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .denied:
+            print("User denied location permission") // Bail out of switch statement. Consider showing an alert that your app will need location to work.
+            return
+        case .authorizedWhenInUse:
+            print("App is authorized to use location while in use\n\n\n")
+            break
+        case .authorizedAlways:
+            print("App is authorized to always use this device's location")
+            break
+        default:
+            print("User has not yet determined location permission")
+            return
+        }
+    }
+    
     func nearby() -> Void {
         if( CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() ==  .authorizedAlways) {
-            
             guard let locValue: CLLocationCoordinate2D = locationManager?.location?.coordinate else { return }
             print("locations = \(locValue.latitude) \(locValue.longitude)")
             nearbyPlaces(location: locValue)
-            
         } else {
             print("We have no access to the phones location.")
             Restaurant.getRestaurantList(complete: { restaurantArray in
-                self.topRestaurants = restaurantArray
+                self.nearbyRestaurants = restaurantArray
                 DispatchQueue.main.async {
                     self.NearbyCollectionView.reloadData()
                 }
@@ -194,8 +210,7 @@ extension HomePageController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
     didSelectItemAt indexPath: IndexPath) {
-        
-        print("hello")
+
         if (collectionView == self.TopPlacesCollectionView) {
             let cell = collectionView.cellForItem(at: indexPath)  as! HomePageCollectionCell
 
