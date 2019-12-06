@@ -35,7 +35,7 @@ class Restaurant {
         self.featuredImage = nil
         self.typeOfCuisine = ""
         self.rating = 0
-        self.distance = 9999999
+        self.distance = 99999999999
         self.address = ""
         self.rank = 99
     }
@@ -107,7 +107,7 @@ class Restaurant {
                 else {
                     // handle no location found -- Can set default ? Will try later.
                     print("Cannot find location based on address String.")
-                    restaurant.distance = 9999999
+                    restaurant.distance = 99999999999
                     return
                 }
                 // Use your location
@@ -183,24 +183,5 @@ class Restaurant {
                 }
             }
         }
-        
-        
-        /*
-        Database.database().reference().child("restaurant").observeSingleEvent(of: .value) { snapshot in
-            let allRestaurants = snapshot.children
-            while let singleRestaurant = allRestaurants.nextObject() as? DataSnapshot {
-                let restName: String = singleRestaurant.key
-                //let featuredImage = singleRestaurant.childSnapshot(forPath: "image").value
-                let category = singleRestaurant.childSnapshot(forPath: "category").value
-                let restType = (category as! String)
-                let addressOfRest = singleRestaurant.childSnapshot(forPath: "address").value
-                let restAddress = (addressOfRest as! String)
-                getRating(restaurant: restName, completion: { myVal in
-                    topPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress))
-                    complete(topPlaces)
-                })
-            }
-        } */
     }
-    
 }
