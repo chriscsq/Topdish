@@ -38,6 +38,7 @@ class SettingsViewController: UIViewController {
         } else {
             guest = false
             // testing getting user name and displaying it
+            // not working with facebook at initial signup/login
             let uID = Auth.auth().currentUser?.uid
             print(uID!)
             ref.child("profile").child(uID!).observeSingleEvent(of: .value, with: {(snapshot) in

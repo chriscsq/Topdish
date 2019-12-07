@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
@@ -126,34 +127,55 @@ class StartViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             if err != nil {
                 print("Custom FB Login failed:", err as Any)
                 return
+            } else if (result!.isCancelled) {
+                print("The user cancelled loggin in")
+            } else {
+                self.saveUserData()
             }
-            
-            self.showEmailAddress()
         }
     }
     
-    func showEmailAddress() {
+    func saveUserData() {
         let accessToken = AccessToken.current
         guard let accessTokenString = accessToken?.tokenString else { return }
         
         let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
-        Auth.auth().signIn(with: credentials, completion: { (user, error) in
+        Auth.auth().signIn(with: credentials, completion: { (result, error) in
             if error != nil {
                 print("Something went wrong with our FB user: ", error ?? "")
                 return
+            } else {
+                print("user signed in with facebook")
             }
             
-            print("Successfully logged in with our user: ", user ?? "")
+            let userId = result?.user.uid
+            let db = Database.database().reference()
+//            let usersRef = ref.child("users").child(userId!)
+            
+            GraphRequest(graphPath: "/me", parameters: ["fields": "name, email"]).start { (connection, result, err) in
+                
+                if err != nil {
+                    print("Failed to start graph request:", err ?? "")
+                    return
+                }
+                print("graph results")
+                print(result ?? "")
+                
+                let values: [String:AnyObject] = result as! [String : AnyObject]
+                
+                db.child("profile").child(userId!).updateChildValues(values, withCompletionBlock: { (err, ref) in
+                     // if there's an error in saving to our firebase database
+                     if err != nil {
+                        print(err as Any)
+                         return
+                     }
+                     // no error, so it means we've saved the user into our firebase database successfully
+                     print("Save the user successfully into Firebase database")
+                 })
+                
+            }
         })
-        
-        GraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, err) in
-            
-            if err != nil {
-                print("Failed to start graph request:", err ?? "")
-                return
-            }
-            print(result ?? "")
-        }
+        self.transitionToHome()
     }
     
     func transitionToHome() {
