@@ -107,6 +107,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52748690239C554A0040503C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				52CD78DD23961090004F97D7 /* RestaurantCardCollectionCell.swift */,
+				52E7A96123973E4C00F158F8 /* RestaurantImageCollectionCell.swift */,
+				52E825412388C0C100F5FEA6 /* HomePageCollectionCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		52748691239C555A0040503C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				52E7A95F2397375C00F158F8 /* RestaurantScreenController.swift */,
+				52CD78DB23960AB8004F97D7 /* ViewAllController.swift */,
+				52E8253D2388AB0800F5FEA6 /* HomePageController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		52748692239C55670040503C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				52FDA3682388E13900D9E1F2 /* Restaurant.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		52E82536238895BB00F5FEA6 /* UIProperties */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,13 +145,9 @@
 		52E8253C2388AAED00F5FEA6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				52E8253D2388AB0800F5FEA6 /* HomePageController.swift */,
-				52E825412388C0C100F5FEA6 /* HomePageCollectionCell.swift */,
-				52FDA3682388E13900D9E1F2 /* Restaurant.swift */,
-				52CD78DB23960AB8004F97D7 /* ViewAllController.swift */,
-				52CD78DD23961090004F97D7 /* RestaurantCardCollectionCell.swift */,
-				52E7A95F2397375C00F158F8 /* RestaurantScreenController.swift */,
-				52E7A96123973E4C00F158F8 /* RestaurantImageCollectionCell.swift */,
+				52748692239C55670040503C /* Classes */,
+				52748691239C555A0040503C /* Controllers */,
+				52748690239C554A0040503C /* Cells */,
 			);
 			path = Screens;
 			sourceTree = "<group>";

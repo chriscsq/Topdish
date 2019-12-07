@@ -20,6 +20,8 @@ class Restaurant {
     var address: String
     var rank: Int
     
+    /* Hours */
+    // MARK: SETUP
     init(title: String, featuredImage: UIImage, typeOfCuisine: String, rating: Double, distance: Double, address: String, rank: Int ) {
         self.title = title
         self.featuredImage = featuredImage
@@ -94,6 +96,8 @@ class Restaurant {
         }
     }
     
+    /* Used to build a near me list, outputs a list of reastaurants which are closest to you by distance.
+        Requires location permission */
     static func sortByAddress(myLocation: CLLocationCoordinate2D, restaurantArray: [Restaurant], complete: @escaping ([Restaurant]) -> Void) {
         for restaurant in restaurantArray {
             let address = restaurant.address

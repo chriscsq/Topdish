@@ -20,6 +20,7 @@ class HomePageCollectionCell: UICollectionViewCell {
         }
     }
     
+    /* Updating the cells to the given restaurant information */
     func updateUI() {
         if let restaurant = restaurant {
             featuredImageView.image = restaurant.featuredImage
