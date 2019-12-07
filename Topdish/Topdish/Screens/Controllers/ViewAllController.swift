@@ -27,8 +27,8 @@ class ViewAllController: UIViewController, UICollectionViewDelegate {
         CollectionView.delegate = self
     }
     
+    /* Segue to individual restaurant pages */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "restaurantSegue" {
             let dest = segue.destination as! RestaurantScreenController
             dest.restaurantName = clickedRestaurant.title
@@ -43,6 +43,7 @@ extension ViewAllController: UICollectionViewDataSource {
         return givenRestaurants.count
     }
     
+    /* Display collection cells */
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = CollectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantCardCollectionCell", for: indexPath) as! RestaurantCardCollectionCell
         if (givenRestaurants.count != 0) {
@@ -52,7 +53,8 @@ extension ViewAllController: UICollectionViewDataSource {
         }
         return UICollectionViewCell()
     }
-    
+
+    /* On click of collection cell*/
     func collectionView(_ collectionView: UICollectionView,
     didSelectItemAt indexPath: IndexPath) {
               

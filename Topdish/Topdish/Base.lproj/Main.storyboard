@@ -441,51 +441,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RcO-pI-Qe0">
-                                <rect key="frame" x="0.0" y="44" width="414" height="220"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RcO-pI-Qe0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zcH-L7-hdz">
-                                    <size key="itemSize" width="414" height="221"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zcH-L7-hdz">
+                                    <size key="itemSize" width="414" height="264"/>
+                                    <size key="estimatedItemSize" width="414" height="264"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="r8o-Z1-RPD" customClass="RestaurantImageCollectionCell" customModule="Topdish" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="RestaurantImageCollectionCell" id="r8o-Z1-RPD" customClass="RestaurantImageCollectionCell" customModule="Topdish" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vp2-rv-rN4">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vp2-rv-rN4">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FBq-OF-fFn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Test image" translatesAutoresizingMaskIntoConstraints="NO" id="FBq-OF-fFn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="414" height="221"/>
+                                        <size key="customSize" width="414" height="264"/>
                                         <connections>
-                                            <outlet property="RestaurantImages" destination="FBq-OF-fFn" id="aqo-mV-RYH"/>
+                                            <outlet property="headerImage" destination="FBq-OF-fFn" id="fhO-Bx-bbs"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2QC-UR-djL">
-                                <rect key="frame" x="20" y="283" width="374" height="21"/>
+                                <rect key="frame" x="20" y="275" width="271" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2c-oj-wS8">
+                                <rect key="frame" x="299" y="270" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.57254901960000004" green="0.55294117649999996" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="add review">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nB2-DO-4uW">
+                                <rect key="frame" x="20" y="483" width="374" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.29803921570000003" green="0.27450980390000002" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hNO-IS-wj6">
+                                <rect key="frame" x="20" y="487" width="374" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="dishes"/>
+                                    <segment title="reviews"/>
+                                </segments>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedSegmentTintColor" red="1" green="0.91764705879999997" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="jOK-dq-bcY"/>
                     </view>
                     <navigationItem key="navigationItem" id="yWn-jc-9p3"/>
                     <connections>
-                        <outlet property="ImageCollectionView" destination="RcO-pI-Qe0" id="9WD-jf-mzc"/>
+                        <outlet property="AddReviewButton" destination="c2c-oj-wS8" id="i9S-Gh-IUu"/>
+                        <outlet property="ImageCollectionView" destination="RcO-pI-Qe0" id="tFJ-3U-SdS"/>
                         <outlet property="RestaurantNameLabel" destination="2QC-UR-djL" id="z0t-M7-odT"/>
                     </connections>
                 </viewController>
@@ -521,6 +556,6 @@
         <image name="flatbread.jpg" width="345.60000610351562" height="141.60000610351562"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aKq-T2-FJR"/>
+        <segue reference="dZ9-4p-zPT"/>
     </inferredMetricsTieBreakers>
 </document>
