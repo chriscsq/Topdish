@@ -84,6 +84,7 @@
 		EC072811238E343E000431B8 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		EC1DE2EC238E04B200A1773A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EC1DE2EE238E04C100A1773A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		EC3E6C5A239C3F2C00F177C3 /* Topdish.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Topdish.entitlements; sourceTree = "<group>"; };
 		EC96F51A238CFF7D00A5C29C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EC96F51B238CFF7D00A5C29C /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		EC96F51C238CFF7D00A5C29C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -187,6 +188,7 @@
 		D30BEDF923849CA100B5FEE2 /* Topdish */ = {
 			isa = PBXGroup;
 			children = (
+				EC3E6C5A239C3F2C00F177C3 /* Topdish.entitlements */,
 				EC96F519238CFF7D00A5C29C /* Helpers */,
 				52E8253F2388BC8400F5FEA6 /* Images */,
 				52E8253C2388AAED00F5FEA6 /* Screens */,
@@ -695,6 +697,7 @@
 			baseConfigurationReference = 11900758A271267757D042A3 /* Pods-Topdish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Topdish/Topdish.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Topdish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -713,6 +716,7 @@
 			baseConfigurationReference = BCE5B95DFCE3FFA5E06550C8 /* Pods-Topdish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Topdish/Topdish.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Topdish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class StartViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
@@ -16,6 +18,7 @@ class StartViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var googleButton: UIButton!
     @IBOutlet weak var guestButton: UIButton!
+    @IBOutlet weak var facebookButton: UIButton!
     
     
 
@@ -113,6 +116,43 @@ class StartViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 }
                 
             }
+        }
+    }
+    
+    @IBAction func facebookButtonTapped(_ sender: Any) {
+        print(1234)
+        
+        LoginManager().logIn(permissions: ["email"], from: self) { (result, err) in
+            if err != nil {
+                print("Custom FB Login failed:", err as Any)
+                return
+            }
+            
+            self.showEmailAddress()
+        }
+    }
+    
+    func showEmailAddress() {
+        let accessToken = AccessToken.current
+        guard let accessTokenString = accessToken?.tokenString else { return }
+        
+        let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
+        Auth.auth().signIn(with: credentials, completion: { (user, error) in
+            if error != nil {
+                print("Something went wrong with our FB user: ", error ?? "")
+                return
+            }
+            
+            print("Successfully logged in with our user: ", user ?? "")
+        })
+        
+        GraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, err) in
+            
+            if err != nil {
+                print("Failed to start graph request:", err ?? "")
+                return
+            }
+            print(result ?? "")
         }
     }
     

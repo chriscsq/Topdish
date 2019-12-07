@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class SettingsViewController: UIViewController {
     
@@ -52,7 +54,7 @@ class SettingsViewController: UIViewController {
     }
     
     @objc func handleSignOut() {
-        let alertController = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: nil, message: "Are you sure you want to leave?", preferredStyle: .actionSheet)
         if (!guest) {
             alertController.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { (_) in
                 self.signOut()
