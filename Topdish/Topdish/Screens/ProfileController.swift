@@ -23,8 +23,11 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let label = UILabel(frame: CGRect(x:0, y:0, width:200, height:50))
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "yourCellIdentifier", for: indexPath) as! YourCell
+
+        let restaurantList = [String](review.keys)
+        
         if bookmarkreview {
             print(bookmarked)
             for _ in bookmarked {
@@ -32,7 +35,17 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
                 cell.textLabel?.text = bookmarked[indexPath.row]
             }
         } else {
-            label.text = "Not Hello"
+            print(review)
+            for _ in review {
+                // key of review dictionary = names of restaurant and dish
+                cell.textLabel?.numberOfLines = 0
+                cell.textLabel?.lineBreakMode = .byWordWrapping
+                cell.textLabel?.text = restaurantList[indexPath.row]
+                // value of review dictionary = actual review of dish
+                cell.detailTextLabel?.numberOfLines = 0
+                cell.detailTextLabel?.lineBreakMode = .byWordWrapping
+                cell.detailTextLabel?.text = review[restaurantList[indexPath.row]]
+            }
         }
         
         
@@ -44,7 +57,7 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
             return bookmarked.count
             
         } else {
-            return 3
+            return review.count
         }
     }
     
@@ -59,7 +72,7 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var numberoflikeddishes:UILabel!
     
     @IBOutlet weak var Table: UITableView!
-    
+
     // true for image; false for cover
     var imageSelected: Bool = true;
     
@@ -233,6 +246,7 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
             print("Bookmark")
         }
     }
+    
 }
 
 
