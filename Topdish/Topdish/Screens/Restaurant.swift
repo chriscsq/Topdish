@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseDatabase
 import CoreLocation
 import MapKit
@@ -72,24 +73,34 @@ class Restaurant {
             return "Uni-Omakase"
         }
     }
-    
+        
     /* Queries the database and returns a list of all restaurants */
     static func getRestaurantList(complete: @escaping ([Restaurant]) -> Void) {
         var restaurants: [Restaurant] = []
+        let storageRef = Storage.storage().reference().child("restaurant")
         
         Database.database().reference().child("restaurant").observeSingleEvent(of: .value) { snapshot in
             let allRestaurants = snapshot.children
             while let singleRestaurant = allRestaurants.nextObject() as? DataSnapshot {
                 let restName: String = singleRestaurant.key
-                //let featuredImage = singleRestaurant.childSnapshot(forPath: "image").value
+//                let featuredImage = singleRestaurant.childSnapshot(forPath: "image").value
                 let category = singleRestaurant.childSnapshot(forPath: "category").value
                 let restType = (category as! String)
                 let addressOfRest = singleRestaurant.childSnapshot(forPath: "address").value
                 let restAddress = (addressOfRest as! String)
-                getRating(restaurant: restName, completion: { myVal in
-                    restaurants.append(Restaurant(title: restName, featuredImage: UIImage(named: ignoreme())!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: 0))
-                    complete(restaurants)
+                
+                let resStorageRef = storageRef.child(restName).child(restName+".jpg")
+                resStorageRef.getData(maxSize: 20 * 1024 * 1024, completion: {(imageData, error) in
+                    if let error = error {
+                        print("Got an error getting the restaurant image: \(error)")
+                        return
+                    }
+                    getRating(restaurant: restName, completion: { myVal in
+                        restaurants.append(Restaurant(title: restName, featuredImage: UIImage(data: imageData!)!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: 0))
+                        complete(restaurants)
+                    })
                 })
+                
             }
         }
     }
@@ -153,6 +164,8 @@ class Restaurant {
     /* Queries the database and returns a list of restaurants with ongoing offers
      * Based on offer start and end date */
     static func getExclusiveOffers(complete: @escaping ([Restaurant]) -> Void) {
+        let storageRef = Storage.storage().reference().child("restaurant")
+
         var offeredPlaces: [Restaurant] = []
         Database.database().reference().child("offers").observeSingleEvent(of: .value) { snapshot in
             let allOffers = snapshot.children
@@ -169,10 +182,22 @@ class Restaurant {
                             let restType = (category as! String)
                             let addressOfRest = singleRestaurant.childSnapshot(forPath: "address").value
                             let restAddress = (addressOfRest as! String)
-                            getRating(restaurant: restName, completion: { myVal in
-                                offeredPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: myRank))
-                                complete(offeredPlaces)
+                            
+                            let resStorageRef = storageRef.child(restName).child(restName+".jpg")
+                            resStorageRef.getData(maxSize: 20 * 1024 * 1024, completion: {(imageData, error) in
+                                if let error = error {
+                                    print("Got an error getting the restaurant image: \(error)")
+                                    return
+                                }
+                                getRating(restaurant: restName, completion: { myVal in
+                                    offeredPlaces.append(Restaurant(title: restName, featuredImage: UIImage(data: imageData!)!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: myRank))
+                                    complete(offeredPlaces)
+                                })
                             })
+//                            getRating(restaurant: restName, completion: { myVal in
+//                                offeredPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: myRank))
+//                                complete(offeredPlaces)
+//                            })
                         } else {
                             continue
                         }
