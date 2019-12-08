@@ -18,6 +18,7 @@
 		52F71227239CD0DD00928F6F /* TopDishesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F71226239CD0DD00928F6F /* TopDishesTableViewCell.swift */; };
 		52F71229239CD2DB00928F6F /* TopDishesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F71228239CD2DB00928F6F /* TopDishesTableViewController.swift */; };
 		52F7122B239CE28D00928F6F /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F7122A239CE28D00928F6F /* ReviewTableViewCell.swift */; };
+		52F7122D239D07C800928F6F /* NearbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F7122C239D07C800928F6F /* NearbyViewController.swift */; };
 		52FDA3692388E13900D9E1F2 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FDA3682388E13900D9E1F2 /* Restaurant.swift */; };
 		C0A03D2D181AB62A2C21C9BE /* Pods_Topdish_TopdishUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8BB1CF4899076A907612B40 /* Pods_Topdish_TopdishUITests.framework */; };
 		CA7211454AA2A2BE7A5C8161 /* Pods_Topdish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A777B66AC55225E1D61EAC0E /* Pods_Topdish.framework */; };
@@ -61,6 +62,7 @@
 		52F71226239CD0DD00928F6F /* TopDishesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDishesTableViewCell.swift; sourceTree = "<group>"; };
 		52F71228239CD2DB00928F6F /* TopDishesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDishesTableViewController.swift; sourceTree = "<group>"; };
 		52F7122A239CE28D00928F6F /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		52F7122C239D07C800928F6F /* NearbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyViewController.swift; sourceTree = "<group>"; };
 		52FDA3682388E13900D9E1F2 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		6AD348DEA25E98EB00D89ADD /* Pods-TopdishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopdishTests.release.xcconfig"; path = "Target Support Files/Pods-TopdishTests/Pods-TopdishTests.release.xcconfig"; sourceTree = "<group>"; };
 		8E8145D1052B2BC1AF748608 /* Pods-TopdishTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopdishTests.debug.xcconfig"; path = "Target Support Files/Pods-TopdishTests/Pods-TopdishTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				52E7A95F2397375C00F158F8 /* RestaurantScreenController.swift */,
 				52CD78DB23960AB8004F97D7 /* ViewAllController.swift */,
 				52E8253D2388AB0800F5FEA6 /* HomePageController.swift */,
+				52F7122C239D07C800928F6F /* NearbyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				52CD78DC23960AB8004F97D7 /* ViewAllController.swift in Sources */,
 				D30BEDFB23849CA100B5FEE2 /* AppDelegate.swift in Sources */,
 				52FDA3692388E13900D9E1F2 /* Restaurant.swift in Sources */,
+				52F7122D239D07C800928F6F /* NearbyViewController.swift in Sources */,
 				52E7A96223973E4C00F158F8 /* RestaurantImageCollectionCell.swift in Sources */,
 				52CD78DE23961090004F97D7 /* RestaurantCardCollectionCell.swift in Sources */,
 				D30BEDFD23849CA100B5FEE2 /* SceneDelegate.swift in Sources */,
