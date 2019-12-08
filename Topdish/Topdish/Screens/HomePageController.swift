@@ -8,7 +8,7 @@
 //
 
 import UIKit
-import ResearchKit
+//import ResearchKit
 
 class HomePageController: UIViewController {
 

@@ -7,28 +7,28 @@
 //
 
 import Foundation
-import ResearchKit
+//import ResearchKit
 
-class ReviewController:UIViewController{
+//class ReviewController:UIViewController{
     
-    @IBOutlet weak var numDiner: UITextField!
-    
-    @IBOutlet weak var experience: UITextView!
-    
-    @IBOutlet weak var wouldyougoback: UITextView!
-    
-    @IBOutlet weak var addDish: UIButton!
-    
-    //Modal View Buttons
-    @IBOutlet weak var done: UIButton!
-    
-    
-    override func viewDidLoad() {
-           //print("First I was afraid")
-           super.viewDidLoad()
-           
-       }
+//    @IBOutlet weak var numDiner: UITextField!
+//    
+//    @IBOutlet weak var experience: UITextView!
+//    
+//    @IBOutlet weak var wouldyougoback: UITextView!
+//    
+//    @IBOutlet weak var addDish: UIButton!
+//    
+//    //Modal View Buttons
+//    @IBOutlet weak var done: UIButton!
+//    
+//    
+//    override func viewDidLoad() {
+//           //print("First I was afraid")
+//           super.viewDidLoad()
+//           
+//       }
     
     
    
-}
+//}

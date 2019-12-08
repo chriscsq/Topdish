@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 import FirebaseDatabase
+import Firebase
 
-class ProfileController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProfileController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var bookmarkreview = true
     var bookmarked: [String] = []{
         didSet{
@@ -49,11 +50,6 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     
-   
-    
-
-
-    
    //Define variables
     @IBOutlet weak var CoverPhoto: UIImageView!
     @IBOutlet weak var Photo: UIImageView!
@@ -65,11 +61,9 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var numberoflikeddishes:UILabel!
     
     @IBOutlet weak var Table: UITableView!
-    let imagePicker = UIImagePickerController()
-    //@IBOutlet weak override var bookmarked: UITabBarItem!
     
-   // @IBOutlet weak override var reviews: UITabBarItem!
-    
+    // true for image; false for cover
+    var imageSelected: Bool = true;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,8 +72,6 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
         //Use Person's entered name as default Text
         self.nameField.placeholder = "First Last"
         //Update Label based on the user profile here
-    //self.numberofReview.text =
-    //self.numberoflikeddishes.text =
         
         //Table view
         Table.dataSource = (self as UITableViewDataSource)
@@ -87,29 +79,124 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
        
         profile()
         
+        setProfileAndBackgroundPics()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProfileController.imageTapped(gesture:)))
+        Photo.isUserInteractionEnabled = true
+        Photo.addGestureRecognizer(tapGesture)
+        
+        let tapGestureCover = UITapGestureRecognizer(target: self, action: #selector(ProfileController.coverTapped(gesture:)))
+        CoverPhoto.isUserInteractionEnabled = true
+        CoverPhoto.addGestureRecognizer(tapGestureCover)
     }
     
-    //Change profile picture
-    @IBAction func loadImageButtonTapped(_ sender: UIButton) {
+    func setProfileAndBackgroundPics() {
+        // MARK:- GET IMAGE FROM UID PATH
+        
+        let storageRefProfile = Storage.storage().reference().child("profile.jpg")
+        storageRefProfile.getData(maxSize: 20*1024*1024, completion: { (imagedata, error) in
+            if let error = error {
+                print("Got an error getting the profile image: \(error)")
+                return
+            }
+            self.Photo.image = UIImage(data: imagedata!)
+        })
+        
+        let storageRefBackground = Storage.storage().reference().child("background.jpg")
+        storageRefBackground.getData(maxSize: 20*1024*1024, completion: { (imageCoverdata, error) in
+            if let error = error {
+                print("Got an error getting the profile image: \(error)")
+                return
+            }
+            self.CoverPhoto.image = UIImage(data: imageCoverdata!)
+        })
+    }
+    
+    @objc func imageTapped(gesture: UIGestureRecognizer) {
+        // if the tapped view is a UIImageView then set it to imageview
+        if (gesture.view as? UIImageView) != nil {
+            print("Image Tapped")
+            imageSelected = true
+            let alertController = UIAlertController(title: nil, message: "Do you want to change your Profile Picture?", preferredStyle: .actionSheet)
+            
+            alertController.addAction(UIAlertAction(title: "Change Profile Picture", style: .destructive, handler: { (_) in
+                self.imgCntlr()
+            }))
+                
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    func imgCntlr() {
+        imageSelected = true
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
     
-   
-    //This is to change cover photo
-    @IBAction func loadCoverButtonTapped(_ sender: UIButton) {
-        imagePicker.allowsEditing = true
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+    func cvrCntlr() {
+        imageSelected = false
+        let coverPicker = UIImagePickerController()
+        coverPicker.delegate = self
+        coverPicker.allowsEditing = true
+        coverPicker.sourceType = .photoLibrary
+        present(coverPicker, animated: true, completion: nil)
     }
+    
+    @objc func coverTapped(gesture: UIGestureRecognizer) {
+        // if the tapped view is a UIImageView then set it to imageview
+        if (gesture.view as? UIImageView) != nil {
+            print("Cover Tapped")
+            imageSelected = false
+            let alertController = UIAlertController(title: nil, message: "Do you want to change your Backgound Picture?", preferredStyle: .actionSheet)
+            
+            alertController.addAction(UIAlertAction(title: "Change Background Picture", style: .destructive, handler: { (_) in
+                self.cvrCntlr()
+            }))
+                
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+    
     //Opens photo gallery
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("image controller")
         //Here save picture, and change it as well - Save onto DB here
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                      Photo.contentMode = .scaleAspectFit
-                      Photo.image = pickedImage
-                  }
+        if (imageSelected) {
+            Photo.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+            
+            //MARK:- CHANGE TO UID PATH
+            
+            let storageRef = Storage.storage().reference().child("profile.jpg")
+            if let uploadData = self.Photo.image!.jpegData(compressionQuality: 0.0) {
+                storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                    if error != nil {
+                        print("error")
+                        return
+                    } else {
+                        print("profile pic storage save success")
+                    }
+               }
+            }
+        } else {
+            CoverPhoto.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+            let storageRefBack = Storage.storage().reference().child("background.jpg")
+            if let uploadDataBack = self.CoverPhoto.image!.jpegData(compressionQuality: 0.0) {
+                storageRefBack.putData(uploadDataBack, metadata: nil) { (metadata, error) in
+                    if error != nil {
+                        print("error")
+                        return
+                    } else {
+                        print("background pic storage save success")
+                    }
+               }
+            }
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -128,7 +215,6 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     //Segment Controller case statements
-    
     @IBAction func switchbetween(_ sender: UISegmentedControl){
         switch  tablecontrol.selectedSegmentIndex{
         case 0:
@@ -149,10 +235,9 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
             print("Bookmark")
         }
     }
-    
-
-    
 }
+
+
 extension UIImageView{
     func makeRounded() {
 

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		1BCFEA6ED670C80367565DF7 /* Pods_TopdishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */; };
 		230AF2D8238F32F10057071E /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230AF2D7238F32F10057071E /* ProfileController.swift */; };
-		230AF2E52394327C0057071E /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230AF2E2239432010057071E /* ResearchKit.framework */; };
-		230AF2E62394327C0057071E /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 230AF2E2239432010057071E /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		230AF2E923961EF00057071E /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230AF2E823961EF00057071E /* SurveyTask.swift */; };
 		230AF2F123974AE60057071E /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230AF2F023974AE60057071E /* ReviewController.swift */; };
 		235D746C239C56AF00315821 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235D746B239C56AF00315821 /* Profile.swift */; };
@@ -63,20 +61,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		230AF2E72394327C0057071E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				230AF2E62394327C0057071E /* ResearchKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		11900758A271267757D042A3 /* Pods-Topdish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topdish.debug.xcconfig"; path = "Target Support Files/Pods-Topdish/Pods-Topdish.debug.xcconfig"; sourceTree = "<group>"; };
 		13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopdishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +103,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				230AF2E52394327C0057071E /* ResearchKit.framework in Frameworks */,
 				CA7211454AA2A2BE7A5C8161 /* Pods_Topdish.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +251,6 @@
 				D30BEDF423849CA100B5FEE2 /* Frameworks */,
 				D30BEDF523849CA100B5FEE2 /* Resources */,
 				D9AE409D114638DF6548FB3E /* [CP] Embed Pods Frameworks */,
-				230AF2E72394327C0057071E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
