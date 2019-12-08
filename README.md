@@ -15,3 +15,5 @@ It takes a while for the Nearby section in home to sort - JS
 Sometimes the Nearby will not sort correctly. - JS
 
 Click on the cell of the dish you want more detail about and it will crash. ReloadData() is the reason or the way I am calling it - GL
+
+Images in Firebase Storage must not be too large, otherwise it takes noticeable amount of time for them to load; less than 1mb is goo. - K
