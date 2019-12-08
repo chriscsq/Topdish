@@ -109,33 +109,16 @@ class Restaurant {
                     restaurant.distance = 99999999999
                     return
                 }
-                // Use your location
-                let request = MKDirections.Request()
-                let myLatitude = location.coordinate.latitude
-                let myLongitude = location.coordinate.longitude
+                print(myLocation.latitude, " ", myLocation.longitude)
+                let sourceP = CLLocation.init(latitude: myLocation.latitude, longitude: myLocation.longitude)
                 
-                let destP = CLLocationCoordinate2DMake(myLatitude, myLongitude)
-                let sourceP = CLLocationCoordinate2DMake(myLocation.latitude, myLocation.longitude)
-                let source = MKPlacemark(coordinate: sourceP)
-                let destination = MKPlacemark(coordinate: destP)
-                request.source = MKMapItem(placemark: source)
-                request.destination = MKMapItem(placemark: destination)
-                
-                // Specify the transportation type
-                request.transportType = MKDirectionsTransportType.automobile;
+                restaurant.distance = location.distance(from: sourceP)
+                /*print("\n\n_____________________")
+                for restaurant in restaurantArray.sorted(by: { $0.distance > $1.distance }) {
+                    print(restaurant.title, " ", restaurant.distance)
+                }*/
+                complete (restaurantArray.sorted { $0.distance > $1.distance })
 
-                // If you're open to getting more than one route,
-                // requestsAlternateRoutes = true; else requestsAlternateRoutes = false;
-                request.requestsAlternateRoutes = true
-                let directions = MKDirections(request: request)
-
-                // Now we have the routes, we can calculate the distance using
-                directions.calculate { (response, error) in
-                    if let response = response, let route = response.routes.first {
-                        restaurant.distance = route.distance                        // This is the distance between location and address
-                    }
-                    complete (restaurantArray.sorted { $0.distance > $1.distance })
-                }
             }
         }
     }
