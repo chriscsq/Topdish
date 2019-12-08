@@ -23,7 +23,7 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
     var phone  = ""
     var foodRatingLabel = "Food"
     var serviceRatingLabel = "Service"
-    
+
     // MARK: IBOutlets
     @IBOutlet weak var RestaurantImageView: UIImageView!
     @IBOutlet var PhoneLabel: UILabel!
@@ -99,8 +99,6 @@ extension RestaurantScreenController:  UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
-    
 }
 
 @IBDesignable extension UIButton {

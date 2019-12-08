@@ -706,18 +706,30 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NQ-bh-okd">
-                                                            <rect key="frame" x="8" y="0.0" width="358" height="44"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.29803921570000003" green="0.27450980390000002" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZy-jp-Q5q">
+                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NQ-bh-okd" customClass="InsetLabel" customModule="Topdish" customModuleProvider="target">
+                                                                    <rect key="frame" x="8" y="8" width="358" height="28"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" red="0.29803921570000003" green="0.27450980390000002" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="0NQ-bh-okd" firstAttribute="top" secondItem="CZy-jp-Q5q" secondAttribute="top" constant="8" id="PJx-3A-WfI"/>
+                                                                <constraint firstAttribute="bottom" secondItem="0NQ-bh-okd" secondAttribute="bottom" constant="8" id="QNp-G1-aBL"/>
+                                                                <constraint firstItem="0NQ-bh-okd" firstAttribute="leading" secondItem="CZy-jp-Q5q" secondAttribute="leading" constant="8" id="UGu-YY-rXS"/>
+                                                                <constraint firstAttribute="trailing" secondItem="0NQ-bh-okd" secondAttribute="trailing" constant="8" id="qye-0e-es2"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="0NQ-bh-okd" secondAttribute="trailing" constant="8" id="14s-FT-4Yy"/>
-                                                        <constraint firstItem="0NQ-bh-okd" firstAttribute="top" secondItem="dED-qT-gB6" secondAttribute="top" id="8g2-zP-Dj6"/>
-                                                        <constraint firstItem="0NQ-bh-okd" firstAttribute="leading" secondItem="dED-qT-gB6" secondAttribute="leading" constant="8" id="jLo-m3-d4r"/>
-                                                        <constraint firstAttribute="bottom" secondItem="0NQ-bh-okd" secondAttribute="bottom" id="zlU-hY-Iw2"/>
+                                                        <constraint firstItem="CZy-jp-Q5q" firstAttribute="top" secondItem="dED-qT-gB6" secondAttribute="top" id="e1o-xJ-NZ8"/>
+                                                        <constraint firstItem="CZy-jp-Q5q" firstAttribute="leading" secondItem="dED-qT-gB6" secondAttribute="leading" id="mhX-3G-z9q"/>
+                                                        <constraint firstAttribute="bottom" secondItem="CZy-jp-Q5q" secondAttribute="bottom" id="nLT-id-n6b"/>
+                                                        <constraint firstAttribute="trailing" secondItem="CZy-jp-Q5q" secondAttribute="trailing" id="vb2-GZ-O0d"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
