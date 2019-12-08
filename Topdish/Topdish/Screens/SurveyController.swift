@@ -19,12 +19,7 @@ class SurveyController: UIViewController {
         
     }
     
-    @IBAction func surveyTapped(sender : UIButton) {
-           print("fuck")
-           let taskViewController = ORKTaskViewController(task: SurveyTask, taskRun: nil)
-           taskViewController.delegate = self as? ORKTaskViewControllerDelegate
-           present(taskViewController, animated: true, completion: nil)
-       }
+    
     
 }
 

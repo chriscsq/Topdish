@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1BCFEA6ED670C80367565DF7 /* Pods_TopdishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */; };
 		230AF2D8238F32F10057071E /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230AF2D7238F32F10057071E /* ProfileController.swift */; };
-		230AF2DA2392FA880057071E /* SurveyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230AF2D92392FA880057071E /* SurveyController.swift */; };
 		230AF2E52394327C0057071E /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230AF2E2239432010057071E /* ResearchKit.framework */; };
 		230AF2E62394327C0057071E /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 230AF2E2239432010057071E /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		230AF2E923961EF00057071E /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230AF2E823961EF00057071E /* SurveyTask.swift */; };
@@ -82,7 +81,6 @@
 		11900758A271267757D042A3 /* Pods-Topdish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topdish.debug.xcconfig"; path = "Target Support Files/Pods-Topdish/Pods-Topdish.debug.xcconfig"; sourceTree = "<group>"; };
 		13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopdishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		230AF2D7238F32F10057071E /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		230AF2D92392FA880057071E /* SurveyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyController.swift; sourceTree = "<group>"; };
 		230AF2DB239432000057071E /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../../../../Downloads/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
 		230AF2E823961EF00057071E /* SurveyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
 		230AF2F023974AE60057071E /* ReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewController.swift; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				52E8253D2388AB0800F5FEA6 /* HomePageController.swift */,
-				230AF2D92392FA880057071E /* SurveyController.swift */,
 				230AF2F023974AE60057071E /* ReviewController.swift */,
 				230AF2E823961EF00057071E /* SurveyTask.swift */,
 				230AF2D7238F32F10057071E /* ProfileController.swift */,
@@ -534,7 +531,6 @@
 				D30BEDFD23849CA100B5FEE2 /* SceneDelegate.swift in Sources */,
 				230AF2D8238F32F10057071E /* ProfileController.swift in Sources */,
 				52E825382388964100F5FEA6 /* ThemedTextBox.swift in Sources */,
-				230AF2DA2392FA880057071E /* SurveyController.swift in Sources */,
 				52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
