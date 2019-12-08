@@ -38,30 +38,29 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
         RestaurantNameLabel.text = restaurantName
         RestaurantImageView.image = restaurantImage
         
-        DishesView.isHidden = false
-        ReviewsView.isHidden = true
-
+      //  DishesView.isHidden = false
+       // ReviewsView.isHidden = true
         street = "4004 3rd st nw \nCalgary, AB \nT2k 0Z8"
         StreetLabel.text = street
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
+
+    /*
+
     @IBAction func changeViewOnSegment(_ sender: Any) {
         switch ViewSegmentedController.selectedSegmentIndex {
         case 0:
             DishesView.isHidden = false
-            ReviewsView.isHidden = true
+           // ReviewsView.isHidden = true
         case 1:
             DishesView.isHidden = true
-            ReviewsView.isHidden = false
+         //   ReviewsView.isHidden = false
         default:
             DishesView.isHidden = false
-            ReviewsView.isHidden = true
+        //    ReviewsView.isHidden = true
         }
 
     }
+ */
     
 }
 
