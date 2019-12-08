@@ -5,33 +5,51 @@
 //  Created by Simran Bhattarai on 2019-11-26.
 //  Copyright © 2019 Topdish Inc. All rights reserved.
 //
-
 import Foundation
 import UIKit
 import FirebaseDatabase
 
 class ProfileController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var bookmarkreview = true
+    var bookmarked: [String] = []{
+        didSet{
+            Table.reloadData()
+        }
+    }
+    var review: [String:String] = [:]{
+        didSet{
+            Table.reloadData()
+        }
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let label = UILabel(frame: CGRect(x:0, y:0, width:200, height:50))
-        //POPULATE TABLE FROM DB HERE
-        //Add conditionals???
         if bookmarkreview{
-            
-            label.text = "Hello"
-            
+            for bookmark in bookmarked{
+                //print(bookmark)
+                label.text = bookmark
+               // print(label)
+                cell.addSubview(label)
+                cell.removeFromSuperview()
+            }
         }else{
             label.text = "Not Hello"
         }
         
-        cell.addSubview(label)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        if bookmarkreview{
+            return bookmarked.count
+            
+        }else{
+            return 3
+        }
     }
+    
+   
     
 
 
@@ -67,8 +85,7 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
         Table.dataSource = (self as UITableViewDataSource)
         Table.delegate = (self as UITableViewDelegate)
        
-        
-        
+        profile()
         
     }
     
@@ -78,6 +95,8 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
+    
+   
     //This is to change cover photo
     @IBAction func loadCoverButtonTapped(_ sender: UIButton) {
         imagePicker.allowsEditing = true
@@ -87,12 +106,25 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
     //Opens photo gallery
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         //Here save picture, and change it as well - Save onto DB here
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                      Photo.contentMode = .scaleAspectFit
+                      Photo.image = pickedImage
+                  }
         dismiss(animated: true, completion: nil)
     }
+    
     //Cancels changes
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         //This is when no image is picked and user pressed cancel
         dismiss(animated: true, completion: nil)
+    }
+    
+    func profile() -> Void{
+        Profile.getProfile(profileID:"Still need to decide on user identifier", completion: {profile in
+            self.bookmarked = profile.bookmarked
+            self.review = profile.review
+            print(profile.bookmarked)
+        })
     }
     
     //Segment Controller case statements
@@ -131,5 +163,3 @@ extension UIImageView{
         self.clipsToBounds = true
     }
 }
-
-

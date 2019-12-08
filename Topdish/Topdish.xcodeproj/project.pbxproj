@@ -167,6 +167,7 @@
 				230AF2F023974AE60057071E /* ReviewController.swift */,
 				230AF2E823961EF00057071E /* SurveyTask.swift */,
 				230AF2D7238F32F10057071E /* ProfileController.swift */,
+				235D746B239C56AF00315821 /* Profile.swift */,
 				52E825412388C0C100F5FEA6 /* HomePageCollectionCell.swift */,
 				52FDA3682388E13900D9E1F2 /* Restaurant.swift */,
 			);
@@ -229,7 +230,6 @@
 				D30BEDFC23849CA100B5FEE2 /* SceneDelegate.swift */,
 				D30BEDFE23849CA100B5FEE2 /* ViewController.swift */,
 				D30BEE0023849CA100B5FEE2 /* Main.storyboard */,
-				235D746B239C56AF00315821 /* Profile.swift */,
 				D30BEE0323849CA600B5FEE2 /* Assets.xcassets */,
 				D30BEE0523849CA600B5FEE2 /* LaunchScreen.storyboard */,
 				D3B6C02C2385D32900FFED65 /* GoogleService-Info.plist */,

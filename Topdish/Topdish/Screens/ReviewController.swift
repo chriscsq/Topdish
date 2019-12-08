@@ -24,7 +24,7 @@ class ReviewController:UIViewController{
     
     
     override func viewDidLoad() {
-           print("First I was afraid")
+           //print("First I was afraid")
            super.viewDidLoad()
            
        }
