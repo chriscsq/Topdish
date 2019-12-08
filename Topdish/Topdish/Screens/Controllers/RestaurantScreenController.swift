@@ -47,10 +47,12 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
         StreetLabel.text = street
         TopDishesTableView.dataSource = self
         ReviewTableView.dataSource = self
+        
+        ReviewTableView.estimatedRowHeight = 44.0
+        ReviewTableView.rowHeight = UITableView.automaticDimension
+
     }
-
     
-
     @IBAction func changeViewOnSegment(_ sender: Any) {
         switch ViewSegmentedController.selectedSegmentIndex {
         case 0:
@@ -63,9 +65,7 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
             DishesView.isHidden = false
             ReviewsView.isHidden = true
         }
-
     }
- 
     
 }
 
