@@ -12,28 +12,26 @@ import Firebase
 
 class ProfileController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var bookmarkreview = true
-    var bookmarked: [String] = []{
-        didSet{
+    var bookmarked: [String] = [] {
+        didSet {
             Table.reloadData()
         }
     }
-    var review: [String:String] = [:]{
-        didSet{
+    var review: [String:String] = [:] {
+        didSet {
             Table.reloadData()
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let label = UILabel(frame: CGRect(x:0, y:0, width:200, height:50))
-        if bookmarkreview{
-            for bookmark in bookmarked{
-                //print(bookmark)
-                label.text = bookmark
-               // print(label)
-                cell.addSubview(label)
-                cell.removeFromSuperview()
+        if bookmarkreview {
+            print(bookmarked)
+            for _ in bookmarked {
+                // bookmark cell restaurant name labels
+                cell.textLabel?.text = bookmarked[indexPath.row]
             }
-        }else{
+        } else {
             label.text = "Not Hello"
         }
         
@@ -42,10 +40,10 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if bookmarkreview{
+        if bookmarkreview {
             return bookmarked.count
             
-        }else{
+        } else {
             return 3
         }
     }
@@ -206,7 +204,7 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
         dismiss(animated: true, completion: nil)
     }
     
-    func profile() -> Void{
+    func profile() -> Void {
         Profile.getProfile(profileID:"Still need to decide on user identifier", completion: {profile in
             self.bookmarked = profile.bookmarked
             self.review = profile.review
@@ -215,7 +213,7 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     //Segment Controller case statements
-    @IBAction func switchbetween(_ sender: UISegmentedControl){
+    @IBAction func switchbetween(_ sender: UISegmentedControl) {
         switch  tablecontrol.selectedSegmentIndex{
         case 0:
             //Connect to Database here
@@ -238,13 +236,14 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
 }
 
 
-extension UIImageView{
+extension UIImageView {
+    
     func makeRounded() {
-
         self.layer.borderWidth = 1
         self.layer.masksToBounds = false
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.cornerRadius = self.frame.height / 2
         self.clipsToBounds = true
     }
+    
 }
