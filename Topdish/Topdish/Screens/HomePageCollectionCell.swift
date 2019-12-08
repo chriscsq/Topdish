@@ -11,8 +11,6 @@ class HomePageCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var featuredImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel?
-    @IBOutlet weak var restaurantRatingLabel: UILabel?
-    @IBOutlet weak var restaurantCuisineLabel: UILabel?
     
     var restaurant: Restaurant! {
         didSet {
@@ -24,14 +22,10 @@ class HomePageCollectionCell: UICollectionViewCell {
         if let restaurant = restaurant {
             featuredImageView.image = restaurant.featuredImage
             restaurantNameLabel?.text = restaurant.title
-            restaurantRatingLabel?.text = String(restaurant.rating)
-            restaurantCuisineLabel?.text = restaurant.typeOfCuisine
              
         } else {
             featuredImageView.image = nil
-            restaurantNameLabel = nil
-            restaurantRatingLabel = nil
-            restaurantCuisineLabel = nil
+           // restaurantNameLabel = nil
         }
         
         /* Image display settings for collection cells */

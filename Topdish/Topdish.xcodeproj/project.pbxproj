@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		1BCFEA6ED670C80367565DF7 /* Pods_TopdishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */; };
+		4B2AA7712390771A009A894A /* DishDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2AA7702390771A009A894A /* DishDetailCollectionViewCell.swift */; };
+		4B8005942398AE6F00AE6AC2 /* DishReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8005932398AE6F00AE6AC2 /* DishReviewTableViewCell.swift */; };
+		4B921F88238B2D4B003F984C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B921F87238B2D4B003F984C /* MenuViewController.swift */; };
+		4B921F8A238B305E003F984C /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B921F89238B305E003F984C /* Menu.swift */; };
+		4B921F92238B4C94003F984C /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B921F91238B4C94003F984C /* MenuTableViewController.swift */; };
+		4BB82A222399A88D00BF4774 /* CreateCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB82A212399A88D00BF4774 /* CreateCircle.swift */; };
+		4BB82A262399B6E800BF4774 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB82A252399B6E800BF4774 /* ReviewViewController.swift */; };
+		4BC95583239CBADC00BD58CF /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC95582239CBADC00BD58CF /* Dish.swift */; };
+		4BE6344F239C99B100F4A4C9 /* MultiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE6344E239C99B100F4A4C9 /* MultiViewController.swift */; };
+		4BE63451239CA38200F4A4C9 /* MenuPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63450239CA38200F4A4C9 /* MenuPageTableViewCell.swift */; };
+		4BF974ED238B53E400C54AE4 /* DishProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF974EC238B53E400C54AE4 /* DishProfileViewController.swift */; };
 		52E825382388964100F5FEA6 /* ThemedTextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E825372388964100F5FEA6 /* ThemedTextBox.swift */; };
 		52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E8253D2388AB0800F5FEA6 /* HomePageController.swift */; };
 		52E825402388BC8400F5FEA6 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 52E8253F2388BC8400F5FEA6 /* Images */; };
@@ -46,6 +57,17 @@
 /* Begin PBXFileReference section */
 		11900758A271267757D042A3 /* Pods-Topdish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topdish.debug.xcconfig"; path = "Target Support Files/Pods-Topdish/Pods-Topdish.debug.xcconfig"; sourceTree = "<group>"; };
 		13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopdishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B2AA7702390771A009A894A /* DishDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		4B8005932398AE6F00AE6AC2 /* DishReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishReviewTableViewCell.swift; sourceTree = "<group>"; };
+		4B921F87238B2D4B003F984C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		4B921F89238B305E003F984C /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		4B921F91238B4C94003F984C /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		4BB82A212399A88D00BF4774 /* CreateCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCircle.swift; sourceTree = "<group>"; };
+		4BB82A252399B6E800BF4774 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		4BC95582239CBADC00BD58CF /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		4BE6344E239C99B100F4A4C9 /* MultiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewController.swift; sourceTree = "<group>"; };
+		4BE63450239CA38200F4A4C9 /* MenuPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPageTableViewCell.swift; sourceTree = "<group>"; };
+		4BF974EC238B53E400C54AE4 /* DishProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DishProfileViewController.swift; path = Assets.xcassets/DishProfileViewController.swift; sourceTree = "<group>"; };
 		52E825372388964100F5FEA6 /* ThemedTextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedTextBox.swift; sourceTree = "<group>"; };
 		52E8253D2388AB0800F5FEA6 /* HomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		52E8253F2388BC8400F5FEA6 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
@@ -180,6 +202,17 @@
 				D30BEE0523849CA600B5FEE2 /* LaunchScreen.storyboard */,
 				D3B6C02C2385D32900FFED65 /* GoogleService-Info.plist */,
 				D30BEE0823849CA600B5FEE2 /* Info.plist */,
+				4B921F87238B2D4B003F984C /* MenuViewController.swift */,
+				4B921F89238B305E003F984C /* Menu.swift */,
+				4B921F91238B4C94003F984C /* MenuTableViewController.swift */,
+				4BF974EC238B53E400C54AE4 /* DishProfileViewController.swift */,
+				4B2AA7702390771A009A894A /* DishDetailCollectionViewCell.swift */,
+				4B8005932398AE6F00AE6AC2 /* DishReviewTableViewCell.swift */,
+				4BB82A212399A88D00BF4774 /* CreateCircle.swift */,
+				4BB82A252399B6E800BF4774 /* ReviewViewController.swift */,
+				4BE6344E239C99B100F4A4C9 /* MultiViewController.swift */,
+				4BE63450239CA38200F4A4C9 /* MenuPageTableViewCell.swift */,
+				4BC95582239CBADC00BD58CF /* Dish.swift */,
 			);
 			path = Topdish;
 			sourceTree = "<group>";
@@ -443,13 +476,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BE63451239CA38200F4A4C9 /* MenuPageTableViewCell.swift in Sources */,
 				D30BEDFF23849CA100B5FEE2 /* ViewController.swift in Sources */,
 				52E825422388C0C100F5FEA6 /* HomePageCollectionCell.swift in Sources */,
+				4BB82A262399B6E800BF4774 /* ReviewViewController.swift in Sources */,
+				4B921F92238B4C94003F984C /* MenuTableViewController.swift in Sources */,
 				D30BEDFB23849CA100B5FEE2 /* AppDelegate.swift in Sources */,
 				52FDA3692388E13900D9E1F2 /* Restaurant.swift in Sources */,
 				D30BEDFD23849CA100B5FEE2 /* SceneDelegate.swift in Sources */,
+				4BF974ED238B53E400C54AE4 /* DishProfileViewController.swift in Sources */,
 				52E825382388964100F5FEA6 /* ThemedTextBox.swift in Sources */,
+				4B921F8A238B305E003F984C /* Menu.swift in Sources */,
 				52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */,
+				4B921F88238B2D4B003F984C /* MenuViewController.swift in Sources */,
+				4BB82A222399A88D00BF4774 /* CreateCircle.swift in Sources */,
+				4B8005942398AE6F00AE6AC2 /* DishReviewTableViewCell.swift in Sources */,
+				4BC95583239CBADC00BD58CF /* Dish.swift in Sources */,
+				4BE6344F239C99B100F4A4C9 /* MultiViewController.swift in Sources */,
+				4B2AA7712390771A009A894A /* DishDetailCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
