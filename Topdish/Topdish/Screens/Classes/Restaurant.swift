@@ -19,7 +19,7 @@ class Restaurant {
     var distance: Double
     var address: String
     var rank: Int
-            
+    // var menu: Menu
 
 
     /* Hours */
@@ -32,7 +32,7 @@ class Restaurant {
         self.distance = distance
         self.address = address
         self.rank = rank
-        
+        //self.menu = func -> Menu
     }
     
     init() {
