@@ -10,46 +10,61 @@ import UIKit
 
 class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
     
-    var restaurantName = ""
     var clickedRestaurant: Restaurant = Restaurant()
-    var restaurantImages: [UIImage] = []
-    var testArray:[UIImage] = [UIImage(named: "steak")!]
+    var restaurantImage: UIImage?
+    var restaurantImageView: UIImageView?
+    
+    // MARK: Label variables
+    var restaurantName = ""
+    var hourMon = "", hourTue = "", hourWed = "",
+        hourThur = "", hourFri = "", hourSat = "", hourSun = ""
+    var street = "", postal = "", city = ""
+    var phone  = ""
+    var foodRatingLabel = "Food"
+    var serviceRatingLabel = "Service"
+    
+    // MARK: IBOutlets
+    @IBOutlet weak var RestaurantImageView: UIImageView!
+    @IBOutlet var PhoneLabel: UILabel!
+    @IBOutlet var StreetLabel: UILabel!
     @IBOutlet var AddReviewButton: UIButton!
     @IBOutlet var RestaurantNameLabel: UILabel!
-    @IBOutlet var ImageCollectionView: UICollectionView!
+    @IBOutlet var ViewSegmentedController: UISegmentedControl!
+    @IBOutlet weak var ReviewsView: UIScrollView!
+    @IBOutlet weak var DishesView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         RestaurantNameLabel.text = restaurantName
-        print(testArray.count)
-        print(restaurantImages.count)
-        ImageCollectionView.dataSource = self
-       // ImageCollectionView.showsHorizontalScrollIndicator = false
+        RestaurantImageView.image = restaurantImage
         
+        DishesView.isHidden = false
+        ReviewsView.isHidden = true
+
+        street = "4004 3rd st nw \nCalgary, AB \nT2k 0Z8"
+        StreetLabel.text = street
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    @IBAction func changeViewOnSegment(_ sender: Any) {
+        switch ViewSegmentedController.selectedSegmentIndex {
+        case 0:
+            DishesView.isHidden = false
+            ReviewsView.isHidden = true
+        case 1:
+            DishesView.isHidden = true
+            ReviewsView.isHidden = false
+        default:
+            DishesView.isHidden = false
+            ReviewsView.isHidden = true
+        }
 
-
+    }
+    
 }
 
-
-/* Used for when you click on pictures */
-extension RestaurantScreenController: UICollectionViewDataSource {
-
-       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 1
-       }
-
-       /* Populating collectionview  */
-       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = ImageCollectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantImageCollectionCell", for: indexPath) as! RestaurantImageCollectionCell
-            let headerImage = testArray[indexPath.item]
-            cell.headerImage.image = headerImage
-            return cell
-        
-    }
-       
-
-}
     
 
 @IBDesignable extension UIButton {
