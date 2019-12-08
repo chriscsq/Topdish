@@ -53,7 +53,10 @@ class HomePageController: UIViewController, UICollectionViewDelegate {
         } else if segue.identifier == "restaurantSegue" {
             let dest = segue.destination as! RestaurantScreenController
             dest.restaurantName = clickedRestaurant.title
-            //dest.restaurantImages = [clickedRestaurant.featuredImage!]//
+            dest.restaurantImage = clickedRestaurant.featuredImage
+            dest.reviews = clickedRestaurant.reviews
+            dest.menu = clickedRestaurant.menu
+            
         }
     }
     

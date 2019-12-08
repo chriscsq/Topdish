@@ -19,7 +19,11 @@ class Restaurant {
     var distance: Double
     var address: String
     var rank: Int
+    var reviews: [String] = ["this is some bad ass poo", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"]
     
+    var menu: [String] = ["Steak", "Burger", "Chili cheese", "Bubble tea"]
+
+
     /* Hours */
     // MARK: SETUP
     init(title: String, featuredImage: UIImage, typeOfCuisine: String, rating: Double, distance: Double, address: String, rank: Int ) {
@@ -30,6 +34,7 @@ class Restaurant {
         self.distance = distance
         self.address = address
         self.rank = rank
+        //self.menu = func -> Menu
     }
     
     init() {
@@ -41,6 +46,7 @@ class Restaurant {
         self.address = ""
         self.rank = 99
     }
+
     /* Queries the database to return the ratings for a single restaurant
      * goes through all the dishes and returns a double which is the average user rating */
     static func getRating(restaurant: String, completion: @escaping (Double) -> Void) {
