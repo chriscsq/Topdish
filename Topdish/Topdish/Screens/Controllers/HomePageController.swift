@@ -54,7 +54,9 @@ class HomePageController: UIViewController, UICollectionViewDelegate {
             let dest = segue.destination as! RestaurantScreenController
             dest.restaurantName = clickedRestaurant.title
             dest.restaurantImage = clickedRestaurant.featuredImage
-
+            dest.reviews = clickedRestaurant.reviews
+            dest.menu = clickedRestaurant.menu
+            
         }
     }
     

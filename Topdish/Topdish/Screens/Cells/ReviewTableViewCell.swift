@@ -15,6 +15,7 @@ class ReviewTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
     }
 
@@ -24,5 +25,7 @@ class ReviewTableViewCell: UITableViewCell {
         ReviewLabel.text = review
         // Configure the view for the selected state
     }
+    
+    
 
 }
