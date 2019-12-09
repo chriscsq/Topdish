@@ -8,7 +8,12 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
+var annotations:[MapAnnotations] = [MapAnnotations()]
+
+var test: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 35.124000, longitude: -106.642600)
+var testAnnotation:[MapAnnotations] = [MapAnnotations(title: "Chris", coordinate: test)]
 class NearbyViewController: UIViewController, UICollectionViewDelegate {
     var locationManager = CLLocationManager()
 
@@ -17,7 +22,6 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var MapView: MKMapView!
     @IBOutlet weak var NearbyCollectionView: UICollectionView!
     var clickedRestaurant: Restaurant = Restaurant()
-
     var nearbyRestaurants: [Restaurant] = [] {
         didSet{
             NearbyCollectionView.reloadData()
@@ -47,7 +51,7 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
         DragBar.layer.shadowOffset = .zero
         DragBar.layer.shadowRadius = 10
 
-
+        
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         
@@ -57,6 +61,13 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
         DraggedView.addGestureRecognizer(swipeUp)
         DraggedView.addGestureRecognizer(swipeDown)
 
+        
+        for i in testAnnotation {
+            let annotation = MKPointAnnotation()
+            annotation.title = i.title
+            annotation.coordinate = i.coordinate
+            self.MapView.addAnnotation(annotation)
+        }
         
         // Check for Location Services
         if (CLLocationManager.locationServicesEnabled()) {
@@ -71,12 +82,67 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
             MapView.setRegion(region, animated: false)
         }
 
-        /*
-        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipes))
-        DraggedView.addGestureRecognizer(gesture)
- */
+        // MARK: Annotations
+  
+        
+
+        
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+
+        let identifier = "Annotation"
+        var annotationView = MapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+
+        return annotationView
+    }
+    
+    static func getAnnotations(myLocation: CLLocationCoordinate2D, nearbyRestaurants: [Restaurant], complete: @escaping ([Restaurant]) -> Void) {
+    for restaurant in nearbyRestaurants {
+        let address = restaurant.address
+        
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+            else {
+                // handle no location found -- Can set default ? Will try later.
+                print("Cannot find location based on address String.")
+                restaurant.distance = 99999999999
+                return
+            }
+            annotations.append(MapAnnotations(title: restaurant.title, coordinate: location.coordinate))
+        }
+    }
+    }
+        
+    func getCoordinate( addressString : String,
+            completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(addressString) { (placemarks, error) in
+            if error == nil {
+                if let placemark = placemarks?[0] {
+                    let location = placemark.location!
+                        
+                    completionHandler(location.coordinate, nil)
+                    return
+                }
+            }
+                
+            completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
+        }
+    }
+
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "restaurantSegue" {
             let dest = segue.destination as! RestaurantScreenController
@@ -86,54 +152,26 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
     }
     
     @objc func handleSwipes(_ gesture: UISwipeGestureRecognizer) {
-        print("hello")
         let view = gesture.view!
         switch gesture.direction {
         case .up:
             UIView.animate(withDuration: 0.3, animations: {
                 self.MapView.alpha = 0.5
-                view.center = CGPoint(x: view.center.x, y: 667)
+                // 667 original
+                // want 100
+        
+                view.center = CGPoint(x: view.center.x, y: 457.6)
             })
         case .down:
             UIView.animate(withDuration:0.3, animations: {
                 self.MapView.alpha = 1
-                view.center = CGPoint(x: view.center.x, y: 1098)
+                view.center = CGPoint(x: view.center.x, y: 986.5)
             })
         default:
             break
         }
     }
-    /*
-    @objc func wasDragged(gesture: UISwipe) {
-        let fileView = gesture.view!
-        let translation = gesture.translation(in: self.view)
 
-        switch gesture.state {
-            
-        case .began, .changed:
-            
-            fileView.center = CGPoint(x: fileView.center.x, y: fileView.center.y + translation.y)
-            gesture.setTranslation(CGPoint.zero, in: view)
-        case .ended:
-            
-            if fileView.frame.contains(CGPoint(x: fileView.center.x, y: 778.5)) {
-                UIView.animate(withDuration: 0.3 , animations: {
-                    self.MapView.alpha = 1
-                    fileView.center = CGPoint(x: fileView.center.x, y: 1097)
-                })
-            } else if fileView.frame.contains(CGPoint(x: fileView.center.x, y: fileView.center.y - 50)) {
-                //fileView.center.y - 50
-                UIView.animate(withDuration: 0.3 , animations: {
-                    self.MapView.alpha = 0.5
-                    fileView.center = CGPoint(x: fileView.center.x, y: 667)
-                })
-            }
-        
-        default:
-            break
-        }
-    }
- */
     
     func nearby() -> Void {
         if( CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() ==  .authorizedAlways) {

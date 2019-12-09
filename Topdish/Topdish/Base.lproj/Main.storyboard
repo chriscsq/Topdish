@@ -448,7 +448,7 @@
                         <viewControllerLayoutGuide type="bottom" id="7xr-4u-wCL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YCY-Nd-Ya3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2QC-UR-djL">
@@ -787,11 +787,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbq-Lq-kbQ">
-                                <rect key="frame" x="0.0" y="629" width="414" height="928"/>
+                                <rect key="frame" x="0.0" y="629" width="414" height="715"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zkd-OD-Qhc">
-                                        <rect key="frame" x="8" y="29" width="398" height="871"/>
+                                        <rect key="frame" x="8" y="29" width="398" height="660"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bVX-pu-3XK">
@@ -855,11 +855,12 @@
                         <outlet property="DraggedView" destination="kbq-Lq-kbQ" id="KZe-1v-Qo0"/>
                         <outlet property="MapView" destination="s2S-vf-2U5" id="IQA-TA-gUV"/>
                         <outlet property="NearbyCollectionView" destination="Zkd-OD-Qhc" id="TyQ-rG-8Mm"/>
+                        <segue destination="qEH-9P-396" kind="show" identifier="restaurantSegue" id="kAx-Bc-GOw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YOa-sS-BuP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2000.0000000000002" y="-952.23214285714278"/>
+            <point key="canvasLocation" x="2734.7826086956525" y="-131.25"/>
         </scene>
         <!--Item-->
         <scene sceneID="xSc-yV-6Og">
@@ -890,6 +891,6 @@
         <image name="location.fill" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aKq-T2-FJR"/>
+        <segue reference="kAx-Bc-GOw"/>
     </inferredMetricsTieBreakers>
 </document>

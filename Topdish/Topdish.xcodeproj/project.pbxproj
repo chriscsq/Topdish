@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1BCFEA6ED670C80367565DF7 /* Pods_TopdishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */; };
+		52B3232C239DD13B0006FA7B /* MapAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B3232B239DD13B0006FA7B /* MapAnnotations.swift */; };
 		52CD78DC23960AB8004F97D7 /* ViewAllController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD78DB23960AB8004F97D7 /* ViewAllController.swift */; };
 		52CD78DE23961090004F97D7 /* RestaurantCardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD78DD23961090004F97D7 /* RestaurantCardCollectionCell.swift */; };
 		52E7A9602397375C00F158F8 /* RestaurantScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7A95F2397375C00F158F8 /* RestaurantScreenController.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		11900758A271267757D042A3 /* Pods-Topdish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topdish.debug.xcconfig"; path = "Target Support Files/Pods-Topdish/Pods-Topdish.debug.xcconfig"; sourceTree = "<group>"; };
 		13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopdishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B3232B239DD13B0006FA7B /* MapAnnotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotations.swift; sourceTree = "<group>"; };
 		52CD78DB23960AB8004F97D7 /* ViewAllController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllController.swift; sourceTree = "<group>"; };
 		52CD78DD23961090004F97D7 /* RestaurantCardCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardCollectionCell.swift; sourceTree = "<group>"; };
 		52E7A95F2397375C00F158F8 /* RestaurantScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantScreenController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				52FDA3682388E13900D9E1F2 /* Restaurant.swift */,
+				52B3232B239DD13B0006FA7B /* MapAnnotations.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				52FDA3692388E13900D9E1F2 /* Restaurant.swift in Sources */,
 				52F7122D239D07C800928F6F /* NearbyViewController.swift in Sources */,
 				52E7A96223973E4C00F158F8 /* RestaurantImageCollectionCell.swift in Sources */,
+				52B3232C239DD13B0006FA7B /* MapAnnotations.swift in Sources */,
 				52CD78DE23961090004F97D7 /* RestaurantCardCollectionCell.swift in Sources */,
 				D30BEDFD23849CA100B5FEE2 /* SceneDelegate.swift in Sources */,
 				52E8253E2388AB0800F5FEA6 /* HomePageController.swift in Sources */,
