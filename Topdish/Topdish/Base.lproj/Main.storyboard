@@ -19,6 +19,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Bag-Ti-V9S" kind="relationship" relationship="viewControllers" id="H7K-Sf-w6n"/>
+                        <segue destination="dji-Ex-8JO" kind="relationship" relationship="viewControllers" id="Ugt-Jv-ZBg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8RM-Mb-BM8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -762,6 +763,41 @@
             </objects>
             <point key="canvasLocation" x="1082.608695652174" y="664.95535714285711"/>
         </scene>
+        <!--Nearby-->
+        <scene sceneID="FwW-Zt-EkW">
+            <objects>
+                <viewController id="dji-Ex-8JO" customClass="NearbyViewController" customModule="Topdish" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="URf-vX-Ohp"/>
+                        <viewControllerLayoutGuide type="bottom" id="gRY-ZI-2A2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ye3-uv-pgh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2S-vf-2U5">
+                                <rect key="frame" x="0.0" y="91" width="414" height="530"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nearby" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdU-nV-ZrY">
+                                <rect key="frame" x="20" y="50" width="374" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Nearby" image="location.fill" catalog="system" id="Hpp-sh-JYz"/>
+                    <connections>
+                        <outlet property="MapView" destination="s2S-vf-2U5" id="IQA-TA-gUV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YOa-sS-BuP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2000" y="-952"/>
+        </scene>
         <!--Item-->
         <scene sceneID="xSc-yV-6Og">
             <objects>
@@ -788,6 +824,7 @@
         <image name="Test image.png" width="340" height="382"/>
         <image name="fast-food.png" width="22.5" height="22.5"/>
         <image name="flatbread.jpg" width="345.60000610351562" height="141.60000610351562"/>
+        <image name="location.fill" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dZ9-4p-zPT"/>
