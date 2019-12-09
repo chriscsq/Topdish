@@ -75,6 +75,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
+  - GoogleAppMeasurement
 
 SPEC REPOS:
   trunk:
@@ -109,6 +110,6 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
 
-PODFILE CHECKSUM: a2c25b3dfe119187439dbf58e09b88be3da25e91
+PODFILE CHECKSUM: c85004e7f5e2e60cf888b0d1a40923de8ab5e787
 
 COCOAPODS: 1.8.4

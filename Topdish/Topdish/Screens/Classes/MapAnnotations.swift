@@ -11,11 +11,11 @@ import MapKit
 
 class MapAnnotations: NSObject,MKAnnotation {
 
-    var title : String?
-    var subTit : String?
-    var coordinate : CLLocationCoordinate2D
+    var title: String?
+    var subTit: String?
+    var coordinate: CLLocationCoordinate2D
 
-    init(title:String,coordinate : CLLocationCoordinate2D){
+    init(title: String, coordinate: CLLocationCoordinate2D){
         self.title = title;
         self.coordinate = coordinate;
     }

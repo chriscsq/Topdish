@@ -18,5 +18,6 @@ target 'Topdish' do
 
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'GoogleAppMeasurement'
 
 end

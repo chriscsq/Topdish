@@ -12,7 +12,7 @@ import CoreLocation
 
 var annotations:[MapAnnotations] = [MapAnnotations()]
 
-var test: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 35.124000, longitude: -106.642600)
+var test: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 51.089140, longitude: -114.083980)
 var testAnnotation:[MapAnnotations] = [MapAnnotations(title: "Chris", coordinate: test)]
 class NearbyViewController: UIViewController, UICollectionViewDelegate {
     var locationManager = CLLocationManager()
@@ -249,7 +249,11 @@ extension NearbyViewController: UICollectionViewDataSource {
     
     func nearbyPlaces(location: CLLocationCoordinate2D) -> Void {
         Restaurant.getNearby(location: location, complete: { restaurantArray in
-            self.nearbyRestaurants = restaurantArray
+            DispatchQueue.main.async {
+                if(restaurantArray.count >= self.nearbyRestaurants.count) {
+                    self.nearbyRestaurants = restaurantArray
+                }
+            }
         })
     }
 

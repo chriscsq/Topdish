@@ -116,7 +116,7 @@ extension HomePageController: CLLocationManagerDelegate {
             print("User denied location permission") // Bail out of switch statement. Consider showing an alert that your app will need location to work.
             return
         case .authorizedWhenInUse:
-            print("App is authorized to use location while in use\n\n\n")
+            print("App is authorized to use location while in use")
             break
         case .authorizedAlways:
             print("App is authorized to always use this device's location")
@@ -130,7 +130,7 @@ extension HomePageController: CLLocationManagerDelegate {
     func nearby() -> Void {
         if( CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() ==  .authorizedAlways) {
             guard let locValue: CLLocationCoordinate2D = locationManager?.location?.coordinate else { return }
-            print("locations = \(locValue.latitude) \(locValue.longitude)")
+            //print("locations = \(locValue.latitude) \(locValue.longitude)")
             nearbyPlaces(location: locValue)
         } else {
             print("We have no access to the phones location.")
@@ -154,7 +154,11 @@ extension HomePageController: UICollectionViewDataSource {
     }
     func nearbyPlaces(location: CLLocationCoordinate2D) -> Void {
         Restaurant.getNearby(location: location, complete: { restaurantArray in
-            self.nearbyRestaurants = restaurantArray
+            DispatchQueue.main.async {
+                if(restaurantArray.count >= self.nearbyRestaurants.count) {
+                    self.nearbyRestaurants = restaurantArray
+                }
+            }
         })
     }
     func getExclusiveOffers() -> Void {

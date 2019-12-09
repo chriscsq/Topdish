@@ -27,7 +27,7 @@ class Restaurant {
 
     /* Hours */
     // MARK: SETUP
-    init(title: String, featuredImage: UIImage, typeOfCuisine: String, rating: Double, distance: Double, address: String, rank: Int ) {
+    init(title: String, featuredImage: UIImage, typeOfCuisine: String, rating: Double, distance: Double, address: String, rank: Int) {
         self.title = title
         self.featuredImage = featuredImage
         self.typeOfCuisine = typeOfCuisine
@@ -43,7 +43,7 @@ class Restaurant {
         self.featuredImage = nil
         self.typeOfCuisine = ""
         self.rating = 0
-        self.distance = DBL_MAX
+        self.distance = Double.greatestFiniteMagnitude
         self.address = ""
         self.rank = 99
     }
@@ -120,15 +120,10 @@ class Restaurant {
                     restaurant.distance = 99999999999
                     return
                 }
-                print(myLocation.latitude, " ", myLocation.longitude)
                 let sourceP = CLLocation.init(latitude: myLocation.latitude, longitude: myLocation.longitude)
                 
                 restaurant.distance = location.distance(from: sourceP)
-                /*print("\n\n_____________________")
-                for restaurant in restaurantArray.sorted(by: { $0.distance > $1.distance }) {
-                    print(restaurant.title, " ", restaurant.distance)
-                }*/
-                complete (restaurantArray.sorted { $0.distance > $1.distance })
+                complete(restaurantArray.sorted { $0.distance > $1.distance })
 
             }
         }
