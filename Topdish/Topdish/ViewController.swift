@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//import ResearchKit
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -17,3 +17,10 @@ class ViewController: UIViewController {
 
 
 }
+//extension ViewController : ORKTaskViewControllerDelegate {
+//    func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+//    //Handle results with taskViewController.result
+//    taskViewController.dismiss(animated: true, completion: nil)
+//  }
+//
+//}
