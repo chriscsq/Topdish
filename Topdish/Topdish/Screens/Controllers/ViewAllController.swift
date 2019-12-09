@@ -32,7 +32,7 @@ class ViewAllController: UIViewController, UICollectionViewDelegate {
         if segue.identifier == "restaurantSegue" {
             let dest = segue.destination as! RestaurantScreenController
             dest.restaurantName = clickedRestaurant.title
-            //dest.RestaurantImages = clickedRestaurant.featuredImage!
+            dest.restaurantImage = clickedRestaurant.featuredImage!
         }
     }
     

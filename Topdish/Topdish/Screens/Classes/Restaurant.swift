@@ -10,6 +10,7 @@ import UIKit
 import FirebaseDatabase
 import CoreLocation
 import MapKit
+import Darwin
 
 class Restaurant {
     var title: String
@@ -42,7 +43,7 @@ class Restaurant {
         self.featuredImage = nil
         self.typeOfCuisine = ""
         self.rating = 0
-        self.distance = 99999999999
+        self.distance = DBL_MAX
         self.address = ""
         self.rank = 99
     }
