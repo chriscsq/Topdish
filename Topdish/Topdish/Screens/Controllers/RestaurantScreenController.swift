@@ -67,7 +67,20 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
         }
     }
     
-}
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "dishSegue" {
+            let nav = segue.destination as! UINavigationController
+            let svc = nav.topViewController as! MultiViewController
+//            let dest = segue.destination as! MultiViewController
+            print("seging", clickedRestaurant.menu.dishes)
+            svc.menu = clickedRestaurant.menu.dishes
+        }
+    }}
 
 extension RestaurantScreenController:  UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,7 +106,7 @@ extension RestaurantScreenController:  UITableViewDataSource {
         } else if (tableView == ReviewTableView) {
             let cell = ReviewTableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewTableViewCell
             let review = reviews[indexPath.item]
-            print(menu[indexPath.item])
+          //  print(menu[indexPath.item])
             cell.review = review
             return cell
         }

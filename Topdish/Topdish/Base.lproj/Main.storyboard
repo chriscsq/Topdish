@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wc7-Ha-yHN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wc7-Ha-yHN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -439,6 +439,16 @@
             </objects>
             <point key="canvasLocation" x="1650.7246376811595" y="-130.58035714285714"/>
         </scene>
+        <!--Homepage-->
+        <scene sceneID="UTb-IX-Mf2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Homepage" id="7Sy-CP-wdF" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4Hy-f7-DTC"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D0U-sP-Chp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1837" y="682"/>
+        </scene>
         <!--Restaurant Screen Controller-->
         <scene sceneID="3aL-tN-W8B">
             <objects>
@@ -660,6 +670,9 @@
                                         <rect key="frame" x="322" y="-4" width="52" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Menu"/>
+                                        <connections>
+                                            <segue destination="7Sy-CP-wdF" kind="show" identifier="dishSegue" id="oLt-Up-bYU"/>
+                                        </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DRB-47-0Oh">
                                         <rect key="frame" x="0.0" y="29" width="374" height="259"/>
@@ -824,7 +837,7 @@
         <image name="Test image.png" width="340" height="382"/>
         <image name="fast-food.png" width="22.5" height="22.5"/>
         <image name="flatbread.jpg" width="345.60000610351562" height="141.60000610351562"/>
-        <image name="location.fill" catalog="system" width="64" height="56"/>
+        <image name="location.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dZ9-4p-zPT"/>

@@ -43,6 +43,11 @@ class Menu {
         //self.dishes = populate(restaurantName)
     }
     
+    init() {
+        self.restaurantName = ""
+        self.dishes = [Dish.init()]
+    }
+    
     
     func populateDish(_ restaurantName: String, completion: @escaping ([Dish]) -> Void) {
         var myDishes: [Dish] = []

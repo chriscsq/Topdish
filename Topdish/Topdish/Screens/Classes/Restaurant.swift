@@ -20,14 +20,17 @@ class Restaurant {
     var distance: Double
     var address: String
     var rank: Int
-    var reviews: [String] = ["this is some bad ass poo", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"]
+    //var reviews: [String] = ["this is some bad ass poo", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"]
+    var reviews: [String]
+    var hourMon, hourTue, hourWed, hourThu, hourFri, hourSat, hourSun: String
+    var phoneNumber: String
     
-    var menu: [String] = ["Steak", "Burger", "Chili cheese", "Bubble tea"]
+    var menu: Menu
 
 
     /* Hours */
     // MARK: SETUP
-    init(title: String, featuredImage: UIImage, typeOfCuisine: String, rating: Double, distance: Double, address: String, rank: Int ) {
+    init(title: String, featuredImage: UIImage, typeOfCuisine: String, rating: Double, distance: Double, address: String, rank: Int, hourMon: String, hourTue: String, hourWed: String, hourThu: String, hourFri: String, hourSat: String, hourSun: String, phoneNumber: String, reviews: [String]) {
         self.title = title
         self.featuredImage = featuredImage
         self.typeOfCuisine = typeOfCuisine
@@ -35,7 +38,16 @@ class Restaurant {
         self.distance = distance
         self.address = address
         self.rank = rank
-        //self.menu = func -> Menu
+        self.hourMon = hourMon
+        self.hourTue = hourTue
+        self.hourWed = hourWed
+        self.hourThu = hourThu
+        self.hourFri = hourFri
+        self.hourSat = hourSat
+        self.hourSun = hourSun
+        self.phoneNumber = phoneNumber
+        self.reviews = reviews
+        self.menu = Menu.init(restaurantName: title)
     }
     
     init() {
@@ -46,6 +58,16 @@ class Restaurant {
         self.distance = 99999999999
         self.address = ""
         self.rank = 99
+        self.menu = Menu.init()
+        self.hourMon = ""
+        self.hourTue = ""
+        self.hourWed = ""
+        self.hourThu = ""
+        self.hourFri = ""
+        self.hourSat = ""
+        self.hourSun = ""
+        self.phoneNumber = ""
+        self.reviews = []
     }
 
     /* Queries the database to return the ratings for a single restaurant
@@ -85,7 +107,16 @@ class Restaurant {
     /* Queries the database and returns a list of all restaurants */
     static func getRestaurantList(complete: @escaping ([Restaurant]) -> Void) {
         var restaurants: [Restaurant] = []
-        let storageRef = Storage.storage().reference().child("restaurant")
+        //let storageRef = Storage.storage().reference().child("restaurant")
+        var hourMonday: String = "Unknown"
+        var hourTuesday: String = "Unknown"
+        var hourWednesday:String = "Unknown"
+        var hourThursday: String = "Unknown"
+        var hourFriday: String = "Unknown"
+        var hourSaturday: String = "Unknown"
+        var hourSunday: String = "Unknown"
+        var phoneNumber: String = "Unknown"
+        var reviews: [String] = []
         
         Database.database().reference().child("restaurant").observeSingleEvent(of: .value) { snapshot in
             let allRestaurants = snapshot.children
@@ -96,6 +127,48 @@ class Restaurant {
                 let restType = (category as! String)
                 let addressOfRest = singleRestaurant.childSnapshot(forPath: "address").value
                 let restAddress = (addressOfRest as! String)
+                let phoneNumberSnap = singleRestaurant.childSnapshot(forPath: "phone number").value
+                phoneNumber = (phoneNumberSnap as! String)
+                let hours = (singleRestaurant.childSnapshot(forPath: "hours")).children
+                while let dailyHour = hours.nextObject() as? DataSnapshot {
+                    switch dailyHour.key {
+                    case "mon":
+                        let mondayValue = dailyHour.value
+                        hourMonday = (mondayValue as! String)
+                        continue
+                    case "tue":
+                        let tuesdayValue = dailyHour.value
+                        hourTuesday = (tuesdayValue as! String)
+                        continue
+                    case "wed":
+                        let wednesdayValue = dailyHour.value
+                        hourWednesday = (wednesdayValue as! String)
+                        continue
+                    case "thu":
+                        let thursdayValue = dailyHour.value
+                        hourThursday = (thursdayValue as! String)
+                        continue
+                    case "fri":
+                        let fridayValue = dailyHour.value
+                        hourFriday = (fridayValue as! String)
+                        continue
+                    case "sat":
+                        let saturdayValue = dailyHour.value
+                        hourSaturday = (saturdayValue as! String)
+                        continue
+                    case "sun":
+                        let sundayValue = dailyHour.value
+                        hourSunday = (sundayValue as! String)
+                        continue
+                    default:
+                        continue
+                    }
+                }
+                let reviewSnap = singleRestaurant.childSnapshot(forPath: "reviews").children
+                while let review = reviewSnap.nextObject() as? DataSnapshot {
+                    let reviewVal = review.value
+                    reviews.append((reviewVal as! String))
+                }
                 
                 //MARK:- Remove for restaurant images from firebase storage
                 /*
@@ -113,7 +186,7 @@ class Restaurant {
                 */
                 
                 getRating(restaurant: restName, completion: { myVal in
-                    restaurants.append(Restaurant(title: restName, featuredImage: UIImage(named: ignoreme())!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: 0))
+                    restaurants.append(Restaurant(title: restName, featuredImage: UIImage(named: ignoreme())!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: 0, hourMon: hourMonday, hourTue: hourTuesday, hourWed: hourWednesday, hourThu: hourThursday, hourFri: hourFriday, hourSat: hourSaturday, hourSun: hourSunday, phoneNumber: phoneNumber, reviews: reviews))
                     complete(restaurants)
                 })
             }
@@ -137,14 +210,9 @@ class Restaurant {
                     restaurant.distance = 99999999999
                     return
                 }
-                print(myLocation.latitude, " ", myLocation.longitude)
                 let sourceP = CLLocation.init(latitude: myLocation.latitude, longitude: myLocation.longitude)
                 
                 restaurant.distance = location.distance(from: sourceP)
-                /*print("\n\n_____________________")
-                for restaurant in restaurantArray.sorted(by: { $0.distance > $1.distance }) {
-                    print(restaurant.title, " ", restaurant.distance)
-                }*/
                 complete (restaurantArray.sorted { $0.distance > $1.distance })
 
             }
@@ -164,8 +232,16 @@ class Restaurant {
     /* Queries the database and returns a list of restaurants with ongoing offers
      * Based on offer start and end date */
     static func getExclusiveOffers(complete: @escaping ([Restaurant]) -> Void) {
-        let storageRef = Storage.storage().reference().child("restaurant")
-        
+        //let storageRef = Storage.storage().reference().child("restaurant")
+        var hourMonday: String = "Unknown"
+        var hourTuesday: String = "Unknown"
+        var hourWednesday:String = "Unknown"
+        var hourThursday: String = "Unknown"
+        var hourFriday: String = "Unknown"
+        var hourSaturday: String = "Unknown"
+        var hourSunday: String = "Unknown"
+        var phoneNumber: String = "Unknown"
+        var reviews: [String] = []
         var offeredPlaces: [Restaurant] = []
         Database.database().reference().child("offers").observeSingleEvent(of: .value) { snapshot in
             let allOffers = snapshot.children
@@ -182,6 +258,49 @@ class Restaurant {
                             let restType = (category as! String)
                             let addressOfRest = singleRestaurant.childSnapshot(forPath: "address").value
                             let restAddress = (addressOfRest as! String)
+                            let phoneNumberSnap = singleRestaurant.childSnapshot(forPath: "phone number").value
+                            phoneNumber = (phoneNumberSnap as! String)
+                            let hours = (singleRestaurant.childSnapshot(forPath: "hours")).children
+                            while let dailyHour = hours.nextObject() as? DataSnapshot {
+                                switch dailyHour.key {
+                                case "mon":
+                                    let mondayValue = dailyHour.value
+                                    hourMonday = (mondayValue as! String)
+                                    continue
+                                case "tue":
+                                    let tuesdayValue = dailyHour.value
+                                    hourTuesday = (tuesdayValue as! String)
+                                    continue
+                                case "wed":
+                                    let wednesdayValue = dailyHour.value
+                                    hourWednesday = (wednesdayValue as! String)
+                                    continue
+                                case "thu":
+                                    let thursdayValue = dailyHour.value
+                                    hourThursday = (thursdayValue as! String)
+                                    continue
+                                case "fri":
+                                    let fridayValue = dailyHour.value
+                                    hourFriday = (fridayValue as! String)
+                                    continue
+                                case "sat":
+                                    let saturdayValue = dailyHour.value
+                                    hourSaturday = (saturdayValue as! String)
+                                    continue
+                                case "sun":
+                                    let sundayValue = dailyHour.value
+                                    hourSunday = (sundayValue as! String)
+                                    continue
+                                default:
+                                    continue
+                                }
+                            }
+                            let reviewSnap = singleRestaurant.childSnapshot(forPath: "reviews").children
+                            while let review = reviewSnap.nextObject() as? DataSnapshot {
+                                let reviewVal = review.value
+                                reviews.append((reviewVal as! String))
+                            }
+                            
                             
                             //MARK:- Remove for restaurant images from firebase storage
                             /*
@@ -199,7 +318,7 @@ class Restaurant {
                             */
                             
                             getRating(restaurant: restName, completion: { myVal in
-                                offeredPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: myRank))
+                                offeredPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: myRank, hourMon: hourMonday, hourTue: hourTuesday, hourWed: hourWednesday, hourThu: hourThursday, hourFri: hourFriday, hourSat: hourSaturday, hourSun: hourSunday, phoneNumber: phoneNumber, reviews: reviews))
                                 complete(offeredPlaces)
                             })
                         } else {

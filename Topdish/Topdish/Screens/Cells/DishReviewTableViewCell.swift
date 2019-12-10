@@ -31,7 +31,7 @@ class DishReviewTableViewCell: UITableViewCell {
         
       //  ratingLabel?.text = " \(String(format:"%.2f", rate))"
        // detailTextLabel?.text = review
-        reviewLabel?.text = "Rating \(String(format:"%.2f", rate))\n\n" + test
+      //  reviewLabel?.text = "Rating \(String(format:"%.2f", rate))\n\n" + test
         
         reviewLabel.layer.masksToBounds = true
         reviewLabel.layer.cornerRadius = 5

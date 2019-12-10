@@ -51,11 +51,15 @@ class HomePageController: UIViewController, UICollectionViewDelegate {
             dest.nameFromHomePage = pageLabel
             dest.givenRestaurants = restaurantList
         } else if segue.identifier == "restaurantSegue" {
+            var dishNames: [String] = []
             let dest = segue.destination as! RestaurantScreenController
             dest.restaurantName = clickedRestaurant.title
             dest.restaurantImage = clickedRestaurant.featuredImage
             dest.reviews = clickedRestaurant.reviews
-            dest.menu = clickedRestaurant.menu
+            for dish in clickedRestaurant.menu.dishes {
+                dishNames.append(dish.dishName)
+            }
+            dest.menu = dishNames
             
         }
     }
@@ -116,7 +120,7 @@ extension HomePageController: CLLocationManagerDelegate {
             print("User denied location permission") // Bail out of switch statement. Consider showing an alert that your app will need location to work.
             return
         case .authorizedWhenInUse:
-            print("App is authorized to use location while in use\n\n\n")
+            print("App is authorized to use location while in use")
             break
         case .authorizedAlways:
             print("App is authorized to always use this device's location")
