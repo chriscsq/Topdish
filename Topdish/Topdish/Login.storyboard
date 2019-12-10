@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TkK-se-TUQ">
-                                <rect key="frame" x="125" y="552" width="164" height="210"/>
+                                <rect key="frame" x="125" y="570" width="164" height="192"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nlx-f5-kOM">
                                         <rect key="frame" x="0.0" y="0.0" width="164" height="40"/>
@@ -37,17 +37,17 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="XDc-2r-qc7">
-                                        <rect key="frame" x="0.0" y="120" width="164" height="40"/>
+                                        <rect key="frame" x="0.0" y="120" width="164" height="22"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUp-ek-ekr">
-                                                <rect key="frame" x="0.0" y="0.0" width="82" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="82" height="22"/>
                                                 <state key="normal" image="facebook"/>
                                                 <connections>
                                                     <action selector="facebookButtonTapped:" destination="ZjB-Nm-fPO" eventType="touchUpInside" id="Mbt-po-Noi"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1j-fL-oHU">
-                                                <rect key="frame" x="82" y="0.0" width="82" height="40"/>
+                                                <rect key="frame" x="82" y="0.0" width="82" height="22"/>
                                                 <state key="normal" image="google2"/>
                                                 <connections>
                                                     <action selector="googleButtonTapped:" destination="ZjB-Nm-fPO" eventType="touchUpInside" id="X4N-1Q-o2r"/>
@@ -56,8 +56,8 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qby-g9-E3L">
-                                        <rect key="frame" x="0.0" y="180" width="164" height="30"/>
-                                        <state key="normal" title="enter as guest"/>
+                                        <rect key="frame" x="0.0" y="162" width="164" height="30"/>
+                                        <state key="normal" title="cancel"/>
                                         <connections>
                                             <action selector="guestButtonTapped:" destination="ZjB-Nm-fPO" eventType="touchUpInside" id="qLt-Lk-HG4"/>
                                         </connections>

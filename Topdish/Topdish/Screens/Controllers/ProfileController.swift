@@ -99,12 +99,13 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
             uID = Auth.auth().currentUser?.uid
             print(uID!)
             
+            //MARK:-Move profile call to here
 //            profile()
             setProfileAndBackgroundPics()
             
             ref.child("profile").child(uID!).observeSingleEvent(of: .value, with: {(snapshot) in
                 if let dictionary = snapshot.value as? [String: AnyObject] {
-                    self.numberoflikeddishes.text = dictionary["name"] as? String
+                    self.nameField.text = dictionary["name"] as? String
                 }
                 
             }, withCancel: nil)
@@ -112,8 +113,6 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func setProfileAndBackgroundPics() {
-        // MARK:- GET IMAGE FROM UID PATH
-        
 //        let storageRefProfile = Storage.storage().reference().child("profile.jpg")
         // get from correct path of uid
         let storageRefProfile = Storage.storage().reference().child("profile").child(Auth.auth().currentUser!.uid).child("profile.jpg")
@@ -194,10 +193,9 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
         //Here save picture, and change it as well - Save onto DB here
         if (imageSelected) {
             Photo.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-            
-            //MARK:- CHANGE TO UID PATH
-            
-            let storageRef = Storage.storage().reference().child("profile.jpg")
+                        
+//            let storageRef = Storage.storage().reference().child("profile.jpg")
+            let storageRef = Storage.storage().reference().child("profile").child(Auth.auth().currentUser!.uid).child("profile.jpg")
             if let uploadData = self.Photo.image!.jpegData(compressionQuality: 0.0) {
                 storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                     if error != nil {
@@ -210,7 +208,8 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
             }
         } else {
             CoverPhoto.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-            let storageRefBack = Storage.storage().reference().child("background.jpg")
+//            let storageRefBack = Storage.storage().reference().child("background.jpg")
+            let storageRefBack = Storage.storage().reference().child("profile").child(Auth.auth().currentUser!.uid).child("background.jpg")
             if let uploadDataBack = self.CoverPhoto.image!.jpegData(compressionQuality: 0.0) {
                 storageRefBack.putData(uploadDataBack, metadata: nil) { (metadata, error) in
                     if error != nil {
@@ -272,6 +271,7 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func profile() -> Void {
+        // MARK:-include uID for profileID
         Profile.getProfile(profileID:"Still need to decide on user identifier", completion: {profile in
             self.bookmarked = profile.bookmarked
             self.review = profile.review
@@ -324,8 +324,10 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
     @objc func signOut() {
         do {
             try Auth.auth().signOut()
-            let viewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.startViewController) as? StartViewController
-            
+//            let viewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.startViewController) as? StartViewController
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Profile", bundle:nil)
+            let viewController = storyBoard.instantiateViewController(identifier: Constants.Storyboard.profileController) as? ProfileController
+                        
             self.view.window?.rootViewController = viewController
             self.view.window?.makeKeyAndVisible()
         } catch let error {
