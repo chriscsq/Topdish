@@ -21,75 +21,29 @@ class DishProfileViewController: UIViewController, UICollectionViewDelegate,UITa
       @IBOutlet weak var dishDetail: UICollectionView!
 
 
-    var menu:Menu?
+    var menu:[(Double,String)] = []
 
  
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       //trying to make the animation on the circle
-       // addCircleView()
-    
-
-
-//        if let dish = menu{
-//            dishLabel?.text = dish.dishTitle
-//            dishImage.image = dish.dishImage
-//            descriptionLabel?.text = dish.description
-
-//       }else{
-//           print("else")
-//            dishLabel?.text = nil
-//            dishImage.image = nil
-//        }
 
         self.dishDetail.showsHorizontalScrollIndicator = false
         self.dishDetail.delegate = self
         self.dishDetail.dataSource = self
-        dishDetail.reloadData()
         self.dishDetail.decelerationRate = UIScrollView.DecelerationRate.fast
      
 
         
         self.dishTableView.dataSource = self
        self.dishTableView.delegate = self
-        self.dishTableView.allowsSelection = true
+      //  self.dishTableView.allowsSelection = true
         dishTableView.estimatedRowHeight = 85.0
         dishTableView.rowHeight = UITableView.automaticDimension
 
         
     }
-    func addCircleView() {
-        let diceRoll = CGFloat(Int(arc4random_uniform(7))*50)
-        let circleWidth = CGFloat(200)
-        let circleHeight = circleWidth
 
-            // Create a new CircleView
-        let circleView = CreateCircle(frame: CGRect(x: diceRoll, y: 0, width: circleWidth, height: circleHeight))
-
-         view.addSubview(circleView)
-
-         // Animate the drawing of the circle over the course of 1 second
-        circleView.animateCircle(duration: 10.0)
-    }
-
-  /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-//        if segue.identifier == "reviewIdentitifer"
-//        {
-//            print("sadasdas")
-//            var vc = segue.destination as! DishProfileViewController
-//           // print("rrr \(r)")
-//           // m = men[r]
-//            vc.menu = menu
-//        }
-    }
-    */
 
 
 }
@@ -99,15 +53,15 @@ extension DishProfileViewController: UITableViewDataSource{
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1//(menu?.userReview.count)!
+        return menu.count
         
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "review", for: indexPath) as! DishReviewTableViewCell
-//        cell.review = menu?.userReview[indexPath.row]
-//        cell.rate = menu?.rating[indexPath.row]
+      //  cell.review = "sda"
+        cell.rate = menu[indexPath.row]
         
         //Remove the lines inbetween cells
         self.dishTableView.separatorColor = UIColor.clear
@@ -115,29 +69,6 @@ extension DishProfileViewController: UITableViewDataSource{
         return cell
     }
     
-//   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//         print("You tapped cell number \(indexPath.row).")
-//     }
-
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("row")
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        print("row")
-    }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//         if segue.destination is ReviewViewController
-//         {
-//
-//             if let indexPath = dishTableView.indexPathForSelectedRow{
-//                 let selectedRow = indexPath.row
-//                 let vc = segue.destination as! ReviewViewController
-//                vc.review = menu?.userReview[selectedRow]
-//             }
-//         }
-//
-//    }
     
 }
 

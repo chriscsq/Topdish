@@ -70,7 +70,7 @@ class HomePageController: UIViewController, UICollectionViewDelegate {
             dest.address = clickedRestaurant.address
             dest.phone = clickedRestaurant.phoneNumber
             dest.menu = dishNames
-            
+            dest.res = clickedRestaurant
             
             print(clickedRestaurant.title, clickedRestaurant.hourMon)
             print(clickedRestaurant.title, clickedRestaurant.hourTue)

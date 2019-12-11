@@ -844,7 +844,7 @@
         <image name="Test image.png" width="340" height="382"/>
         <image name="fast-food.png" width="22.5" height="22.5"/>
         <image name="flatbread.jpg" width="345.60000610351562" height="141.60000610351562"/>
-        <image name="location.fill" catalog="system" width="32" height="32"/>
+        <image name="location.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dZ9-4p-zPT"/>

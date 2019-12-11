@@ -15,9 +15,10 @@ class MultiViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var drinksTable: UITableView!
     @IBOutlet weak var dessertTable: UITableView!
     @IBOutlet weak var mainTable: UITableView!
+    var dishFinder:String = ""
     var dishes: [String] = []
     var averageRating: [Double] = []
-    var menu:[Dish] = []
+    var menu:Menu!
     var m:Menu?
     
     var mainArray:[(String,String,Double)] = []{
@@ -43,6 +44,9 @@ class MultiViewController: UIViewController, UITableViewDelegate {
         override func viewDidLoad() {
             super.viewDidLoad()
 
+            for i in menu.dishes{
+                print("menu \(i)")
+            }
             getSection()
             
             // Do any additional setup after loading the view.
@@ -61,57 +65,6 @@ class MultiViewController: UIViewController, UITableViewDelegate {
             
         }
         
-    //
-    //    func getDish(_ resturant: String){
-    //        let childString : String = "menu/" + resturant
-    //        var counter: Double = 0
-    //        var totalRating: Double = 0
-    //        var rating = [Double]()
-    //        var userReview = [String]()
-    //        var i = 0
-    //        var description = "Database part"
-    //
-    //        Database.database().reference().child(childString).observe(.value, with: {snapshot in
-    //            if snapshot.exists() {
-    //                for a in ((snapshot.value as AnyObject).allKeys)!{
-    //                    self.dishes.append(a as! String)
-    //                }
-    //                self.dishes.reverse()
-    //
-    //                let singleRestaurant = snapshot.children
-    //
-    //                while let dishes = singleRestaurant.nextObject() as? DataSnapshot {
-    //                    let dishReviews = (dishes.childSnapshot(forPath: "user reviews")).children
-    //                    while let review = dishReviews.nextObject() as? DataSnapshot {
-    //                        let singleRating = review.childSnapshot(forPath: "rating").value
-    //
-    //                        totalRating += (singleRating as AnyObject).doubleValue
-    //                        counter += 1
-    //                        let singleTextReview = review.childSnapshot(forPath: "text review").value
-    //                        userReview.append(singleTextReview as! String)
-    //                        rating.append(singleRating as! Double)
-    //
-    //                    }
-    //
-    //                //    self.m = Menu(self.dishes[i], UIImage(named: "steak.png")!, rating, userReview, description)
-    //                    self.men.append(self.m!)
-    //                    self.averageRating.append(totalRating/counter)
-    //
-    //
-    //                    //reseting
-    //                    totalRating = 0
-    //                    counter = 0
-    //                    rating = [Double]()
-    //                    userReview = [String]()
-    //                    i = i + 1
-    //                }
-    //
-    //
-    //            }else{
-    //                print("DNE")
-    //            }
-    //        })
-    //    }
         
         // MARK: - Navigation
 
@@ -120,7 +73,16 @@ class MultiViewController: UIViewController, UITableViewDelegate {
             // Get the new view controller using segue.destination.
             // Pass the selected object to the new view controller.
             if segue.identifier == "dishProfile" {
-                let dest = segue.destination as! MultiViewController
+               
+                for i in menu.dishes {
+                    if (i.dishName == dishFinder){
+                         let dest = segue.destination as! DishProfileViewController
+                        print("seaguing \(i.review)")
+                        dest.menu = i.review
+                        print("I want to leave")
+                        break;
+                    }
+                }
             }
         }
         
@@ -137,11 +99,18 @@ class MultiViewController: UIViewController, UITableViewDelegate {
         }
         
         func getSection() -> Void {
-            for dish in self.menu {
+            for dish in self.menu.dishes {
+                print(dish.section)
                 switch dish.section {
                 case "Drinks":
                     if dish.image == [] {
-                        // USE DEFAULT IMAGE
+                        var counter: Double = 0
+                        var total: Double = 0
+                        for rating in dish.review {
+                            total += rating.0
+                            counter += 1
+                        }
+                        drinkArray.append((dish.dishName, "", total/counter))
                         continue
                     } else {
                         var counter: Double = 0
@@ -155,7 +124,14 @@ class MultiViewController: UIViewController, UITableViewDelegate {
                     continue
                 case "Appetizers":
                     if dish.image == [] {
-                        // USE DEFAULT IMAGE
+                        var counter: Double = 0
+                        var total: Double = 0
+                        for rating in dish.review {
+                            total += rating.0
+                            counter += 1
+                        }
+                        
+                        appetizerArray.append((dish.dishName, "", total/counter))
                         continue
                     } else {
                         var counter: Double = 0
@@ -169,7 +145,14 @@ class MultiViewController: UIViewController, UITableViewDelegate {
                     continue
                 case "Dessert":
                     if dish.image == [] {
-                        // USE DEFAULT IMAGE
+                        var counter: Double = 0
+                        var total: Double = 0
+                        for rating in dish.review {
+                            total += rating.0
+                            counter += 1
+                        }
+                        
+                        dessertArray.append((dish.dishName, "", total/counter))
                         continue
                     } else {
                         var counter: Double = 0
@@ -183,7 +166,14 @@ class MultiViewController: UIViewController, UITableViewDelegate {
                     continue
                 default:
                     if dish.image == [] {
-                        // USE DEFAULT IMAGE
+                        var counter: Double = 0
+                        var total: Double = 0
+                        for rating in dish.review {
+                            total += rating.0
+                            counter += 1
+                        }
+                        
+                        mainArray.append((dish.dishName, "", total/counter))
                         continue
                     } else {
                         var counter: Double = 0
@@ -242,10 +232,24 @@ class MultiViewController: UIViewController, UITableViewDelegate {
                 return cell
             }
         }
-    //    func getIndex(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Int
-    //    {
-    //
-    //               print("selected \(indexPath.row)")
-    //        return indexPath.row
-    //    }
+
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            if (tableView == self.mainTable){
+                self.dishFinder = mainArray[indexPath.row].0
+                performSegue(withIdentifier: "dishProfile", sender:self)
+                
+            }else if (tableView == self.appetizerTable){
+ 
+                self.dishFinder = appetizerArray[indexPath.row].0
+                performSegue(withIdentifier: "dishProfile", sender:self)
+                
+            }else if (tableView == self.dessertTable){
+                self.dishFinder = dessertArray[indexPath.row].0
+                performSegue(withIdentifier: "dishProfile", sender:self)
+            }else{
+
+                self.dishFinder = drinkArray[indexPath.row].0
+                performSegue(withIdentifier: "dishProfile", sender:self)
+            }
+        }
 }

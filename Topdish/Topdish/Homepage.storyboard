@@ -136,9 +136,6 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="3ap-Mx-mp5" kind="show" identifier="dishProfile" id="Ew5-dU-Xny"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -285,6 +282,7 @@
                         <outlet property="dessertTable" destination="VTW-vH-OTM" id="url-Y9-Ou9"/>
                         <outlet property="drinksTable" destination="n9v-7h-bEA" id="UN9-SX-EsG"/>
                         <outlet property="mainTable" destination="we1-24-wUn" id="v5v-M3-mPN"/>
+                        <segue destination="3ap-Mx-mp5" kind="show" identifier="dishProfile" id="8TP-Yn-TIh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDY-xf-XI9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -771,6 +769,6 @@
         <image name="steak" width="1440" height="590"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ew5-dU-Xny"/>
+        <segue reference="8TP-Yn-TIh"/>
     </inferredMetricsTieBreakers>
 </document>

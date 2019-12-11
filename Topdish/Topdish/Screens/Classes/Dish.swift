@@ -29,6 +29,7 @@ class Dish{
         })
         populateImage(restaurantName, completion: { allImages in
             self.image = allImages
+            print("ASDASDAS : ", self.dishName, self.section)
         })
         
         //self.backupImage = UIImage(named: "Burger")!
@@ -40,6 +41,7 @@ class Dish{
         self.dishName = ""
         self.review = []
         self.image = []
+        self.section = ""
     }
     
     func populateReview(_ restaurantName: String, completion: @escaping ([(Double,String)]) -> Void) {
@@ -48,14 +50,16 @@ class Dish{
         Database.database().reference().child(childString).observeSingleEvent(of: .value) { snapshot in
             let singleRestaurant = snapshot.children
             while let dishes = singleRestaurant.nextObject() as? DataSnapshot {
-                if dishes.hasChild("user reviews") {
-                    let dishReviews = (dishes.childSnapshot(forPath: "user reviews")).children
-                    while let review = dishReviews.nextObject() as? DataSnapshot {
-                        let singleRatingSnap = review.childSnapshot(forPath: "rating").value
-                        let singleReviewSnap = review.childSnapshot(forPath: "text review").value
-                        let singleRating = (singleRatingSnap as AnyObject).doubleValue!
-                        let singleReview = (singleReviewSnap as! String)
-                        myReviews.append((singleRating,singleReview))
+                if dishes.key == self.dishName {
+                    if dishes.hasChild("user reviews") {
+                        let dishReviews = (dishes.childSnapshot(forPath: "user reviews")).children
+                        while let review = dishReviews.nextObject() as? DataSnapshot {
+                            let singleRatingSnap = review.childSnapshot(forPath: "rating").value
+                            let singleReviewSnap = review.childSnapshot(forPath: "text review").value
+                            let singleRating = (singleRatingSnap as AnyObject).doubleValue!
+                            let singleReview = (singleReviewSnap as! String)
+                            myReviews.append((singleRating,singleReview))
+                        }
                     }
                 }
             }
@@ -69,15 +73,17 @@ class Dish{
         Database.database().reference().child(childString).observeSingleEvent(of: .value) { snapshot in
             let singleRestaurant = snapshot.children
             while let dishes = singleRestaurant.nextObject() as? DataSnapshot {
-                let sectionSnap = dishes.childSnapshot(forPath: "section").value
-                let section = (sectionSnap as! String)
-                self.section = section
-                let dishReviews = (dishes.childSnapshot(forPath: "user reviews")).children
-                while let review = dishReviews.nextObject() as? DataSnapshot {
-                    if review.hasChild("image") {
-                        let singleImageSnap = review.childSnapshot(forPath: "image").value
-                        let singleImage = (singleImageSnap as! String)
-                        myImages.append(singleImage)
+                if dishes.key == self.dishName {
+                    let sectionSnap = dishes.childSnapshot(forPath: "section").value
+                    let section = (sectionSnap as! String)
+                    self.section = section
+                    let dishReviews = (dishes.childSnapshot(forPath: "user reviews")).children
+                    while let review = dishReviews.nextObject() as? DataSnapshot {
+                        if review.hasChild("image") {
+                            let singleImageSnap = review.childSnapshot(forPath: "image").value
+                            let singleImage = (singleImageSnap as! String)
+                            myImages.append(singleImage)
+                        }
                     }
                 }
             }

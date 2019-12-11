@@ -24,6 +24,8 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
     var phone  = ""
     var foodRatingLabel = "Food"
     var serviceRatingLabel = "Service"
+    
+    var res:Restaurant!
 
     // MARK: IBOutlets
     @IBOutlet weak var RestaurantImageView: UIImageView!
@@ -121,9 +123,7 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
         if segue.identifier == "dishSegue" {
             let nav = segue.destination as! UINavigationController
             let svc = nav.topViewController as! MultiViewController
-//            let dest = segue.destination as! MultiViewController
-            print("seging", clickedRestaurant.menu.dishes)
-            svc.menu = clickedRestaurant.menu.dishes
+            svc.menu = res.menu
         }
     }}
 

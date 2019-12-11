@@ -15,7 +15,7 @@ class DishReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewLabel: UILabel!
     var dish = DishProfileViewController()
     var review: String!
-    var rate: Double!
+    var rate: (Double,String) = (0.0,"")
     var test = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
     
@@ -31,23 +31,13 @@ class DishReviewTableViewCell: UITableViewCell {
         
       //  ratingLabel?.text = " \(String(format:"%.2f", rate))"
        // detailTextLabel?.text = review
-      //  reviewLabel?.text = "Rating \(String(format:"%.2f", rate))\n\n" + test
+        reviewLabel?.text = "Rating \(String(format:"%.2f", rate.0))\n\n" + rate.1
         
         reviewLabel.layer.masksToBounds = true
         reviewLabel.layer.cornerRadius = 5
-        
-        
-//        detailTextLabel?.adjustsFontSizeToFitWidth = false
-//        detailTextLabel?.lineBreakMode = .byTruncatingTail
+
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You tapped cell number \(indexPath.row).")
-    }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("row")
-    }
-    
 
 
     

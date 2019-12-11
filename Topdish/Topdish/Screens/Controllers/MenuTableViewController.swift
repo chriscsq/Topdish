@@ -38,7 +38,7 @@ class MenuTableViewController: UITableViewController {
               //  print("selceted \(men[selectedRow].dishTitle)")
                 print("sdasda")
                 let vc = segue.destination as! DishProfileViewController
-                vc.menu = self.men[selectedRow]
+               // vc.menu = self.men[selectedRow]
             }
         }
 
