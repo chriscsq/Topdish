@@ -10,10 +10,10 @@ import UIKit
 import MapKit
 import CoreLocation
 
-var annotations:[MapAnnotations] = [MapAnnotations()]
-
-var test: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 51.089140, longitude: -114.083980)
-var testAnnotation:[MapAnnotations] = [MapAnnotations(title: "Chris", coordinate: test)]
+//var annotations:[MapAnnotations] = [MapAnnotations()]
+//
+//var test: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 51.089140, longitude: -114.083980)
+//var testAnnotation:[MapAnnotations] = [MapAnnotations(title: "Chris", coordinate: test)]
 class NearbyViewController: UIViewController, UICollectionViewDelegate {
     var locationManager = CLLocationManager()
 
@@ -25,6 +25,12 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
     var nearbyRestaurants: [Restaurant] = [] {
         didSet{
             NearbyCollectionView.reloadData()
+            getAnnotations(complete: { i in
+                let annotation = MKPointAnnotation()
+                annotation.title = i.title
+                annotation.coordinate = i.coordinate
+                self.MapView.addAnnotation(annotation)
+            })
         }
     }
     
@@ -42,6 +48,7 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         MapView.showsUserLocation = true
+        
         
         /* Styling of bar */
         DragBar.layer.cornerRadius = 5
@@ -62,12 +69,19 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
         DraggedView.addGestureRecognizer(swipeDown)
 
         
-        for i in testAnnotation {
-            let annotation = MKPointAnnotation()
-            annotation.title = i.title
-            annotation.coordinate = i.coordinate
-            self.MapView.addAnnotation(annotation)
-        }
+        
+//        getAnnotations(complete: { i in
+//            let annotation = MKPointAnnotation()
+//            annotation.title = i.title
+//            annotation.coordinate = i.coordinate
+//            self.MapView.addAnnotation(annotation)
+//        })
+//        for i in testAnnotation {
+//            let annotation = MKPointAnnotation()
+//            annotation.title = i.title
+//            annotation.coordinate = i.coordinate
+//            self.MapView.addAnnotation(annotation)
+//        }
         
         // Check for Location Services
         if (CLLocationManager.locationServicesEnabled()) {
@@ -105,25 +119,26 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
         return annotationView
     }
     
-    static func getAnnotations(myLocation: CLLocationCoordinate2D, nearbyRestaurants: [Restaurant], complete: @escaping ([Restaurant]) -> Void) {
-    for restaurant in nearbyRestaurants {
-        let address = restaurant.address
-        
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(address) { (placemarks, error) in
-            guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location
-            else {
-                // handle no location found -- Can set default ? Will try later.
-                print("Cannot find location based on address String.")
-                restaurant.distance = 99999999999
-                return
-            }
-            annotations.append(MapAnnotations(title: restaurant.title, coordinate: location.coordinate))
-        }
-    }
-    }
+    func getAnnotations(complete: @escaping (MapAnnotations) -> Void) {
+           for restaurant in nearbyRestaurants {
+               let address = restaurant.address
+               let geoCoder = CLGeocoder()
+               geoCoder.geocodeAddressString(address) { (placemarks, error) in
+                   guard
+                       let placemarks = placemarks,
+                       let location = placemarks.first?.location
+                   else {
+                       // handle no location found -- Can set default ? Will try later.
+                       return
+                   }
+//                var test: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 51.089140, longitude: -114.083980)
+//                var testAnnotation:[MapAnnotations] = [MapAnnotations(title: "Chris", coordinate: test)]
+                   //self.annotations.append(MapAnnotations(title: restaurant.title, coordinate: location.coordinate))
+                print(" \n\n\nCOORD: ", location.coordinate.latitude, location.coordinate.longitude)
+                   complete(MapAnnotations(title: restaurant.title, coordinate: location.coordinate))
+               }
+           }
+       }
         
     func getCoordinate( addressString : String,
             completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {

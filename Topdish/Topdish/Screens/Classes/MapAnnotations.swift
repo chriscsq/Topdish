@@ -22,7 +22,8 @@ class MapAnnotations: NSObject,MKAnnotation {
 
     override init() {
         self.title = ""
-        self.coordinate =  CLLocation(latitude: 38, longitude: 22).coordinate
+        // Placeholder coordinates
+        self.coordinate =  CLLocation(latitude: 0, longitude: 0).coordinate
     }
 }
 
