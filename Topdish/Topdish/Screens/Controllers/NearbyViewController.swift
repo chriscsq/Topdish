@@ -67,21 +67,6 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
 
         DraggedView.addGestureRecognizer(swipeUp)
         DraggedView.addGestureRecognizer(swipeDown)
-
-        
-        
-//        getAnnotations(complete: { i in
-//            let annotation = MKPointAnnotation()
-//            annotation.title = i.title
-//            annotation.coordinate = i.coordinate
-//            self.MapView.addAnnotation(annotation)
-//        })
-//        for i in testAnnotation {
-//            let annotation = MKPointAnnotation()
-//            annotation.title = i.title
-//            annotation.coordinate = i.coordinate
-//            self.MapView.addAnnotation(annotation)
-//        }
         
         // Check for Location Services
         if (CLLocationManager.locationServicesEnabled()) {
@@ -95,12 +80,7 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
             let region = MKCoordinateRegion(center: userLocation, span: span)
             MapView.setRegion(region, animated: false)
         }
-
         // MARK: Annotations
-  
-        
-
-        
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -131,9 +111,6 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
                        // handle no location found -- Can set default ? Will try later.
                        return
                    }
-//                var test: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 51.089140, longitude: -114.083980)
-//                var testAnnotation:[MapAnnotations] = [MapAnnotations(title: "Chris", coordinate: test)]
-                   //self.annotations.append(MapAnnotations(title: restaurant.title, coordinate: location.coordinate))
                 print(" \n\n\nCOORD: ", location.coordinate.latitude, location.coordinate.longitude)
                    complete(MapAnnotations(title: restaurant.title, coordinate: location.coordinate))
                }
@@ -152,7 +129,6 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
                     return
                 }
             }
-                
             completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
         }
     }
