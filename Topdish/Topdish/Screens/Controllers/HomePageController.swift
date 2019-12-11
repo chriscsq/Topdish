@@ -59,8 +59,27 @@ class HomePageController: UIViewController, UICollectionViewDelegate {
             for dish in clickedRestaurant.menu.dishes {
                 dishNames.append(dish.dishName)
             }
+            /* Setup hours */
+            dest.hourMon = clickedRestaurant.hourMon
+            dest.hourTue = clickedRestaurant.hourTue
+            dest.hourWed = clickedRestaurant.hourWed
+            dest.hourThu = clickedRestaurant.hourThu
+            dest.hourFri = clickedRestaurant.hourFri
+            dest.hourSat = clickedRestaurant.hourSat
+            dest.hourSun = clickedRestaurant.hourSun
+            dest.address = clickedRestaurant.address
+            dest.phone = clickedRestaurant.phoneNumber
             dest.menu = dishNames
             
+            
+            print(clickedRestaurant.title, clickedRestaurant.hourMon)
+            print(clickedRestaurant.title, clickedRestaurant.hourTue)
+            print(clickedRestaurant.title, clickedRestaurant.hourWed)
+            print(clickedRestaurant.title, clickedRestaurant.hourThu)
+            print(clickedRestaurant.title, clickedRestaurant.hourFri)
+            print(clickedRestaurant.title, clickedRestaurant.hourSat)
+            print(clickedRestaurant.title, clickedRestaurant.hourSun)
+
         }
     }
     
@@ -154,6 +173,7 @@ extension HomePageController: UICollectionViewDataSource {
     func topPlaces() -> Void {
         Restaurant.getRestaurantList(complete: { restaurantArray in
             self.topRestaurants = restaurantArray.sorted { $0.rating > $1.rating }
+            print("\n\n\n\n", self.topRestaurants[0].title, self.topRestaurants[0].address)
         })
     }
     func nearbyPlaces(location: CLLocationCoordinate2D) -> Void {
@@ -224,6 +244,7 @@ extension HomePageController: UICollectionViewDataSource {
             print(cell)
             print(topRestaurants[indexPath.row])
             self.clickedRestaurant = topRestaurants[indexPath.row]
+            print("\n\n\n\n top", self.clickedRestaurant.hourThu, self.clickedRestaurant.title)
             performSegue(withIdentifier: "restaurantSegue", sender:self)
 
         } else if (collectionView == self.NearbyCollectionView) {
@@ -233,6 +254,7 @@ extension HomePageController: UICollectionViewDataSource {
 
             print(nearbyRestaurants[indexPath.row])
             self.clickedRestaurant = nearbyRestaurants[indexPath.row]
+            print("\n\n\n\n nearby:", self.clickedRestaurant.hourThu, self.clickedRestaurant.title)
             performSegue(withIdentifier: "restaurantSegue", sender:self)
 
         } else if (collectionView == self.ExclusiveOffersCollectionView) {
@@ -242,6 +264,7 @@ extension HomePageController: UICollectionViewDataSource {
 
             print(exclusiveOffersRestaurants[indexPath.row])
             self.clickedRestaurant = exclusiveOffersRestaurants[indexPath.row]
+            print("\n\n\n\n exclu", self.clickedRestaurant.hourThu, self.clickedRestaurant.title)
             performSegue(withIdentifier: "restaurantSegue", sender:self)
 
         }

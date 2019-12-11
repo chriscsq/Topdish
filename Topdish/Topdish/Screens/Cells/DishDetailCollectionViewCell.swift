@@ -24,7 +24,7 @@ class DishDetailCollectionViewCell: UICollectionViewCell {
 
      var profile = DishProfileViewController()
         func updateUI() {
-            print("celllo \(menu)")
+            print("celllo", menu!)
             
             if let menu = menu {
                 imagesView.image = menu

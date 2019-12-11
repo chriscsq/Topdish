@@ -60,7 +60,7 @@ class MenuTableViewController: UITableViewController {
         var rating = [Double]()
         var userReview = [String]()
         var i = 0
-        var description = "Database part"
+        //var description = "Database part"
 
         Database.database().reference().child(childString).observe(.value, with: {snapshot in
             if snapshot.exists() {

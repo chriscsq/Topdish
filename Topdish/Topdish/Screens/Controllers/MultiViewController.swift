@@ -20,22 +20,22 @@ class MultiViewController: UIViewController, UITableViewDelegate {
     var menu:[Dish] = []
     var m:Menu?
     
-    var mainArray:[String] = []{
+    var mainArray:[(String,String,Double)] = []{
             didSet{
                 mainTable.reloadData()
             }
         }
-        var drinkArray:[String] = []{
+        var drinkArray:[(String,String,Double)] = []{
             didSet{
                 drinksTable.reloadData()
             }
         }
-        var appetizerArray:[String] = []{
+        var appetizerArray:[(String,String,Double)] = []{
             didSet{
                 appetizerTable.reloadData()
             }
         }
-        var dessertArray:[String] = []{
+        var dessertArray:[(String,String,Double)] = []{
             didSet{
                 dessertTable.reloadData()
             }
@@ -43,11 +43,7 @@ class MultiViewController: UIViewController, UITableViewDelegate {
         override func viewDidLoad() {
             super.viewDidLoad()
 
-            
-            getMainMenu()
-            getDrinkMenu()
-            getDessertMenu()
-            getAppetizerMenu()
+            getSection()
             
             // Do any additional setup after loading the view.
             
@@ -140,30 +136,69 @@ class MultiViewController: UIViewController, UITableViewDelegate {
             return 1
         }
         
-        func getMainMenu() -> Void{
-            //Menu.getReview(complete: { dishArray in self.dessertArray = dishArray})
-//            mainArray = menu.dishName
-            print("main")
-            for i in menu{
-                print(i.dishName)
-                mainArray.append(i.dishName)
+        func getSection() -> Void {
+            for dish in self.menu {
+                switch dish.section {
+                case "Drinks":
+                    if dish.image == [] {
+                        // USE DEFAULT IMAGE
+                        continue
+                    } else {
+                        var counter: Double = 0
+                        var total: Double = 0
+                        for rating in dish.review {
+                            total += rating.0
+                            counter += 1
+                        }
+                        drinkArray.append((dish.dishName, dish.image[0], total/counter))
+                    }
+                    continue
+                case "Appetizers":
+                    if dish.image == [] {
+                        // USE DEFAULT IMAGE
+                        continue
+                    } else {
+                        var counter: Double = 0
+                        var total: Double = 0
+                        for rating in dish.review {
+                            total += rating.0
+                            counter += 1
+                        }
+                        appetizerArray.append((dish.dishName, dish.image[0], total/counter))
+                    }
+                    continue
+                case "Dessert":
+                    if dish.image == [] {
+                        // USE DEFAULT IMAGE
+                        continue
+                    } else {
+                        var counter: Double = 0
+                        var total: Double = 0
+                        for rating in dish.review {
+                            total += rating.0
+                            counter += 1
+                        }
+                        dessertArray.append((dish.dishName, dish.image[0], total/counter))
+                    }
+                    continue
+                default:
+                    if dish.image == [] {
+                        // USE DEFAULT IMAGE
+                        continue
+                    } else {
+                        var counter: Double = 0
+                        var total: Double = 0
+                        for rating in dish.review {
+                            total += rating.0
+                            counter += 1
+                        }
+                        mainArray.append((dish.dishName, dish.image[0], total/counter))
+                    }
+                    continue
+                }
             }
         }
         
-        func getDessertMenu() -> Void{
-
-            //Menu.getReview(complete: { dishArray in self.dessertArray = dishArray})
-            dessertArray = ["dessert"]
-        }
-        
-        func getDrinkMenu() -> Void{
-            //Menu.getReview(complete: { dishArray in self.dessertArray = dishArray})
-            drinkArray = ["drinks"]
-        }
-        func getAppetizerMenu() -> Void{
-            //Menu.getReview(complete: { dishArray in self.dessertArray = dishArray})\
-            appetizerArray = ["appetizer"]
-        }
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             if (tableView == self.mainTable)
             {
@@ -187,22 +222,22 @@ class MultiViewController: UIViewController, UITableViewDelegate {
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             if (tableView == self.mainTable){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "mainTableCell", for: indexPath) as! MenuPageTableViewCell
-                cell.name = mainArray[indexPath.item]
+                cell.name = mainArray[indexPath.item].0
                 self.mainTable.separatorColor = UIColor.clear
                 return cell
             }else if (tableView == self.appetizerTable){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "apptizerTableCell", for: indexPath) as! MenuPageTableViewCell
-                cell.name = appetizerArray[indexPath.item]
+                cell.name = appetizerArray[indexPath.item].0
                 self.appetizerTable.separatorColor = UIColor.clear
                 return cell
             }else if (tableView == self.dessertTable){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "dessertTableCell", for: indexPath) as! MenuPageTableViewCell
-                cell.name = dessertArray[indexPath.item]
+                cell.name = dessertArray[indexPath.item].0
                 self.dessertTable.separatorColor = UIColor.clear
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "drinkTableCell", for: indexPath) as! MenuPageTableViewCell
-                cell.name = drinkArray[indexPath.item]
+                cell.name = drinkArray[indexPath.item].0
                 self.drinksTable.separatorColor = UIColor.clear
                 return cell
             }

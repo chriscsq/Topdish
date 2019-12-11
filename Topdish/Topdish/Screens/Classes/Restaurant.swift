@@ -108,20 +108,20 @@ class Restaurant {
     static func getRestaurantList(complete: @escaping ([Restaurant]) -> Void) {
         var restaurants: [Restaurant] = []
         //let storageRef = Storage.storage().reference().child("restaurant")
-        var hourMonday: String = "Unknown"
-        var hourTuesday: String = "Unknown"
-        var hourWednesday:String = "Unknown"
-        var hourThursday: String = "Unknown"
-        var hourFriday: String = "Unknown"
-        var hourSaturday: String = "Unknown"
-        var hourSunday: String = "Unknown"
-        var phoneNumber: String = "Unknown"
-        var reviews: [String] = []
         
         Database.database().reference().child("restaurant").observeSingleEvent(of: .value) { snapshot in
             let allRestaurants = snapshot.children
             while let singleRestaurant = allRestaurants.nextObject() as? DataSnapshot {
                 let restName: String = singleRestaurant.key
+                var hourMonday: String = "Unknown"
+                var hourTuesday: String = "Unknown"
+                var hourWednesday: String = "Unknown"
+                var hourThursday: String = "Unknown"
+                var hourFriday: String = "Unknown"
+                var hourSaturday: String = "Unknown"
+                var hourSunday: String = "Unknown"
+                var phoneNumber: String = "Unknown"
+                var reviews: [String] = []
                 //let featuredImage = singleRestaurant.childSnapshot(forPath: "image").value
                 let category = singleRestaurant.childSnapshot(forPath: "category").value
                 let restType = (category as! String)
@@ -184,9 +184,8 @@ class Restaurant {
                     })
                 })
                 */
-                
                 getRating(restaurant: restName, completion: { myVal in
-                    restaurants.append(Restaurant(title: restName, featuredImage: UIImage(named: ignoreme())!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: 0, hourMon: hourMonday, hourTue: hourTuesday, hourWed: hourWednesday, hourThu: hourThursday, hourFri: hourFriday, hourSat: hourSaturday, hourSun: hourSunday, phoneNumber: phoneNumber, reviews: reviews))
+                    restaurants.append(Restaurant.init(title: restName, featuredImage: UIImage(named: ignoreme())!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: 0, hourMon: hourMonday, hourTue: hourTuesday, hourWed: hourWednesday, hourThu: hourThursday, hourFri: hourFriday, hourSat: hourSaturday, hourSun: hourSunday, phoneNumber: phoneNumber, reviews: reviews))
                     complete(restaurants)
                 })
             }
@@ -233,19 +232,19 @@ class Restaurant {
      * Based on offer start and end date */
     static func getExclusiveOffers(complete: @escaping ([Restaurant]) -> Void) {
         //let storageRef = Storage.storage().reference().child("restaurant")
-        var hourMonday: String = "Unknown"
-        var hourTuesday: String = "Unknown"
-        var hourWednesday:String = "Unknown"
-        var hourThursday: String = "Unknown"
-        var hourFriday: String = "Unknown"
-        var hourSaturday: String = "Unknown"
-        var hourSunday: String = "Unknown"
-        var phoneNumber: String = "Unknown"
-        var reviews: [String] = []
         var offeredPlaces: [Restaurant] = []
         Database.database().reference().child("offers").observeSingleEvent(of: .value) { snapshot in
             let allOffers = snapshot.children
             while let singleOffer = allOffers.nextObject() as? DataSnapshot {
+                var hourMonday: String = "Unknown"
+                var hourTuesday: String = "Unknown"
+                var hourWednesday:String = "Unknown"
+                var hourThursday: String = "Unknown"
+                var hourFriday: String = "Unknown"
+                var hourSaturday: String = "Unknown"
+                var hourSunday: String = "Unknown"
+                var phoneNumber: String = "Unknown"
+                var reviews: [String] = []
                 let restName: String = singleOffer.key
                 let rankShot = singleOffer.childSnapshot(forPath: "rank").value
                 let myRank = (rankShot as! Int)
@@ -318,7 +317,7 @@ class Restaurant {
                             */
                             
                             getRating(restaurant: restName, completion: { myVal in
-                                offeredPlaces.append(Restaurant(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: myRank, hourMon: hourMonday, hourTue: hourTuesday, hourWed: hourWednesday, hourThu: hourThursday, hourFri: hourFriday, hourSat: hourSaturday, hourSun: hourSunday, phoneNumber: phoneNumber, reviews: reviews))
+                                offeredPlaces.append(Restaurant.init(title: restName, featuredImage: UIImage(named: "steak")!, typeOfCuisine: restType, rating: myVal, distance: 0, address: restAddress, rank: myRank, hourMon: hourMonday, hourTue: hourTuesday, hourWed: hourWednesday, hourThu: hourThursday, hourFri: hourFriday, hourSat: hourSaturday, hourSun: hourSunday, phoneNumber: phoneNumber, reviews: reviews))
                                 complete(offeredPlaces)
                             })
                         } else {

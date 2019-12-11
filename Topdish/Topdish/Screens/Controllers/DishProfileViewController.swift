@@ -32,16 +32,16 @@ class DishProfileViewController: UIViewController, UICollectionViewDelegate,UITa
     
 
 
-        if let dish = menu{
+//        if let dish = menu{
 //            dishLabel?.text = dish.dishTitle
 //            dishImage.image = dish.dishImage
 //            descriptionLabel?.text = dish.description
 
-        }else{
-            print("else")
+//       }else{
+//           print("else")
 //            dishLabel?.text = nil
 //            dishImage.image = nil
-        }
+//        }
 
         self.dishDetail.showsHorizontalScrollIndicator = false
         self.dishDetail.delegate = self

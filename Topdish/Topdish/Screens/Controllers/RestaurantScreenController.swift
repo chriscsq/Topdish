@@ -18,16 +18,15 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
     // MARK: Label variables
     var restaurantName = ""
     var hourMon = "", hourTue = "", hourWed = "",
-        hourThur = "", hourFri = "", hourSat = "", hourSun = ""
+        hourThu = "", hourFri = "", hourSat = "", hourSun = ""
     var street = "", postal = "", city = ""
+    var address = ""
     var phone  = ""
     var foodRatingLabel = "Food"
     var serviceRatingLabel = "Service"
 
     // MARK: IBOutlets
     @IBOutlet weak var RestaurantImageView: UIImageView!
-    @IBOutlet var PhoneLabel: UILabel!
-    @IBOutlet var StreetLabel: UILabel!
     @IBOutlet var AddReviewButton: UIButton!
     @IBOutlet var RestaurantNameLabel: UILabel!
     @IBOutlet var ViewSegmentedController: UISegmentedControl!
@@ -36,6 +35,17 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var TopDishesTableView: UITableView!
     @IBOutlet weak var ReviewTableView: UITableView!
     
+    @IBOutlet weak var StreetLabel: UILabel!
+    @IBOutlet weak var PhoneLabel: UILabel!
+    
+    @IBOutlet weak var MonTime: UILabel!
+    @IBOutlet weak var TueTime: UILabel!
+    @IBOutlet weak var WedTime: UILabel!
+    @IBOutlet weak var ThuTime: UILabel!
+    @IBOutlet weak var FriTime: UILabel!
+    @IBOutlet weak var SatTime: UILabel!
+    @IBOutlet weak var SunTime: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         RestaurantNameLabel.text = restaurantName
@@ -43,15 +53,50 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
         
         DishesView.isHidden = false
         ReviewsView.isHidden = true
-        street = "4004 3rd st nw \nCalgary, AB \nT2k 0Z8"
-        StreetLabel.text = street
         TopDishesTableView.dataSource = self
         ReviewTableView.dataSource = self
         
+        /*
+        setupTime()
+        setupAddress()
+        setupPhone()
+        */
         ReviewTableView.estimatedRowHeight = 44.0
         ReviewTableView.rowHeight = UITableView.automaticDimension
 
+        
+        MonTime.text = hourMon
+        TueTime.text = hourTue
+        WedTime.text = hourWed
+        ThuTime.text = hourThu
+        FriTime.text = hourFri
+        SatTime.text = hourSat
+        SunTime.text = hourSun
+        StreetLabel.text = address
+        PhoneLabel.text = phone
+
+
     }
+    
+    /*
+    func setupTime() {
+        MonTime.text = hourMon
+        TueTime.text = hourTue
+        WedTime.text = hourWed
+        ThuTime.text = hourThu
+        FriTime.text = hourFri
+        SatTime.text = hourSat
+        SunTime.text = hourSun
+    }
+    
+    func setupAddress() {
+        StreetLabel.text = street
+    }
+    
+    func setupPhone() {
+        PhoneLabel.text = phone
+    }
+    */
     
     @IBAction func changeViewOnSegment(_ sender: Any) {
         switch ViewSegmentedController.selectedSegmentIndex {

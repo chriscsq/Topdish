@@ -762,14 +762,21 @@
                     <connections>
                         <outlet property="AddReviewButton" destination="c2c-oj-wS8" id="i9S-Gh-IUu"/>
                         <outlet property="DishesView" destination="aOQ-w5-Wzo" id="1D3-3b-shw"/>
-                        <outlet property="PhoneLabel" destination="SpQ-R5-JzR" id="Ycq-0W-SRT"/>
+                        <outlet property="FriTime" destination="L6c-wc-9xb" id="IgJ-Ev-QzD"/>
+                        <outlet property="MonTime" destination="JU2-GJ-aaL" id="Wd0-pB-oLi"/>
+                        <outlet property="PhoneLabel" destination="SpQ-R5-JzR" id="Yxo-Hl-dJo"/>
                         <outlet property="RestaurantImageView" destination="f12-Gb-bZA" id="z7r-06-Hby"/>
                         <outlet property="RestaurantNameLabel" destination="2QC-UR-djL" id="z0t-M7-odT"/>
                         <outlet property="ReviewTableView" destination="hD1-cq-4dz" id="sWN-hn-k8b"/>
                         <outlet property="ReviewsView" destination="Fer-eN-Vdn" id="4CQ-u3-tRR"/>
-                        <outlet property="StreetLabel" destination="qbR-gx-2Lg" id="xkP-8s-i83"/>
+                        <outlet property="SatTime" destination="vor-7n-GWt" id="7Y0-2O-C3W"/>
+                        <outlet property="StreetLabel" destination="qbR-gx-2Lg" id="xj5-SS-z58"/>
+                        <outlet property="SunTime" destination="AoP-FL-KJX" id="pdF-yJ-Gfp"/>
+                        <outlet property="ThuTime" destination="Ipb-NW-y4j" id="e8j-0S-9Xh"/>
                         <outlet property="TopDishesTableView" destination="DRB-47-0Oh" id="RMC-k2-Bh9"/>
+                        <outlet property="TueTime" destination="MF7-qd-2ti" id="jSY-K1-KtV"/>
                         <outlet property="ViewSegmentedController" destination="hNO-IS-wj6" id="Oyn-RD-Zw0"/>
+                        <outlet property="WedTime" destination="CvN-z2-DJy" id="evh-Wi-UlT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="od8-FS-JLX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -837,7 +844,7 @@
         <image name="Test image.png" width="340" height="382"/>
         <image name="fast-food.png" width="22.5" height="22.5"/>
         <image name="flatbread.jpg" width="345.60000610351562" height="141.60000610351562"/>
-        <image name="location.fill" catalog="system" width="64" height="60"/>
+        <image name="location.fill" catalog="system" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dZ9-4p-zPT"/>
