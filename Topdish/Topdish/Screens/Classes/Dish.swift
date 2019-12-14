@@ -29,7 +29,7 @@ class Dish{
         })
         populateImage(restaurantName, completion: { allImages in
             self.image = allImages
-            print("ASDASDAS : ", self.dishName, self.section)
+//            print("ASDASDAS : ", self.dishName, self.section)
         })
         
         //self.backupImage = UIImage(named: "Burger")!

@@ -25,5 +25,6 @@ target 'Topdish' do
   pod 'GoogleSignIn', '< 5.0.0'
   pod 'FBSDKLoginKit'
   pod 'FBSDKCoreKit'
+  pod 'GoogleAppMeasurement'
 
 end
