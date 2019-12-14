@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
+class RestaurantScreenController: UIViewController, UICollectionViewDelegate, UITableViewDelegate {
     
     var clickedRestaurant: Restaurant = Restaurant()
     var restaurantImage: UIImage?
@@ -17,17 +17,19 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
     var reviews: [String] = []
     // MARK: Label variables
     var restaurantName = ""
+    var dishFinder = ""
     var hourMon = "", hourTue = "", hourWed = "",
-        hourThur = "", hourFri = "", hourSat = "", hourSun = ""
+        hourThu = "", hourFri = "", hourSat = "", hourSun = ""
     var street = "", postal = "", city = ""
+    var address = ""
     var phone  = ""
     var foodRatingLabel = "Food"
     var serviceRatingLabel = "Service"
+    
+    var res:Restaurant!
 
     // MARK: IBOutlets
     @IBOutlet weak var RestaurantImageView: UIImageView!
-    @IBOutlet var PhoneLabel: UILabel!
-    @IBOutlet var StreetLabel: UILabel!
     @IBOutlet var AddReviewButton: UIButton!
     @IBOutlet var RestaurantNameLabel: UILabel!
     @IBOutlet var ViewSegmentedController: UISegmentedControl!
@@ -36,6 +38,17 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var TopDishesTableView: UITableView!
     @IBOutlet weak var ReviewTableView: UITableView!
     
+    @IBOutlet weak var StreetLabel: UILabel!
+    @IBOutlet weak var PhoneLabel: UILabel!
+    
+    @IBOutlet weak var MonTime: UILabel!
+    @IBOutlet weak var TueTime: UILabel!
+    @IBOutlet weak var WedTime: UILabel!
+    @IBOutlet weak var ThuTime: UILabel!
+    @IBOutlet weak var FriTime: UILabel!
+    @IBOutlet weak var SatTime: UILabel!
+    @IBOutlet weak var SunTime: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         RestaurantNameLabel.text = restaurantName
@@ -43,15 +56,51 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
         
         DishesView.isHidden = false
         ReviewsView.isHidden = true
-        street = "4004 3rd st nw \nCalgary, AB \nT2k 0Z8"
-        StreetLabel.text = street
         TopDishesTableView.dataSource = self
         ReviewTableView.dataSource = self
+        TopDishesTableView.delegate = self
         
+        /*
+        setupTime()
+        setupAddress()
+        setupPhone()
+        */
         ReviewTableView.estimatedRowHeight = 44.0
         ReviewTableView.rowHeight = UITableView.automaticDimension
 
+        
+        MonTime.text = hourMon
+        TueTime.text = hourTue
+        WedTime.text = hourWed
+        ThuTime.text = hourThu
+        FriTime.text = hourFri
+        SatTime.text = hourSat
+        SunTime.text = hourSun
+        StreetLabel.text = address
+        PhoneLabel.text = phone
+
+
     }
+    
+    /*
+    func setupTime() {
+        MonTime.text = hourMon
+        TueTime.text = hourTue
+        WedTime.text = hourWed
+        ThuTime.text = hourThu
+        FriTime.text = hourFri
+        SatTime.text = hourSat
+        SunTime.text = hourSun
+    }
+    
+    func setupAddress() {
+        StreetLabel.text = street
+    }
+    
+    func setupPhone() {
+        PhoneLabel.text = phone
+    }
+    */
     
     @IBAction func changeViewOnSegment(_ sender: Any) {
         switch ViewSegmentedController.selectedSegmentIndex {
@@ -67,7 +116,36 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate {
         }
     }
     
-}
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "dishSegue" {
+            let nav = segue.destination as! UINavigationController
+            let svc = nav.topViewController as! MultiViewController
+            svc.menu = res.menu
+        }
+        if segue.identifier == "dishProfileSegue"{
+            print("hehehe", clickedRestaurant.menu.dishes)
+//            let storyboard: UIStoryboard = UIStoryboard(name: "Homepage", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "DishProfileViewController") as! DishProfileViewController
+            
+            let svc = segue.destination as! DishProfileViewController
+            print("sdadada")
+            for i in res.menu.dishes{
+                print("sdasdasdfkidsjfos",i.dishName)
+                if (i.dishName == dishFinder){
+                    print("seaguing \(i.review)")
+                    svc.menu = i.review
+                    print("I want to leave")
+                   // self.show(vc, sender: self)
+                    break;
+                }
+            }
+        }
+    }}
 
 extension RestaurantScreenController:  UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,11 +171,19 @@ extension RestaurantScreenController:  UITableViewDataSource {
         } else if (tableView == ReviewTableView) {
             let cell = ReviewTableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! ReviewTableViewCell
             let review = reviews[indexPath.item]
-            print(menu[indexPath.item])
+          //  print(menu[indexPath.item])
             cell.review = review
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(tableView == self.TopDishesTableView){
+                self.dishFinder = menu[indexPath.row]
+            print("asfdsklfjmskl",dishFinder)
+                    performSegue(withIdentifier: "dishProfileSegue", sender:self)
+        }
     }
 }
 
