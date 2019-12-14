@@ -15,3 +15,11 @@ It takes a while for the Nearby section in home to sort - JS
 Sometimes the Nearby will not sort correctly. - JS
 
 Click on the cell of the dish you want more detail about and it will crash. ReloadData() is the reason or the way I am calling it - GL
+
+***Bugs Found After Merging Profile/Login/Tabs/Dishes***
+
+Going to any restaurant from “nearby” tab or after "view all" doesn’t show any info about restaurant (hours, address, dishes, etc…)
+
+Thread exception when viewing menu of specific restaurant from “nearby” tab or after “view all”
+
+Icons for menu need to be changed or removed (right now share/folder like icons)
