@@ -929,7 +929,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banff.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xbz-42-EIb">
-                                <rect key="frame" x="-63" y="0.0" width="549" height="337"/>
+                                <rect key="frame" x="-63" y="0.0" width="549" height="381"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="549" id="uqV-ob-QOB"/>
                                 </constraints>
@@ -942,12 +942,12 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HIK-IT-TK2">
-                                <rect key="frame" x="105" y="438" width="204" height="34"/>
+                                <rect key="frame" x="105" y="482" width="204" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IBz-m3-x9Y">
-                                <rect key="frame" x="20" y="487" width="374" height="31"/>
+                                <rect key="frame" x="20" y="531" width="374" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="D2c-oL-cRw"/>
                                 </constraints>
@@ -1076,13 +1076,13 @@
         <!--Profile-->
         <scene sceneID="V7h-jf-BSo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="gfj-Ei-75g" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gfj-Ei-75g" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" selectedImage="person.fill" id="0wg-cK-zfO">
                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xmL-gT-3AI">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

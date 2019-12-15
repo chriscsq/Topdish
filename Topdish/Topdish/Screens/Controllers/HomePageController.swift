@@ -72,14 +72,6 @@ class HomePageController: UIViewController, UICollectionViewDelegate {
             dest.menu = dishNames
             dest.res = clickedRestaurant
             
-            print(clickedRestaurant.title, clickedRestaurant.hourMon)
-            print(clickedRestaurant.title, clickedRestaurant.hourTue)
-            print(clickedRestaurant.title, clickedRestaurant.hourWed)
-            print(clickedRestaurant.title, clickedRestaurant.hourThu)
-            print(clickedRestaurant.title, clickedRestaurant.hourFri)
-            print(clickedRestaurant.title, clickedRestaurant.hourSat)
-            print(clickedRestaurant.title, clickedRestaurant.hourSun)
-
         }
     }
     

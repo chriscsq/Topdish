@@ -12,7 +12,7 @@ import QuartzCore
 class DishReviewTableViewCell: UITableViewCell {
 
   
-    @IBOutlet weak var reviewLabel: UILabel!
+    @IBOutlet weak var reviewLabel: InsetLabel!
     var dish = DishProfileViewController()
     var review: String!
     var rate: (Double,String) = (0.0,"")
@@ -37,12 +37,5 @@ class DishReviewTableViewCell: UITableViewCell {
         reviewLabel.layer.cornerRadius = 5
 
     }
-
-
-
-    
-    
-
-
 }
 

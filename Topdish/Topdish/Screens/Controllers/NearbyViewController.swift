@@ -136,9 +136,27 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "restaurantSegue" {
+            var dishNames: [String] = []
             let dest = segue.destination as! RestaurantScreenController
             dest.restaurantName = clickedRestaurant.title
-            dest.restaurantImage = clickedRestaurant.featuredImage!
+            dest.restaurantImage = clickedRestaurant.featuredImage
+            dest.reviews = clickedRestaurant.reviews
+            for dish in clickedRestaurant.menu.dishes {
+                dishNames.append(dish.dishName)
+            }
+            /* Setup hours */
+            dest.hourMon = clickedRestaurant.hourMon
+            dest.hourTue = clickedRestaurant.hourTue
+            dest.hourWed = clickedRestaurant.hourWed
+            dest.hourThu = clickedRestaurant.hourThu
+            dest.hourFri = clickedRestaurant.hourFri
+            dest.hourSat = clickedRestaurant.hourSat
+            dest.hourSun = clickedRestaurant.hourSun
+            dest.address = clickedRestaurant.address
+            dest.phone = clickedRestaurant.phoneNumber
+            dest.menu = dishNames
+            dest.res = clickedRestaurant
+            
         }
     }
     

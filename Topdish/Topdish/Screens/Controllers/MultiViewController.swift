@@ -20,7 +20,7 @@ class MultiViewController: UIViewController, UITableViewDelegate {
     var averageRating: [Double] = []
     var menu:Menu!
     var m:Menu?
-    
+    var dishName:String = ""
     var mainArray:[(String,String,Double)] = []{
             didSet{
                 mainTable.reloadData()
@@ -236,19 +236,26 @@ class MultiViewController: UIViewController, UITableViewDelegate {
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             if (tableView == self.mainTable){
                 self.dishFinder = mainArray[indexPath.row].0
+                self.dishName = mainArray[indexPath.row].1
                 performSegue(withIdentifier: "dishProfile", sender:self)
                 
             }else if (tableView == self.appetizerTable){
  
                 self.dishFinder = appetizerArray[indexPath.row].0
+                self.dishName = mainArray[indexPath.row].1
+
                 performSegue(withIdentifier: "dishProfile", sender:self)
                 
             }else if (tableView == self.dessertTable){
                 self.dishFinder = dessertArray[indexPath.row].0
+                self.dishName = mainArray[indexPath.row].1
+
                 performSegue(withIdentifier: "dishProfile", sender:self)
             }else{
 
                 self.dishFinder = drinkArray[indexPath.row].0
+                self.dishName = mainArray[indexPath.row].1
+
                 performSegue(withIdentifier: "dishProfile", sender:self)
             }
         }

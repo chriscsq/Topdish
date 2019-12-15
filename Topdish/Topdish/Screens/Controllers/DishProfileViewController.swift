@@ -17,8 +17,9 @@ class DishProfileViewController: UIViewController, UICollectionViewDelegate,UITa
     
 
     
+    @IBOutlet weak var DishNameLabel: UILabel?
     @IBOutlet weak var dishTableView: UITableView!
-      @IBOutlet weak var dishDetail: UICollectionView!
+    @IBOutlet weak var dishDetail: UICollectionView!
 
    
     var menu:[(Double,String)] = []
@@ -36,8 +37,8 @@ class DishProfileViewController: UIViewController, UICollectionViewDelegate,UITa
 
         
         self.dishTableView.dataSource = self
-       self.dishTableView.delegate = self
-      //  self.dishTableView.allowsSelection = true
+        self.dishTableView.delegate = self
+        //  self.dishTableView.allowsSelection = true
         dishTableView.estimatedRowHeight = 85.0
         dishTableView.rowHeight = UITableView.automaticDimension
 
