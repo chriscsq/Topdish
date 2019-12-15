@@ -103,7 +103,6 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
             registerLoginButton.isEnabled = false
             showEverything()
             
-//            let uID = Auth.auth().currentUser?.uid
             uID = Auth.auth().currentUser?.uid
             print(uID!)
             
@@ -357,8 +356,8 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
         CoverPhoto.isHidden = false
         Photo.isHidden = false
         nameField.isHidden = false
-        numberofReview.isHidden = false
-        numberoflikeddishes.isHidden = false
+//        numberofReview.isHidden = false
+//        numberoflikeddishes.isHidden = false
         tablecontrol.isHidden = false
         Table.isHidden = false
     }

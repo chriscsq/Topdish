@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 import FirebaseDatabase
 
 class Dish{
@@ -68,7 +69,9 @@ class Dish{
     }
     
     func populateImage(_ restaurantName: String, completion: @escaping ([String]) -> Void) {
+//        let storageRef = Storage.storage().reference().child("restaurant").child(restaurantName)
         var myImages: [String] = []
+//        var uiImages: [UIImage] = []
         let childString : String = "menu/" + restaurantName
         Database.database().reference().child(childString).observeSingleEvent(of: .value) { snapshot in
             let singleRestaurant = snapshot.children
@@ -80,6 +83,24 @@ class Dish{
                     let dishReviews = (dishes.childSnapshot(forPath: "user reviews")).children
                     while let review = dishReviews.nextObject() as? DataSnapshot {
                         if review.hasChild("image") {
+                            
+                            // MARK: for images from storage
+                            // MARK: need more info on displaying format
+//                            storageRef.child(self.dishName).listAll{ (result, error) in
+//                                if let error = error {
+//                                    print(error.localizedDescription)
+//                                }
+//                                for item in result.items {
+//                                    print(item.fullPath)
+//                                    item.downloadURL(completion:{ (url, error) in
+//                                        print(url?.absoluteString as Any)
+//                                        let data = NSData(contentsOf: url!)
+//                                        let image = UIImage(data: data! as Data)
+//                                        uiImages.append(image!)
+//                                        myImages.append(url!.absoluteString)
+//                                    })
+//                                }
+//                            }
                             let singleImageSnap = review.childSnapshot(forPath: "image").value
                             let singleImage = (singleImageSnap as! String)
                             myImages.append(singleImage)

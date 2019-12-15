@@ -789,7 +789,7 @@
                         <outlet property="TueTime" destination="MF7-qd-2ti" id="jSY-K1-KtV"/>
                         <outlet property="ViewSegmentedController" destination="hNO-IS-wj6" id="Oyn-RD-Zw0"/>
                         <outlet property="WedTime" destination="CvN-z2-DJy" id="evh-Wi-UlT"/>
-                        <segue destination="SbE-gJ-8IU" kind="show" identifier="dishProfileSegue" id="iSB-Nl-WPk"/>
+                        <segue destination="SbE-gJ-8IU" kind="presentation" identifier="dishProfileSegue" id="iSB-Nl-WPk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="od8-FS-JLX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -926,7 +926,6 @@
         <!--Profile Controller-->
         <scene sceneID="exj-qE-MJY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9RO-vw-tX6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ProfileVC" modalPresentationStyle="overCurrentContext" id="xP0-Bm-06O" customClass="ProfileController" customModule="Topdish" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2rJ-Si-tgX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -997,14 +996,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqM-Kk-Dxl">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqM-Kk-Dxl">
                                 <rect key="frame" x="30" y="388" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aou-Rx-bZ7">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aou-Rx-bZ7">
                                 <rect key="frame" x="299" y="386" width="42" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1066,6 +1065,7 @@
                         <outlet property="tablecontrol" destination="IBz-m3-x9Y" id="QFb-5i-xT5"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9RO-vw-tX6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2904" y="-952"/>
         </scene>
@@ -1082,7 +1082,6 @@
         <!--Profile-->
         <scene sceneID="V7h-jf-BSo">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="71Z-hp-qfS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="gfj-Ei-75g" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" selectedImage="person.fill" id="0wg-cK-zfO">
                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
@@ -1097,6 +1096,7 @@
                         <segue destination="xP0-Bm-06O" kind="relationship" relationship="rootViewController" id="QNd-dv-jq5"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="71Z-hp-qfS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1962" y="-952"/>
         </scene>
