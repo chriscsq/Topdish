@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Cosmos
 
 class RestaurantCardCollectionCell: UICollectionViewCell, UICollectionViewDelegate {
     
     @IBOutlet var RestaurantImage: UIImageView!
     @IBOutlet var RestaurantLabel: UILabel!
     @IBOutlet var CuisineLabel: UILabel!
+    @IBOutlet weak var StarView: CosmosView!
     
     var restaurant: Restaurant! {
         didSet {
@@ -25,11 +27,12 @@ class RestaurantCardCollectionCell: UICollectionViewCell, UICollectionViewDelega
             RestaurantImage.image = restaurant.featuredImage
             RestaurantLabel?.text = restaurant.title
             CuisineLabel?.text = restaurant.typeOfCuisine
-             
+            StarView?.rating = restaurant.rating
         } else {
             RestaurantImage.image = nil
             RestaurantLabel = nil
             CuisineLabel = nil
+            StarView.rating = 0.0
         }
         
         

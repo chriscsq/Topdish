@@ -156,6 +156,7 @@ class NearbyViewController: UIViewController, UICollectionViewDelegate {
             dest.phone = clickedRestaurant.phoneNumber
             dest.menu = dishNames
             dest.res = clickedRestaurant
+            dest.rating = clickedRestaurant.rating
             
         }
     }

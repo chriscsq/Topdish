@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Cosmos
 
 class RestaurantScreenController: UIViewController, UICollectionViewDelegate, UITableViewDelegate {
     
+    @IBOutlet weak var starView: CosmosView!
     var clickedRestaurant: Restaurant = Restaurant()
     var restaurantImage: UIImage?
     var restaurantImageView: UIImageView?
@@ -25,6 +27,7 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate, UI
     var phone  = ""
     var foodRatingLabel = "Food"
     var serviceRatingLabel = "Service"
+    var rating: Double = 0.0
     
     var res:Restaurant!
 
@@ -78,7 +81,7 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate, UI
         SunTime.text = hourSun
         StreetLabel.text = address
         PhoneLabel.text = phone
-
+        starView.rating = self.rating
 
     }
 

@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1BCFEA6ED670C80367565DF7 /* Pods_TopdishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */; };
+		5208015123A64DF00049A785 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 5208015023A64DF00049A785 /* Cosmos */; };
 		52220DCF23A60C32000E9520 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52220DCE23A60C32000E9520 /* InsetLabel.swift */; };
 		52CD78DC23960AB8004F97D7 /* ViewAllController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD78DB23960AB8004F97D7 /* ViewAllController.swift */; };
 		52CD78DE23961090004F97D7 /* RestaurantCardCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD78DD23961090004F97D7 /* RestaurantCardCollectionCell.swift */; };
@@ -140,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5208015123A64DF00049A785 /* Cosmos in Frameworks */,
 				CA7211454AA2A2BE7A5C8161 /* Pods_Topdish.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,6 +353,9 @@
 			dependencies = (
 			);
 			name = Topdish;
+			packageProductDependencies = (
+				5208015023A64DF00049A785 /* Cosmos */,
+			);
 			productName = Topdish;
 			productReference = D30BEDF723849CA100B5FEE2 /* Topdish.app */;
 			productType = "com.apple.product-type.application";
@@ -427,6 +432,9 @@
 				Base,
 			);
 			mainGroup = D30BEDEE23849CA000B5FEE2;
+			packageReferences = (
+				5208014F23A64DF00049A785 /* XCRemoteSwiftPackageReference "Cosmos" */,
+			);
 			productRefGroup = D30BEDF823849CA100B5FEE2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -976,6 +984,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5208014F23A64DF00049A785 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5208015023A64DF00049A785 /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5208014F23A64DF00049A785 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D30BEDEF23849CA100B5FEE2 /* Project object */;
 }

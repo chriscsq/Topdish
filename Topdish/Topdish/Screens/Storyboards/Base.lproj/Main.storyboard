@@ -381,6 +381,26 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78M-dM-KsM" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="215" y="140" width="159" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                            <real key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                                            <color key="value" red="1" green="0.72941176470000002" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -389,6 +409,7 @@
                                             <outlet property="CuisineLabel" destination="rZw-8c-Lqd" id="ssw-0M-ZAz"/>
                                             <outlet property="RestaurantImage" destination="akE-gR-2Yd" id="en0-mf-9u8"/>
                                             <outlet property="RestaurantLabel" destination="vOU-6o-J5A" id="YAh-F7-Bc7"/>
+                                            <outlet property="StarView" destination="78M-dM-KsM" id="l6G-LG-UKb"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -747,6 +768,32 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rJN-h0-iXh" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="20" y="296" width="146" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                        <color key="value" red="1" green="0.72941176470000002" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </view>
@@ -769,6 +816,7 @@
                         <outlet property="TueTime" destination="MF7-qd-2ti" id="jSY-K1-KtV"/>
                         <outlet property="ViewSegmentedController" destination="hNO-IS-wj6" id="Oyn-RD-Zw0"/>
                         <outlet property="WedTime" destination="CvN-z2-DJy" id="evh-Wi-UlT"/>
+                        <outlet property="starView" destination="rJN-h0-iXh" id="lRx-sN-dDP"/>
                         <segue destination="SbE-gJ-8IU" kind="presentation" identifier="dishProfileSegue" id="iSB-Nl-WPk"/>
                     </connections>
                 </viewController>
@@ -1109,6 +1157,6 @@
         <image name="smiley" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dZ9-4p-zPT"/>
+        <segue reference="aKq-T2-FJR"/>
     </inferredMetricsTieBreakers>
 </document>

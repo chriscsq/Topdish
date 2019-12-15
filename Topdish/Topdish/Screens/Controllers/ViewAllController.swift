@@ -14,7 +14,6 @@ class ViewAllController: UIViewController, UICollectionViewDelegate {
     var givenRestaurants: [Restaurant] = []
     var clickedRestaurant: Restaurant = Restaurant()
     
-    
     @IBOutlet weak var CollectionView: UICollectionView!
     @IBOutlet weak var PageLabel: UILabel!
 
@@ -50,7 +49,8 @@ class ViewAllController: UIViewController, UICollectionViewDelegate {
             dest.phone = clickedRestaurant.phoneNumber
             dest.menu = dishNames
             dest.res = clickedRestaurant
-                  
+            dest.rating = clickedRestaurant.rating
+
         }
     }
     
