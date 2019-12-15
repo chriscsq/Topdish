@@ -616,6 +616,7 @@
                     <navigationItem key="navigationItem" id="6LX-wR-bSN"/>
                     <connections>
                         <outlet property="addDish" destination="GnR-YX-yqR" id="A3T-7u-ap4"/>
+                        <outlet property="done" destination="OTl-Zy-BAy" id="UMG-qG-9sN"/>
                         <outlet property="experience" destination="2fa-h5-5dd" id="xUg-Dh-vRT"/>
                         <outlet property="numDiner" destination="eW6-sv-bFu" id="pON-K2-eP1"/>
                         <outlet property="table" destination="eyc-cQ-K2f" id="TfO-Ji-WYn"/>
