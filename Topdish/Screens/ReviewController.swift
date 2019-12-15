@@ -8,9 +8,14 @@
 
 import Foundation
 import UIKit
+import Firebase
+//import FirebaseAuth
 
 class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate{
     //First page of the review
+    //Store text field in theses
+    var wygbplaceholder:String = "Would you go back?"
+    var expplaceholder:String = "Tell us about your experience..."
     var dishNames:[String] = []
     var reviewHold:[DishReview] = []
     var rate:[Int] = []
@@ -21,15 +26,17 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
     @IBOutlet weak var done: UIButton!
     @IBOutlet weak var table: UITableView!
     var counter:Int = 1
-    var diners:Int?
+    var diners:Int = -1
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "reviewcell", for:indexPath)
-        
-        cell.textLabel?.text = reviewHold[indexPath.row].name
-        cell.detailTextLabel?.text = String(reviewHold[indexPath.row].rating)
-        
+       // if reviewHold[indexPath.row].rating != -1{
+            
+            cell.textLabel?.text = reviewHold[indexPath.row].name
+            cell.detailTextLabel?.text = String(reviewHold[indexPath.row].rating)
+            
+        //}
         return cell
     }
     
@@ -44,11 +51,11 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
         table.delegate = (self as? UITableViewDelegate)
         experience.delegate = self
         experience.textColor = .lightGray
-        experience.text = "Tell us about your experience..."
+        experience.text = expplaceholder
         
         wouldyougoback.delegate = self
         wouldyougoback.textColor = .lightGray
-        wouldyougoback.text = "Would you go back?"
+        wouldyougoback.text = wygbplaceholder
         
         numDiner.delegate = self
         
@@ -60,6 +67,9 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
          let dest = segue.destination as! DishReviewController
         //print(reviewHold)
         dest.reviewHolder = reviewHold
+        dest.numdiners = diners
+        dest.enteredExp = experience.text
+        dest.enteredGoBack = wouldyougoback.text
     }
     
     func textViewDidBeginEditing(_ experience: UITextView) {
@@ -89,6 +99,14 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
         }
     }
     
+    
+    @IBAction func submitReview(_ sender: UIButton){
+        //Send everything to DB
+        //func writeToDB(UID: String, restName: String, numberOfDiners: Int, experience: String, goBack: String, dishInfo: [(String, Double, String, String)])
+        
+        //writeToDB(UID: Auth.auth().currentUser?.uid, restName: String, numberOfDiners: diners, experience: expplaceholder, goBack: wygbplaceholder, dishInfo: [(String, Double, String, String)])
+        //Thank you for sharing page
+    }
 
     
     override func viewWillAppear(_ animated:Bool){

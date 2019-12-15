@@ -261,7 +261,7 @@
                                 <items>
                                     <tabBarItem title="Explore" image="fast-food" selectedImage="fast-food.png" id="xuP-QC-Z9Z">
                                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
-                                        <color key="badgeColor" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="badgeColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
                                     <tabBarItem title="Nearby" image="location" catalog="system" selectedImage="location" id="hS8-g1-1h5">
                                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
@@ -270,7 +270,7 @@
                                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
                                     </tabBarItem>
                                 </items>
-                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="selectedImageTintColor" red="1" green="0.58039215686274503" blue="0.090196078431372548" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
@@ -322,7 +322,7 @@
                                 <items>
                                     <tabBarItem title="Explore" image="fast-food" selectedImage="fast-food.png" id="Rlc-hP-EP3">
                                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
-                                        <color key="badgeColor" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="badgeColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
                                     <tabBarItem title="Nearby" image="location" catalog="system" selectedImage="location" id="shd-92-8qh">
                                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
@@ -331,7 +331,7 @@
                                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
                                     </tabBarItem>
                                 </items>
-                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="selectedImageTintColor" red="1" green="0.58039215690000001" blue="0.090196078430000007" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
@@ -499,7 +499,7 @@
                             <textView clipsSubviews="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2fa-h5-5dd">
                                 <rect key="frame" x="16" y="171" width="325" height="151.66666666666663"/>
                                 <color key="backgroundColor" red="1" green="0.72941176470588232" blue="0.42352941176470588" alpha="0.4961472602739726" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -575,6 +575,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTl-Zy-BAy">
                                 <rect key="frame" x="163" y="678" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitReview:" destination="v5j-be-3Gp" eventType="touchUpInside" id="kcc-qX-lP8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -674,7 +677,7 @@
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F7h-at-N4W">
                                 <rect key="frame" x="68" y="458" width="239" height="127"/>
-                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="127" id="8T4-ek-TVn"/>
                                 </constraints>

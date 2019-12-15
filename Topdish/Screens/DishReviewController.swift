@@ -20,9 +20,17 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
         
 
         //variables
+    
         var reviewHolder:[DishReview] = []
         var dishHolder:[String]=[]
         var rateHolder:[Int]=[]
+        
+        //Here we will store data about the restaurant
+        //These will be passed back and forth during segues.
+        var numdiners:Int = -1
+        var enteredExp:String = ""
+        var enteredGoBack:String = ""
+    
     
         var nameofDish:String = ""
         var rate:Int = -1
@@ -111,13 +119,15 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("gjkfhgjh")
-        print("rate: ", rate, "\n\n\n")
         if segue.identifier == "backtoreview"{
+            print(enteredGoBack)
             let dest = segue.destination as! ReviewController
             let dishAdded = DishReview(name: nameofDish, rating: rate)
             reviewHolder.append(dishAdded)
             dest.reviewHold = reviewHolder
+            dest.wygbplaceholder = enteredGoBack
+            dest.expplaceholder = enteredExp
+            dest.diners = numdiners
         }
        }
     
