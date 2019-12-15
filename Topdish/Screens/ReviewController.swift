@@ -64,12 +64,16 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         let dest = segue.destination as! DishReviewController
-        //print(reviewHold)
-        dest.reviewHolder = reviewHold
-        dest.numdiners = diners
-        dest.enteredExp = experience.text
-        dest.enteredGoBack = wouldyougoback.text
+        if segue.identifier == "dishreview"{
+            let dest = segue.destination as! DishReviewController
+            //print(reviewHold)
+            dest.reviewHolder = reviewHold
+            dest.numdiners = diners
+            dest.enteredExp = experience.text
+            dest.enteredGoBack = wouldyougoback.text
+        }else{
+            
+        }
     }
     
     func textViewDidBeginEditing(_ experience: UITextView) {
@@ -104,7 +108,7 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
         //Send everything to DB
         //func writeToDB(UID: String, restName: String, numberOfDiners: Int, experience: String, goBack: String, dishInfo: [(String, Double, String, String)])
         
-        //writeToDB(UID: Auth.auth().currentUser?.uid, restName: String, numberOfDiners: diners, experience: expplaceholder, goBack: wygbplaceholder, dishInfo: [(String, Double, String, String)])
+        writeToDB(UID: "test", restName: "test", numberOfDiners: diners, experience: expplaceholder, goBack: wygbplaceholder, dishInfo: [("test", 1.0, "String", "String"), ("test2", 1.0, "String", "String")])
         //Thank you for sharing page
     }
 

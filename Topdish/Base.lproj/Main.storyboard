@@ -569,7 +569,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="+ Dish Review"/>
                                 <connections>
-                                    <segue destination="EWi-Ic-r1c" kind="show" identifier="" id="Kgz-RF-fwK"/>
+                                    <segue destination="EWi-Ic-r1c" kind="show" identifier="dishreview" id="Kgz-RF-fwK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTl-Zy-BAy">
@@ -577,6 +577,7 @@
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitReview:" destination="v5j-be-3Gp" eventType="touchUpInside" id="kcc-qX-lP8"/>
+                                    <segue destination="27v-eh-bQP" kind="show" id="k0o-5x-kJ3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -768,6 +769,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qoj-4x-lUF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4148" y="113.79310344827587"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QY1-fX-Lez">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="27v-eh-bQP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X6q-HN-Xry">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thank you for sharing!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBE-Zq-8Um">
+                                <rect key="frame" x="29" y="256" width="330" height="263"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4FK-Ry-HRz"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ug9-eT-INt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQQ-2A-z9G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4997.6000000000004" y="283.74384236453204"/>
         </scene>
     </scenes>
     <resources>

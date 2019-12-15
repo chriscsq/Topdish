@@ -29,7 +29,7 @@ class DishReview {
 func writeToDB(UID: String, restName: String, numberOfDiners: Int, experience: String, goBack: String, dishInfo: [(String, Double, String, String)]) {
     
     let restPath = "restaurant/" + restName + "/reviews"
-    let dishPath = "menu/" + restName
+    let dishPath = "menu/" + restName + "/"
     let reviewPath = "review data/" + restName + "/" + UID
     
     Database.database().reference().child(restPath).setValue([UID: experience])
@@ -42,12 +42,12 @@ func writeToDB(UID: String, restName: String, numberOfDiners: Int, experience: S
                 let newSnap = snapshot.childSnapshot(forPath: dish.0)
                 if (newSnap.hasChild(UID)) {
                     ///Database.database().reference().child(dishPath + dish.0 + "user reviews" + UID).setValue(["image": ADD IMAGE STRING FOR KARN use dish.3 to access UIImage type])
-                    Database.database().reference().child(dishPath + dish.0 + "user reviews" + UID).setValue(["rating": dish.1])
-                    Database.database().reference().child(dishPath + dish.0 + "user reviews" + UID).setValue(["text review": dish.2
+                    Database.database().reference().child(dishPath + dish.0 + "/user reviews/" + UID).setValue(["rating": dish.1])
+                    Database.database().reference().child(dishPath + dish.0 + "/user reviews/" + UID).setValue(["text review": dish.2
                     ])
                 } else {
-                    Database.database().reference().child(dishPath + dish.0 + "user reviews").setValue([UID: ["rating": dish.1]])
-                    Database.database().reference().child(dishPath + dish.0 + "user reviews").setValue([UID: ["text review": dish.2]])
+                    Database.database().reference().child(dishPath + dish.0 + "/user reviews/").setValue([UID: ["rating": dish.1]])
+                    Database.database().reference().child(dishPath + dish.0 + "/user reviews/").setValue([UID: ["text review": dish.2]])
                     ///Database.database().reference().child(dishPath + dish.0 + "user reviews").setValue([UID: ["image": dish.3 FOR KARN @@@@@@@@@@@@]])
                 }
             } else {
