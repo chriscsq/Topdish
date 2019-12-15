@@ -32,20 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		230AF2E1239432010057071E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 230AF2DB239432000057071E /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B183A5951A8535D100C76870;
-			remoteInfo = ResearchKit;
-		};
-		230AF2E3239432010057071E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 230AF2DB239432000057071E /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
-			remoteInfo = ResearchKitTests;
-		};
 		D30BEE0E23849CA600B5FEE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D30BEDEF23849CA100B5FEE2 /* Project object */;
@@ -66,7 +52,6 @@
 		11900758A271267757D042A3 /* Pods-Topdish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topdish.debug.xcconfig"; path = "Target Support Files/Pods-Topdish/Pods-Topdish.debug.xcconfig"; sourceTree = "<group>"; };
 		13F9AB1F9FC7FB8C82B4F325 /* Pods_TopdishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopdishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		230AF2D7238F32F10057071E /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		230AF2DB239432000057071E /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../../../../Downloads/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
 		230AF2F023974AE60057071E /* ReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewController.swift; sourceTree = "<group>"; };
 		235D746B239C56AF00315821 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		23F2E30423A068310039972E /* DishReviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishReviewController.swift; sourceTree = "<group>"; };
@@ -128,15 +113,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		230AF2DC239432000057071E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				230AF2E2239432010057071E /* ResearchKit.framework */,
-				230AF2E4239432010057071E /* ResearchKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		52E82536238895BB00F5FEA6 /* UIProperties */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,7 +162,6 @@
 		D30BEDEE23849CA000B5FEE2 = {
 			isa = PBXGroup;
 			children = (
-				230AF2DB239432000057071E /* ResearchKit.xcodeproj */,
 				D30BEDF923849CA100B5FEE2 /* Topdish */,
 				D30BEE1023849CA600B5FEE2 /* TopdishTests */,
 				D30BEE1B23849CA600B5FEE2 /* TopdishUITests */,
@@ -337,12 +312,6 @@
 			mainGroup = D30BEDEE23849CA000B5FEE2;
 			productRefGroup = D30BEDF823849CA100B5FEE2 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 230AF2DC239432000057071E /* Products */;
-					ProjectRef = 230AF2DB239432000057071E /* ResearchKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D30BEDF623849CA100B5FEE2 /* Topdish */,
@@ -351,23 +320,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		230AF2E2239432010057071E /* ResearchKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ResearchKit.framework;
-			remoteRef = 230AF2E1239432010057071E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		230AF2E4239432010057071E /* ResearchKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ResearchKitTests.xctest;
-			remoteRef = 230AF2E3239432010057071E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D30BEDF523849CA100B5FEE2 /* Resources */ = {
