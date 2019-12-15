@@ -81,27 +81,7 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate, UI
 
 
     }
-    
-    /*
-    func setupTime() {
-        MonTime.text = hourMon
-        TueTime.text = hourTue
-        WedTime.text = hourWed
-        ThuTime.text = hourThu
-        FriTime.text = hourFri
-        SatTime.text = hourSat
-        SunTime.text = hourSun
-    }
-    
-    func setupAddress() {
-        StreetLabel.text = street
-    }
-    
-    func setupPhone() {
-        PhoneLabel.text = phone
-    }
-    */
-    
+
     @IBAction func changeViewOnSegment(_ sender: Any) {
         switch ViewSegmentedController.selectedSegmentIndex {
         case 0:
