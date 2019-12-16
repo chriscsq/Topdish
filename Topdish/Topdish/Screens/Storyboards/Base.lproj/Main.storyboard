@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wc7-Ha-yHN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wc7-Ha-yHN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -438,6 +438,16 @@
             </objects>
             <point key="canvasLocation" x="1650.7246376811595" y="-130.58035714285714"/>
         </scene>
+        <!--Review-->
+        <scene sceneID="LAX-nm-1lI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Review" id="1XK-Rp-PFi" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wfQ-UU-vE8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cNY-oK-495" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1541" y="453"/>
+        </scene>
         <!--Dish-->
         <scene sceneID="kxc-hx-mIR">
             <objects>
@@ -446,7 +456,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fq0-TI-qIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1640" y="522"/>
+            <point key="canvasLocation" x="1725" y="573"/>
         </scene>
         <!--Homepage-->
         <scene sceneID="UTb-IX-Mf2">
@@ -497,6 +507,9 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="1XK-Rp-PFi" kind="show" identifier="review" id="ZA5-qK-ao6"/>
+                                </connections>
                             </button>
                             <view alpha="0.20000000000000001" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nB2-DO-4uW" userLabel="Divider">
                                 <rect key="frame" x="20" y="460" width="374" height="1"/>
@@ -968,7 +981,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEz-Al-rem">
-                                <rect key="frame" x="0.0" y="44" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="294"/>
                                 <state key="normal" title="Register or Login" backgroundImage="background">
                                     <color key="titleColor" red="1" green="0.72941176470000002" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -1083,7 +1096,7 @@
                             <constraint firstItem="MLy-tu-nTL" firstAttribute="bottom" secondItem="AFu-Wd-KNp" secondAttribute="bottom" id="OJh-Es-6fM"/>
                             <constraint firstItem="xbz-42-EIb" firstAttribute="top" secondItem="2rJ-Si-tgX" secondAttribute="top" id="RQM-Kb-p16"/>
                             <constraint firstItem="HIK-IT-TK2" firstAttribute="top" secondItem="9Qa-jp-ZoI" secondAttribute="bottom" constant="8" id="bYW-GA-Rjq"/>
-                            <constraint firstItem="TEz-Al-rem" firstAttribute="top" secondItem="MLy-tu-nTL" secondAttribute="top" id="fVh-yc-JSo"/>
+                            <constraint firstItem="TEz-Al-rem" firstAttribute="top" secondItem="2rJ-Si-tgX" secondAttribute="top" id="fVh-yc-JSo"/>
                             <constraint firstItem="TEz-Al-rem" firstAttribute="leading" secondItem="MLy-tu-nTL" secondAttribute="leading" id="g8w-s7-0Uf"/>
                             <constraint firstItem="9dB-gF-Zkc" firstAttribute="leading" secondItem="2rJ-Si-tgX" secondAttribute="leadingMargin" id="iOV-er-zA4"/>
                             <constraint firstItem="9dB-gF-Zkc" firstAttribute="trailing" secondItem="2rJ-Si-tgX" secondAttribute="trailingMargin" id="lAq-k6-shj"/>
@@ -1094,6 +1107,7 @@
                         <viewLayoutGuide key="safeArea" id="MLy-tu-nTL"/>
                     </view>
                     <navigationItem key="navigationItem" id="esO-xY-W57"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="CoverPhoto" destination="xbz-42-EIb" id="vxa-hM-fI5"/>

@@ -105,6 +105,10 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate, UI
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "review" {
+            let viewCont = segue.destination as! ReviewController
+            viewCont.restName = RestaurantNameLabel.text!
+        }
         if segue.identifier == "dishSegue" {
             let nav = segue.destination as! UINavigationController
             let svc = nav.topViewController as! MultiViewController

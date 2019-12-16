@@ -8,12 +8,15 @@
 
 import UIKit
 import FirebaseDatabase
+import Kingfisher
 
 class DishProfileViewController: UIViewController, UICollectionViewDelegate,UITableViewDelegate{
     
 
     var images = [UIImage(named: "Burger.png"), UIImage(named: "flatbread.png"), UIImage(named: "steak.png")]
     //var clickedDish:Menu = Menu()
+    
+    var storageImages: [UIImage] = []
     
 
     
@@ -41,7 +44,13 @@ class DishProfileViewController: UIViewController, UICollectionViewDelegate,UITa
         //  self.dishTableView.allowsSelection = true
         dishTableView.estimatedRowHeight = 85.0
         dishTableView.rowHeight = UITableView.automaticDimension
+        
+        getStorageImages()
 
+        
+    }
+    
+    func getStorageImages(){
         
     }
 
@@ -90,6 +99,7 @@ extension DishProfileViewController: UICollectionViewDataSource{
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reviewIdentifier", for: indexPath) as! DishDetailCollectionViewCell
       //  for i in images{
+        print("AAAAAAAAAAAAAAAAAAAAAAA \(indexPath.item)")
         cell.menu = images[indexPath.item]
         //}
         cell.imagesView.image = images[indexPath.item]

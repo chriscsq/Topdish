@@ -69,7 +69,7 @@ class Dish{
     }
     
     func populateImage(_ restaurantName: String, completion: @escaping ([String]) -> Void) {
-//        let storageRef = Storage.storage().reference().child("restaurant").child(restaurantName)
+        let storageRef = Storage.storage().reference().child("restaurant").child(restaurantName)
         var myImages: [String] = []
 //        var uiImages: [UIImage] = []
         let childString : String = "menu/" + restaurantName
