@@ -50,7 +50,7 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
          super.viewDidLoad()
         dishexp.delegate = self
         dishexp.textColor = .lightGray
-        dishexp.text = "Tell us about your experience..."
+        dishexp.text = dishexpph
         dishRate.delegate = self
     }
     
