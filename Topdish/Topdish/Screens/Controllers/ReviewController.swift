@@ -112,28 +112,22 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
         writeToDB(UID: "test", restName: "test", numberOfDiners: diners, experience: expplaceholder, goBack: wygbplaceholder, dishInfo: [("test", 1.0, "String", "String"), ("test2", 1.0, "String", "String")])
         //Thank you for sharing page
         
-        let alertController = UIAlertController(title: "Alert", message: "Thank you for sharing.", preferredStyle: .alert)
-        let action1 = UIAlertAction(title: "Default", style: .default) { (action:UIAlertAction) in
-                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                    let viewController = storyBoard.instantiateViewController(identifier: Constants.Storyboard.tabBarCon) as! UITabBarController
-                    viewController.selectedIndex = 0
-                    self.view.window?.rootViewController = viewController
-                     // self.viewController?.popToRootViewController(animated: true)
-                    self.view.window?.makeKeyAndVisible()
-            print("You've pressed default");
-        }
-        alertController.addAction(action1)
-        self.present(alertController, animated: true, completion: nil)
-        
         // MARK: To Go To Explore Page After Submit
+
         
-//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//        let viewController = storyBoard.instantiateViewController(identifier: Constants.Storyboard.tabBarCon) as! UITabBarController
-//        viewController.selectedIndex = 0
-//        self.view.window?.rootViewController = viewController
-//         // self.viewController?.popToRootViewController(animated: true)
-//        self.view.window?.makeKeyAndVisible()
-        
+//        let alertController = UIAlertController(title: "Alert", message: "Thank you for sharing.", preferredStyle: .alert)
+//        let action1 = UIAlertAction(title: "Default", style: .default) { (action:UIAlertAction) in
+//                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//                    let viewController = storyBoard.instantiateViewController(identifier: Constants.Storyboard.tabBarCon) as! UITabBarController
+//                    viewController.selectedIndex = 0
+//                    self.view.window?.rootViewController = viewController
+//                     // self.viewController?.popToRootViewController(animated: true)
+//                    self.view.window?.makeKeyAndVisible()
+//            print("You've pressed default");
+//        }
+//        alertController.addAction(action1)
+//        self.present(alertController, animated: true, completion: nil)
+            
     }
 
     
