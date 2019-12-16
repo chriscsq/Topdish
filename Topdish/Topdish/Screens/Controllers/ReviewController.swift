@@ -28,8 +28,6 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
     var counter:Int = 1
     var diners:Int = -1
     
-    var restName = ""
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "reviewcell", for:indexPath)
@@ -60,7 +58,9 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
         wouldyougoback.text = wygbplaceholder
         
         numDiner.delegate = self
-               
+        
+        
+       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,7 +71,6 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
             dest.numdiners = diners
             dest.enteredExp = experience.text
             dest.enteredGoBack = wouldyougoback.text
-            dest.resName = restName
         }else{
             
         }
@@ -85,7 +84,7 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
     }
     
     func textViewDidEndEditing(_ experience: UITextView) {
-        if experience.text.isEmpty {
+        if experience.text.isEmpty  {
             experience.text = "Tell us about your experience..."
             experience.textColor = UIColor.lightGray
         }else{
@@ -108,26 +107,26 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
     @IBAction func submitReview(_ sender: UIButton){
         //Send everything to DB
         //func writeToDB(UID: String, restName: String, numberOfDiners: Int, experience: String, goBack: String, dishInfo: [(String, Double, String, String)])
-        
-        writeToDB(UID: "test", restName: "test", numberOfDiners: diners, experience: expplaceholder, goBack: wygbplaceholder, dishInfo: [("test", 1.0, "String", "String"), ("test2", 1.0, "String", "String")])
-        //Thank you for sharing page
-        
-        // MARK: To Go To Explore Page After Submit
+        var info:[(String, Double, String, String)] = []
+        for dish in reviewHold{
+            info.append((dish.name, Double(dish.rating), dish.dishexp, "imageRef"))
+        }
+        writeToDB(UID: "test", restName: "test", numberOfDiners: diners, experience: expplaceholder, goBack: wygbplaceholder, dishInfo: info)
+               // MARK: To Go To Explore Page After Submit
 
-        
-//        let alertController = UIAlertController(title: "Alert", message: "Thank you for sharing.", preferredStyle: .alert)
-//        let action1 = UIAlertAction(title: "Default", style: .default) { (action:UIAlertAction) in
-//                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//                    let viewController = storyBoard.instantiateViewController(identifier: Constants.Storyboard.tabBarCon) as! UITabBarController
-//                    viewController.selectedIndex = 0
-//                    self.view.window?.rootViewController = viewController
-//                     // self.viewController?.popToRootViewController(animated: true)
-//                    self.view.window?.makeKeyAndVisible()
-//            print("You've pressed default");
-//        }
-//        alertController.addAction(action1)
-//        self.present(alertController, animated: true, completion: nil)
-            
+                
+        //        let alertController = UIAlertController(title: "Alert", message: "Thank you for sharing.", preferredStyle: .alert)
+        //        let action1 = UIAlertAction(title: "Default", style: .default) { (action:UIAlertAction) in
+        //                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        //                    let viewController = storyBoard.instantiateViewController(identifier: Constants.Storyboard.tabBarCon) as! UITabBarController
+        //                    viewController.selectedIndex = 0
+        //                    self.view.window?.rootViewController = viewController
+        //                     // self.viewController?.popToRootViewController(animated: true)
+        //                    self.view.window?.makeKeyAndVisible()
+        //            print("You've pressed default");
+        //        }
+        //        alertController.addAction(action1)
+        //        self.present(alertController, animated: true, completion: nil)
     }
 
     
@@ -137,3 +136,4 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
     }
 
 }
+
