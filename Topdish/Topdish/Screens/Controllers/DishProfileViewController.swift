@@ -13,10 +13,14 @@ import Kingfisher
 class DishProfileViewController: UIViewController, UICollectionViewDelegate,UITableViewDelegate{
     
 
-    var images = [UIImage(named: "Burger.png"), UIImage(named: "flatbread.png"), UIImage(named: "steak.png")]
+    var imagesBU = [UIImage(named: "Burger.png"), UIImage(named: "flatbread.png"), UIImage(named: "steak.png")]
+
+    var images: [UIImage?] = []
+
+
     //var clickedDish:Menu = Menu()
     
-    var storageImages: [UIImage] = []
+    var storageImages: [String] = []
     
 
     
@@ -45,7 +49,7 @@ class DishProfileViewController: UIViewController, UICollectionViewDelegate,UITa
         dishTableView.estimatedRowHeight = 85.0
         dishTableView.rowHeight = UITableView.automaticDimension
         
-        getStorageImages()
+//        print("COUNT IN DISH: \(self.images.count) and NAME: \(String(describing: self.images[0]?.size))")
 
         
     }
@@ -88,6 +92,10 @@ extension DishProfileViewController: UICollectionViewDataSource{
     
     func numberOfSections(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

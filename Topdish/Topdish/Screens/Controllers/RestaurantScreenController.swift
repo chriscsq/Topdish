@@ -126,6 +126,7 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate, UI
                 if (i.dishName == dishFinder){
                     print("seaguing \(i.review)")
                     svc.menu = i.review
+                    svc.images = i.uiImage
                     print("I want to leave")
                    // self.show(vc, sender: self)
                     break;

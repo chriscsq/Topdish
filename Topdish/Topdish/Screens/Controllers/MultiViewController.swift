@@ -79,6 +79,7 @@ class MultiViewController: UIViewController, UITableViewDelegate {
                          let dest = segue.destination as! DishProfileViewController
                         print("seaguing \(i.review)")
                         dest.menu = i.review
+                        dest.images = i.uiImage
                         print("I want to leave")
                         break;
                     }

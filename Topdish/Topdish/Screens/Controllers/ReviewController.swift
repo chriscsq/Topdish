@@ -5,12 +5,10 @@
 //  Created by Simran Bhattarai on 2019-12-03.
 //  Copyright © 2019 Topdish Inc. All rights reserved.
 //
-
 import Foundation
 import UIKit
 import Firebase
 //import FirebaseAuth
-
 class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelegate, UITextFieldDelegate{
     //First page of the review
     //Store text field in theses
@@ -27,6 +25,7 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
     @IBOutlet weak var table: UITableView!
     var counter:Int = 1
     var diners:Int = -1
+    var restName = ""
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,6 +70,7 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
             dest.numdiners = diners
             dest.enteredExp = experience.text
             dest.enteredGoBack = wouldyougoback.text
+            dest.resName = restName
         }else{
             
         }
@@ -98,22 +98,20 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
     
     
     @IBAction func enterednumberofDiners(_ sender: UITextField) {
-        guard let diners = Int(numDiner.text!) else {
-                return
-        }
+        // Add stuff
     }
     
     
     @IBAction func submitReview(_ sender: UIButton){
         //Send everything to DB
         //func writeToDB(UID: String, restName: String, numberOfDiners: Int, experience: String, goBack: String, dishInfo: [(String, Double, String, String)])
+        let numberOfDiners = Int(numDiner.text!)
         var info:[(String, Double, String, String)] = []
         for dish in reviewHold{
             info.append((dish.name, Double(dish.rating), dish.dishexp, "imageRef"))
         }
-        writeToDB(UID: "test", restName: "test", numberOfDiners: diners, experience: expplaceholder, goBack: wygbplaceholder, dishInfo: info)
+        writeToDB(UID: "test", restName: "test", numberOfDiners: numberOfDiners!, experience: expplaceholder, goBack: wygbplaceholder, dishInfo: info)
                // MARK: To Go To Explore Page After Submit
-
                 
         //        let alertController = UIAlertController(title: "Alert", message: "Thank you for sharing.", preferredStyle: .alert)
         //        let action1 = UIAlertAction(title: "Default", style: .default) { (action:UIAlertAction) in
@@ -136,4 +134,3 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
     }
 
 }
-
