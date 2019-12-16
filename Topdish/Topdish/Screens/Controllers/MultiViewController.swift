@@ -62,7 +62,7 @@ class MultiViewController: UIViewController, UITableViewDelegate {
             
             self.drinksTable.delegate = self
             self.drinksTable.dataSource = self
-            
+        
         }
         
         

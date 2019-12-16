@@ -9,7 +9,7 @@
 import UIKit
 import Cosmos
 
-class RestaurantScreenController: UIViewController, UICollectionViewDelegate, UITableViewDelegate {
+class RestaurantScreenController: UIViewController, UICollectionViewDelegate, UITableViewDelegate, UINavigationControllerDelegate{
     
     @IBOutlet weak var starView: CosmosView!
     var clickedRestaurant: Restaurant = Restaurant()
@@ -82,6 +82,13 @@ class RestaurantScreenController: UIViewController, UICollectionViewDelegate, UI
         StreetLabel.text = address
         PhoneLabel.text = phone
         starView.rating = self.rating
+
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true;
 
     }
 
@@ -205,3 +212,5 @@ extension RestaurantScreenController:  UITableViewDataSource {
         }
     }
 }
+
+
