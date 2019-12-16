@@ -62,10 +62,10 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     @IBAction func receivedishrate(_ sender: Any) {
-        dishRate.resignFirstResponder()
-        rate = Int(dishRate.text!)!
-        //print(rate)
-        return
+       // dishRate.resignFirstResponder()
+        guard let rate = Int(dishRate.text!) else {
+            return
+        }
     }
 
     
@@ -123,7 +123,8 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "backtoreview"{
-            print(enteredGoBack)
+            //print(enteredGoBack)
+            print("RATE: ", rate)
             let dest = segue.destination as! ReviewController
             let dishAdded = DishReview(name: nameofDish, rating: rate, dishexp:dishexpph)
             reviewHolder.append(dishAdded)
@@ -135,6 +136,7 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
        }
     
     @IBAction func donefunc(_ sender: UIButton) {
+        
        performSegue(withIdentifier: "backtoreview" ,sender: Any?.self)
 
     }
