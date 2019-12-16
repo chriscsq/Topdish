@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Firebase
 
 struct dishrev {
     var id:Int
@@ -31,14 +30,12 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
         var numdiners:Int = -1
         var enteredExp:String = ""
         var enteredGoBack:String = ""
+        var dishexpph:String = "Tell us about your experience..."
     
     
         var nameofDish:String = ""
         var rate:Int = -1
         var exp:String = ""
-    
-    var resName:String = ""
-    var pickedImageToUpload:Bool = false
     
         //Modal View Buttons
         @IBOutlet weak var dishName: UITextField!
@@ -53,27 +50,27 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
          super.viewDidLoad()
         dishexp.delegate = self
         dishexp.textColor = .lightGray
-        dishexp.text = "Tell us about your experience..."
+        dishexp.text = dishexpph
         dishRate.delegate = self
     }
     
     
     @IBAction func nameentered(_ sender: UITextField) {
         dishName.resignFirstResponder()
-        nameofDish = dishName.text!.capitalized
+        nameofDish = dishName.text!
         return
     }
     
     @IBAction func receivedishrate(_ sender: Any) {
-        dishRate.resignFirstResponder()
-        rate = Int(dishRate.text!)!
-        //print(rate)
-        return
+       // dishRate.resignFirstResponder()
+        guard let rate = Int(dishRate.text!) else {
+            return
+        }
     }
 
     
     @IBAction func uploaddish(_ sender: Any) {
-        let myPickerController = UIImagePickerController()
+        var myPickerController = UIImagePickerController()
         myPickerController.delegate = self
         myPickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
         
@@ -90,11 +87,13 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
        }
        
        func textViewDidEndEditing(_ dishexp: UITextView) {
-           if dishexp.text.isEmpty {
-                dishexp.text = "Tell us about your experience..."
-                dishexp.textColor = UIColor.lightGray
+        if dishexp.text.isEmpty && dishexpph.isEqual("Tell us about your experience...") {
+               dishexp.text = "Tell us about your experience..."
+               dishexp.textColor = UIColor.lightGray
            }else{
-                print(dishexp.text!)
+                dishexpph = dishexp.text as! String
+                dishexp.text = dishexpph
+               //print(dishexp.text as! String)
            }
        }
        
@@ -114,7 +113,6 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                       dishpic.contentMode = .scaleAspectFit
                       dishpic.image = pickedImage
-                        pickedImageToUpload = true
                   }
         dismiss(animated: true, completion: nil)
         
@@ -125,9 +123,10 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "backtoreview"{
-            print(enteredGoBack)
+            //print(enteredGoBack)
+            print("RATE: ", rate)
             let dest = segue.destination as! ReviewController
-            let dishAdded = DishReview(name: nameofDish, rating: rate)
+            let dishAdded = DishReview(name: nameofDish, rating: rate, dishexp:dishexpph)
             reviewHolder.append(dishAdded)
             dest.reviewHold = reviewHolder
             dest.wygbplaceholder = enteredGoBack
@@ -137,21 +136,6 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
        }
     
     @IBAction func donefunc(_ sender: UIButton) {
-        if(pickedImageToUpload && dishName.text != nil) {
-            let randomID = UUID.init().uuidString
-            let storageRef = Storage.storage().reference().child("restaurant").child(resName).child(dishName.text!).child("\(randomID).jpg")
-            if let uploadData = self.dishpic.image!.jpegData(compressionQuality: 0.0) {
-                storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
-                    if error != nil {
-                        print("error")
-                        return
-                    } else {
-                        print("dish pic storage save success")
-                    }
-               }
-            }
-
-        }
         
        performSegue(withIdentifier: "backtoreview" ,sender: Any?.self)
 
@@ -159,3 +143,4 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
     
     
 }
+
