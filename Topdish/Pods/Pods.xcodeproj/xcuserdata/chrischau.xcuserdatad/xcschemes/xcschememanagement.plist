@@ -7,12 +7,12 @@
 		<key>FBSDKCoreKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>18</integer>
 		</dict>
 		<key>FBSDKLoginKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>18</integer>
+			<integer>19</integer>
 		</dict>
 		<key>Firebase.xcscheme</key>
 		<dict>
@@ -31,7 +31,7 @@
 		<key>FirebaseAuth.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>19</integer>
+			<integer>20</integer>
 		</dict>
 		<key>FirebaseAuthInterop.xcscheme</key>
 		<dict>
@@ -78,7 +78,7 @@
 		<key>FirebaseStorage.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>20</integer>
+			<integer>21</integer>
 		</dict>
 		<key>FirebaseUI.xcscheme_^#shared#^_</key>
 		<dict>
@@ -127,6 +127,11 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>11</integer>
+		</dict>
+		<key>Kingfisher.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>25</integer>
 		</dict>
 		<key>Pods-Topdish-TopdishUITests.xcscheme</key>
 		<dict>

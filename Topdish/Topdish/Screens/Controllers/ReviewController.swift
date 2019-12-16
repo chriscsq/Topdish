@@ -60,7 +60,6 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
         
         numDiner.delegate = self
         
-        
        
     }
     
@@ -95,6 +94,20 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
     
     func textField(_ textField:UITextField, shouldChangeCharactersIn range: NSRange, replacementString string:String) -> Bool {
         return string == string.filter("0123456789".contains)
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"
+        {
+            textView.resignFirstResponder()
+            return false
+        }
+            return true
+        }
+    
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     
