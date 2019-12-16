@@ -84,7 +84,7 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
     }
     
     func textViewDidEndEditing(_ experience: UITextView) {
-        if experience.text.isEmpty {
+        if experience.text.isEmpty  {
             experience.text = "Tell us about your experience..."
             experience.textColor = UIColor.lightGray
         }else{
@@ -107,8 +107,11 @@ class ReviewController:UIViewController, UITableViewDataSource, UITextViewDelega
     @IBAction func submitReview(_ sender: UIButton){
         //Send everything to DB
         //func writeToDB(UID: String, restName: String, numberOfDiners: Int, experience: String, goBack: String, dishInfo: [(String, Double, String, String)])
-        
-        writeToDB(UID: "test", restName: "test", numberOfDiners: diners, experience: expplaceholder, goBack: wygbplaceholder, dishInfo: [("test", 1.0, "String", "String"), ("test2", 1.0, "String", "String")])
+        var info:[(String, Double, String, String)] = []
+        for dish in reviewHold{
+            info.append((dish.name, Double(dish.rating), dish.dishexp, "imageRef"))
+        }
+        writeToDB(UID: "test", restName: "test", numberOfDiners: diners, experience: expplaceholder, goBack: wygbplaceholder, dishInfo: info)
         //Thank you for sharing page
     }
 

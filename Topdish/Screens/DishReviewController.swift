@@ -30,6 +30,7 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
         var numdiners:Int = -1
         var enteredExp:String = ""
         var enteredGoBack:String = ""
+        var dishexpph:String = "Tell us about your experience..."
     
     
         var nameofDish:String = ""
@@ -86,11 +87,13 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
        }
        
        func textViewDidEndEditing(_ dishexp: UITextView) {
-           if dishexp.text.isEmpty {
+        if dishexp.text.isEmpty && dishexpph.isEqual("Tell us about your experience...") {
                dishexp.text = "Tell us about your experience..."
                dishexp.textColor = UIColor.lightGray
            }else{
-               print(dishexp.text as! String)
+                dishexpph = dishexp.text as! String
+                dishexp.text = dishexpph
+               //print(dishexp.text as! String)
            }
        }
        
@@ -122,7 +125,7 @@ class DishReviewController:UIViewController, UIImagePickerControllerDelegate, UI
         if segue.identifier == "backtoreview"{
             print(enteredGoBack)
             let dest = segue.destination as! ReviewController
-            let dishAdded = DishReview(name: nameofDish, rating: rate)
+            let dishAdded = DishReview(name: nameofDish, rating: rate, dishexp:dishexpph)
             reviewHolder.append(dishAdded)
             dest.reviewHold = reviewHolder
             dest.wygbplaceholder = enteredGoBack
